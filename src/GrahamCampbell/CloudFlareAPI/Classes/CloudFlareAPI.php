@@ -16,12 +16,11 @@ class CloudFlareAPI extends CoreAPI {
         $this->email = Config::get('cloudflare-api::email');
         $this->domain = Config::get('cloudflare-api::domain');
 
-        $this->setup('cloudflare-api::url');
+        $this->setup('cloudflare-api::baseurl');
     }
 
-    public function resetURL() {
-        $this->url = Config::get('cloudflare-api::url');
-        $this->makeNewClient()
+    public function resetBaseUrl() {
+        $this->setBaseUrl(Config::get('cloudflare-api::baseurl'));
     }
 
     public function getToken() {
@@ -68,7 +67,7 @@ class CloudFlareAPI extends CoreAPI {
             $data['z'] = $this->domain;
         }
 
-        return $this->goPost($this->url, null, $data);
+        return $this->goPost($this->baseurl, null, $data);
     }
 
     public function api_stats($interval = 20) {
