@@ -10,9 +10,6 @@ Laravel CloudFlare API
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/laravel-cloudflare-api/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-
 Copyright © [Graham Campbell](https://github.com/GrahamCampbell) 2013  
 
 
