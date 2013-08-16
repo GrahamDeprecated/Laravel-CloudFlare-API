@@ -59,7 +59,7 @@ class CloudFlareAPI extends CoreAPI {
         $this->domain = Config::get('cloudflare-api::domain');
     }
 
-    protected function request($data, $z = true) {
+    protected function request($data, $z = true, $cache = false) {
         $data['tkn']   = $this->token;
         $data['email'] = $this->email;
 
@@ -67,26 +67,26 @@ class CloudFlareAPI extends CoreAPI {
             $data['z'] = $this->domain;
         }
 
-        return $this->goPost($this->baseurl, null, $data, array(), true);
+        return $this->goPost($this->baseurl, null, $data, array(), $cache);
     }
 
     public function api_stats($interval = 20) {
         return $this->request(array(
             'a'        => 'stats',
             'interval' => $interval,
-        ));
+        ), true, 60);
     }
 
     public function api_zone_load_multi() {
         return $this->request(array(
             'a' => 'zone_load_multi',
-        ), false);
+        ), false, 5);
     }
 
     public function api_rec_load_all() {
         return $this->request(array(
             'a' => 'rec_load_all',
-        ));
+        ), true, 5);
     }
 
     public function api_zone_check($zones) {
@@ -98,7 +98,7 @@ class CloudFlareAPI extends CoreAPI {
         return $this->request(array(
             'a'     => 'zone_check',
             'zones' => implode(',', $values),
-        ), false);
+        ), false, 5);
     }
 
     public function api_zone_ips($hours = 24, $class = 'r', $geo = false) {
@@ -107,19 +107,19 @@ class CloudFlareAPI extends CoreAPI {
             'hours' => $hours,
             'class' => $class,
             'geo'   => (int)$geo,
-        ));
+        ), true, 5);
     }
 
     public function api_ip_lkup($ip) {
         return $this->request(array(
             'a'  => 'ip_lkup',
             'ip' => $ip,
-        ), false);
+        ), false, 5);
     }
 
     public function api_zone_settings() {
         return $this->request(array(
             'a' => 'zone_settings',
-        ));
+        ), true, 5);
     }
 }
