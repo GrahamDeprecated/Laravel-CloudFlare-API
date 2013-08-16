@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Config;
 
-use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use GrahamCampbell\CoreAPI\Facades\CoreAPI;
 
 class CloudFlareAPI {
 
@@ -12,9 +12,7 @@ class CloudFlareAPI {
     protected $domain;
     protected $url;
 
-    public function __construct(CoreAPI $coreapi) {
-        $this->api = $coreapi;
-
+    public function __construct() {
         $this->token = Config::get('cloudflareapi::token');
         $this->email = Config::get('cloudflareapi::email');
         $this->domain = Config::get('cloudflareapi::domain');
@@ -44,7 +42,7 @@ class CloudFlareAPI {
         $data['email'] = $this->email;
         $data['z']     = $this->domain;
 
-        return $this->api->goPost($this->url, $data);
+        CoreAPI::goPost($this->url, null, $data);
     }
 
     public function api_stats($interval = 20) {
