@@ -6,6 +6,6 @@ return array(
     'email'  => '',
     'domain' => '',
 
-    'url'    => 'https://www.cloudflare.com/api_json.html',
+    'baseurl'    => 'https://www.cloudflare.com/api_json.html',
 
 );
