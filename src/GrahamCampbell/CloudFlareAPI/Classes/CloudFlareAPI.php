@@ -2,23 +2,26 @@
 
 use Illuminate\Support\Facades\Config;
 
-use GrahamCampbell\CoreAPI\Facades\CoreAPI;
+use GrahamCampbell\CoreAPI\Classes\CoreAPI;
 
-class CloudFlareAPI {
+class CloudFlareAPI extends CoreAPI {
 
     protected $coreapi;
     protected $token;
     protected $email;
     protected $domain;
-    protected $url;
 
     public function __construct() {
         $this->token = Config::get('cloudflare-api::token');
         $this->email = Config::get('cloudflare-api::email');
         $this->domain = Config::get('cloudflare-api::domain');
-        $this->url = Config::get('cloudflare-api::url');
 
-        CoreAPI::setup($this->url);
+        $this->setup('cloudflare-api::url');
+    }
+
+    public function resetURL() {
+        $this->url = Config::get('cloudflare-api::url');
+        $this->makeNewClient()
     }
 
     public function getToken() {
@@ -57,18 +60,6 @@ class CloudFlareAPI {
         $this->domain = Config::get('cloudflare-api::domain');
     }
 
-    public function getURL() {
-        return $this->url;
-    }
-
-    public function setURL($value) {
-        $this->url = $value;
-    }
-
-    public function resetURL() {
-        $this->url = Config::get('cloudflare-api::url');
-    }
-
     protected function request($data, $z = true) {
         $data['tkn']   = $this->token;
         $data['email'] = $this->email;
@@ -77,7 +68,7 @@ class CloudFlareAPI {
             $data['z'] = $this->domain;
         }
 
-        return CoreAPI::goPost($this->url, null, $data);
+        return $this->goPost($this->url, null, $data);
     }
 
     public function api_stats($interval = 20) {
@@ -99,10 +90,15 @@ class CloudFlareAPI {
         ));
     }
 
-    public function api_zone_check($zones = array('*')) {
+    public function api_zone_check($zones) {
+        if (is_array($zones)) {
+            $values = $zones;
+        } else {
+            $values[] = $zones;
+        }
         return $this->request(array(
             'a'     => 'zone_check',
-            'zones' => implode(',', $zones),
+            'zones' => implode(',', $values),
         ), false);
     }
 
