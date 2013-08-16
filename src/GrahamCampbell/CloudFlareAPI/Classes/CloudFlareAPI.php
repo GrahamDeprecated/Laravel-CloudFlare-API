@@ -67,7 +67,7 @@ class CloudFlareAPI extends CoreAPI {
             $data['z'] = $this->domain;
         }
 
-        return $this->goPost($this->baseurl, null, $data);
+        return $this->goPost($this->baseurl, null, $data, array(), true);
     }
 
     public function api_stats($interval = 20) {
