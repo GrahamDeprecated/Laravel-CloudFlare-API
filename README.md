@@ -2,10 +2,8 @@ Laravel CloudFlare API
 ======================
 
 
-[![Latest Stable Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
-[![Latest Unstable Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/unstable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png?branch=develop)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
+[![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/cloudflare-api/downloads.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
