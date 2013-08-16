@@ -16,7 +16,7 @@ class CloudFlareAPI extends CoreAPI {
         $this->email = Config::get('cloudflare-api::email');
         $this->domain = Config::get('cloudflare-api::domain');
 
-        $this->setup('cloudflare-api::baseurl');
+        $this->setup(Config::get('cloudflare-api::baseurl'));
     }
 
     public function resetBaseUrl() {
