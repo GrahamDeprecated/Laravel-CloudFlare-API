@@ -13,12 +13,12 @@ class CloudFlareAPI {
     protected $url;
 
     public function __construct() {
-        $this->token = Config::get('cloudflareapi::token');
-        $this->email = Config::get('cloudflareapi::email');
-        $this->domain = Config::get('cloudflareapi::domain');
-        $this->url = Config::get('cloudflareapi::url');
+        $this->token = Config::get('cloudflare-api::token');
+        $this->email = Config::get('cloudflare-api::email');
+        $this->domain = Config::get('cloudflare-api::domain');
+        $this->url = Config::get('cloudflare-api::url');
 
-        $this->api->setup($this->url);
+        CoreAPI::setup($this->url);
     }
 
     public function getToken() {
@@ -42,7 +42,7 @@ class CloudFlareAPI {
         $data['email'] = $this->email;
         $data['z']     = $this->domain;
 
-        CoreAPI::goPost($this->url, null, $data);
+        return CoreAPI::goPost($this->url, null, $data);
     }
 
     public function api_stats($interval = 20) {
