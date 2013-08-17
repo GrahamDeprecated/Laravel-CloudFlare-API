@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "GrahamCampbell\\CloudFlare": "src/"
+            "GrahamCampbell\\CloudFlareAPI": "src/"
         }
     },
     "extra": {
