@@ -23,6 +23,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 * Laravel CloudFlare API relies on my [Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
 * Laravel CloudFlare API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API) to run tests to check if it's working as it should.  
 * Laravel CloudFlare API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
+* Laravel CloudFlare API was not designed for user login, but for server use only.  
 * Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/wiki).  
 * Laravel CloudFlare API is licensed under the MIT, available [here](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md).  
 
