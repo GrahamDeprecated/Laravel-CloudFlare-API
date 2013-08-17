@@ -5,6 +5,7 @@ Laravel CloudFlare API
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/cloudflare-api/downloads.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CloudFlare-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
 
