@@ -2,10 +2,11 @@ Laravel CloudFlare API
 ======================
 
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CloudFlare-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/cloudflare-api/downloads.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/CloudFlare-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub-API/badges/quality-score.png?s=d4e7a8b8f4ba73c1a64ffef1e8946dd9ecd0da4d)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub-API)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
 
@@ -22,6 +23,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 * Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel CloudFlare API relies on my [Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
 * Laravel CloudFlare API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API) to run tests to check if it's working as it should.  
+* Laravel CloudFlare API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API) to run additional tests and checks.  
 * Laravel CloudFlare API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel CloudFlare API was not designed for user login, but for server use only.  
 * Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/wiki).  
