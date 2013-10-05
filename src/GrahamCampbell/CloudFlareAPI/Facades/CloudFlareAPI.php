@@ -1,7 +1,7 @@
 <?php namespace GrahamCampbell\CloudFlareAPI\Facades;
 
 /**
- * This file is part of Laravel Core API by Graham Campbell.
+ * This file is part of Laravel CloudFlare API by Graham Campbell.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @package    Laravel-Core-API
+ * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
  * @license    Apache License
  * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-Core-API
+ * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 
 use Illuminate\Support\Facades\Facade;
