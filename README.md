@@ -31,7 +31,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 * PHP 5.3.3+, 5.4+ or PHP 5.5+ is required.
 * You will need [Laravel 4](http://laravel.com) because this package is designed for it.  
-* You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel CloudFlare-API.  
+* You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel CloudFlare API.  
 
 
 ## Installation

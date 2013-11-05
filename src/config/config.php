@@ -22,9 +22,9 @@
 
 return array(
 
-    'token'  => '',
-    'email'  => '',
-    'domain' => '',
+    'token'  => 'YourToken',
+    'email'  => 'YourEmail',
+    'domain' => 'YourDomain',
 
     'baseurl'    => 'https://www.cloudflare.com/api_json.html',
 
