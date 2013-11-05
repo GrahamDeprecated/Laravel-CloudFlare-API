@@ -20,27 +20,26 @@
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 
-use Illuminate\Support\Facades\Config;
-
 use GrahamCampbell\CoreAPI\Classes\CoreAPI;
 
 class CloudFlareAPI extends CoreAPI {
 
-    protected $coreapi;
     protected $token;
     protected $email;
     protected $domain;
 
     public function __construct() {
-        $this->token = Config::get('cloudflare-api::token');
-        $this->email = Config::get('cloudflare-api::email');
-        $this->domain = Config::get('cloudflare-api::domain');
+        parent::__construct();
 
-        $this->setup(Config::get('cloudflare-api::baseurl'));
+        $this->token = $this->app['config']['cloudflare-api::token'];
+        $this->email = $this->app['config']['cloudflare-api::email'];
+        $this->domain = $this->app['config']['cloudflare-api::domain'];
+
+        $this->setup($this->app['config']['cloudflare-api::baseurl']);
     }
 
     public function resetBaseUrl() {
-        $this->setBaseUrl(Config::get('cloudflare-api::baseurl'));
+        $this->setBaseUrl($this->app['config']['cloudflare-api::baseurl']);
     }
 
     public function getToken() {
@@ -52,7 +51,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetToken() {
-        $this->token = Config::get('cloudflare-api::token');
+        $this->token = $this->app['config']['cloudflare-api::token'];
     }
 
     public function getEmail() {
@@ -64,7 +63,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetEmail() {
-        $this->email = Config::get('cloudflare-api::email');
+        $this->email = $this->app['config']['cloudflare-api::email'];
     }
 
     public function getDomain() {
@@ -76,7 +75,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetDomain() {
-        $this->domain = Config::get('cloudflare-api::domain');
+        $this->domain = $this->app['config']['cloudflare-api::domain'];
     }
 
     protected function request($data, $z = true, $cache = false) {

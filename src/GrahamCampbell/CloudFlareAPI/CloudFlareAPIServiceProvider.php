@@ -47,7 +47,7 @@ class CloudFlareAPIServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['cloudflareapi'] = $this->app->share(function($app) {
-            return new Classes\CloudFlareAPI;
+            return new Classes\CloudFlareAPI($app);
         });
     }
 
