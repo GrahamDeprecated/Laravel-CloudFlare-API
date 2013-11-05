@@ -28,8 +28,8 @@ class CloudFlareAPI extends CoreAPI {
     protected $email;
     protected $domain;
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($app) {
+        parent::__construct($app);
 
         $this->token = $this->app['config']['cloudflare-api::token'];
         $this->email = $this->app['config']['cloudflare-api::email'];
