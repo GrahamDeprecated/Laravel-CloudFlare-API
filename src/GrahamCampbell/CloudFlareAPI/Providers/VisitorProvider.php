@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CloudFlareAPI\Facades;
+<?php namespace GrahamCampbell\CloudFlareAPI\Providers;
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
