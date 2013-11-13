@@ -20,6 +20,6 @@
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 
-use GrahamCampbell\CMSCore\Classes\APIException;
+use GrahamCampbell\CoreAPI\Classes\APIException;
 
 class CloudFlareException extends APIException {}
