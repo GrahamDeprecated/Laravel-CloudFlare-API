@@ -86,7 +86,19 @@ class CloudFlareAPI extends CoreAPI {
             $data['z'] = $this->domain;
         }
 
-        return $this->post($this->baseurl, null, $data, array(), $cache);
+        $response = $this->post($this->baseurl, null, $data, array(), $cache);
+
+        if (is_array($response->isDecodable())) {
+            if ($response->decodeBody()['result'] !== 'success') {
+                if ($response->decodeBody()['msg']) {
+                    throw new APIException($response->getStatusCode(), null, $response->decodeBody()['msg'], $request->getHeaders()->toArray());
+                }
+            } else {
+                return $response;
+            }
+        }
+
+        throw new APIException($response->getStatusCode(), null, 'There was a json parse error.', $request->getHeaders()->toArray());
     }
 
     public function api_stats($interval = 20) {
