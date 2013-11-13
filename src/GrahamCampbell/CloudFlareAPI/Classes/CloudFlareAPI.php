@@ -91,14 +91,14 @@ class CloudFlareAPI extends CoreAPI {
         if (is_array($response->isDecodable())) {
             if ($response->decodeBody()['result'] !== 'success') {
                 if ($response->decodeBody()['msg']) {
-                    throw new APIException($response->getStatusCode(), null, $response->decodeBody()['msg'], $request->getHeaders()->toArray());
+                    throw new CloudFlareException($response->getStatusCode(), null, $response->decodeBody()['msg'], $request->getHeaders()->toArray());
                 }
             } else {
                 return $response;
             }
         }
 
-        throw new APIException($response->getStatusCode(), null, 'There was a json parse error.', $request->getHeaders()->toArray());
+        throw new CloudFlareException($response->getStatusCode(), null, 'There was a json parse error.', $request->getHeaders()->toArray());
     }
 
     public function api_stats($interval = 20) {
