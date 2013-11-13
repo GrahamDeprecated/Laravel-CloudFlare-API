@@ -88,7 +88,7 @@ class CloudFlareAPI extends CoreAPI {
 
         $response = $this->post($this->baseurl, null, $data, array(), $cache);
 
-        if (is_array($response->isDecodable())) {
+        if ($response->isDecodable()) {
             if ($response->decodeBody()['result'] !== 'success') {
                 if ($response->decodeBody()['msg']) {
                     throw new CloudFlareException($response->getStatusCode(), null, $response->decodeBody()['msg'], $request->getHeaders()->toArray());
