@@ -170,7 +170,7 @@ class CloudFlareAPI extends CoreAPI {
 
     public function api_devmode($v) {
         return $this->request(array(
-            'a' => 'zone_settings',
+            'a' => 'devmode',
             'v' => (int)$v
         ));
     }
