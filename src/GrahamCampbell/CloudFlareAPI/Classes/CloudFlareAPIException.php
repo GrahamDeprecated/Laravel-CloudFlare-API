@@ -20,6 +20,6 @@
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 
-use GrahamCampbell\CoreAPI\Classes\APIException;
+use Guzzle\Http\Exception\BadResponseException;
 
-class CloudFlareException extends APIException {}
+class CloudFlareAPIException extends BadResponseException {}
