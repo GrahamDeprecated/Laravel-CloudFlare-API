@@ -49,12 +49,6 @@ class CloudFlareAPIServiceProvider extends ServiceProvider {
         $this->app['cloudflareapi'] = $this->app->share(function($app) {
             return new Classes\CloudFlareAPI($app);
         });
-        $this->app['cloudflaresiteprovider'] = $this->app->share(function($app) {
-            return new Providers\SiteProvider($app);
-        });
-        $this->app['cloudflarevisitorprovider'] = $this->app->share(function($app) {
-            return new Providers\VisitorProvider($app);
-        });
     }
 
     /**
@@ -63,6 +57,6 @@ class CloudFlareAPIServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array('cloudflareapi', 'cloudflaresiteprovider', 'cloudflarevisitorprovider');
+        return array('cloudflareapi');
     }
 }
