@@ -2,13 +2,22 @@ CHANGE LOG
 ==========
 
 
+## V0.3 Alpha (Upcoming)
+#### Major Release
+
+* Added unit tests
+
+
 ## V0.2 Alpha (Upcoming)
 #### Major Release
 
 * Updated license
-* Added unit tests
+* Updated scrutiniser config
+* Updated documentation
+* Laravel 4.1 support
 * Added the missing methods
-* Minor tweaks
+* Improved exception support
+* Minor refactor
 
 
 ## V0.1 Alpha (25/08/2013)
