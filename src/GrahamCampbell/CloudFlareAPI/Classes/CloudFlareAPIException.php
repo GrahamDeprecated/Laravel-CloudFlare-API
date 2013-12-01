@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CoreAPI\Classes;
+<?php namespace GrahamCampbell\CloudFlareAPI\Classes;
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
