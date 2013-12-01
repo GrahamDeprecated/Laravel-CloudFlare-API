@@ -89,7 +89,7 @@ class CloudFlareAPI extends CoreAPI {
         $response = $this->post($this->baseurl, null, $data, array(), $cache);
 
         try {
-            $body = $response->getResponse()->json();
+            $body = $response->json();
         } catch (\Exception $e) {}
 
         if (isset($body) && is_array($body)) {
