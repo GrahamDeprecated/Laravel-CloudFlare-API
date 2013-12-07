@@ -10,9 +10,6 @@ Laravel CloudFlare API
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
 
-## THIS ALPHA RELEASE IS FOR TESTING ONLY
-
-
 ## What Is Laravel CloudFlare API?
 
 Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/client-api.html) client for [Laravel 4](http://laravel.com).  
@@ -44,13 +41,13 @@ To get the latest version of Laravel CloudFlare API, simply require it in your `
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
+You will need to register the [Laravel CoreAPI](https://github.com/GrahamCampbell/Laravel-CoreAPI) service provider before you attempt to load the Laravel CloudFlare API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+
+`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
+
 Once Laravel CloudFlare API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
 `'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider'`
-
-You will also need to have registered the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider.
-
-`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
 
 You can register the CloudFlareAPI facade in the `aliases` key of your `app/config/app.php` file if you like.
 
