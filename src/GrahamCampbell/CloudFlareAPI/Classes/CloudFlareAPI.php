@@ -21,6 +21,8 @@
  */
 
 use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use Illuminate\Cache\CacheManager;
+use Illuminate\Config\Repository;
 
 class CloudFlareAPI extends CoreAPI {
 
@@ -28,18 +30,18 @@ class CloudFlareAPI extends CoreAPI {
     protected $email;
     protected $domain;
 
-    public function __construct($app) {
-        parent::__construct($app);
+    public function __construct(CacheManager $cache, Repository $config) {
+        parent::__construct($cache, $config);
 
-        $this->token = $this->app['config']['cloudflare-api::token'];
-        $this->email = $this->app['config']['cloudflare-api::email'];
-        $this->domain = $this->app['config']['cloudflare-api::domain'];
+        $this->token = $this->config['cloudflare-api::token'];
+        $this->email = $this->config['cloudflare-api::email'];
+        $this->domain = $this->config['cloudflare-api::domain'];
 
-        $this->setup($this->app['config']['cloudflare-api::baseurl']);
+        $this->setup($this->config['cloudflare-api::baseurl']);
     }
 
     public function resetBaseUrl() {
-        $this->setBaseUrl($this->app['config']['cloudflare-api::baseurl']);
+        $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
     }
 
     public function getToken() {
@@ -51,7 +53,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetToken() {
-        $this->token = $this->app['config']['cloudflare-api::token'];
+        $this->token = $this->config['cloudflare-api::token'];
     }
 
     public function getEmail() {
@@ -63,7 +65,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetEmail() {
-        $this->email = $this->app['config']['cloudflare-api::email'];
+        $this->email = $this->config['cloudflare-api::email'];
     }
 
     public function getDomain() {
@@ -75,7 +77,7 @@ class CloudFlareAPI extends CoreAPI {
     }
 
     public function resetDomain() {
-        $this->domain = $this->app['config']['cloudflare-api::domain'];
+        $this->domain = $this->config['cloudflare-api::domain'];
     }
 
     protected function request($data, $z = true, $cache = false) {
