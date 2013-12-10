@@ -1,4 +1,4 @@
-<?php
+<?php namespace GrahamCampbell\CloudFlareAPI\Classes;
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
@@ -20,12 +20,6 @@
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 
-return array(
+use Guzzle\Http\Exception\BadResponseException;
 
-    'token'  => 'YourToken',
-    'email'  => 'YourEmail',
-    'domain' => 'YourDomain',
-
-    'baseurl'    => 'https://www.cloudflare.com/api_json.html',
-
-);
+class CloudFlareAPIException extends BadResponseException {}

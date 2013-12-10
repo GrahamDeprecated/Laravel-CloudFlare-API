@@ -2,7 +2,7 @@
     "name": "graham-campbell/cloudflare-api",
     "description": "CloudFlare API Is A CloudFlare API Client For Laravel 4",
     "keywords": ["laravel", "framework", "cloudflare api", "cloudflare", "api", "CloudFlare API", "CloudFlare-API", "Laravel CloudFlare API", "Laravel-CloudFlare-API", "Graham Campbell", "GrahamCampbell"],
-    "license": "MIT",
+    "license": "Apache License 2.0",
     "authors": [
         {
             "name": "Graham Campbell",
@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "illuminate/support": "4.0.*@stable",
-        "graham-campbell/core-api": "dev-master"
+        "orchestra/testbench": "~2",
+        "graham-campbell/core-api": "0.2.*-alpha"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",
