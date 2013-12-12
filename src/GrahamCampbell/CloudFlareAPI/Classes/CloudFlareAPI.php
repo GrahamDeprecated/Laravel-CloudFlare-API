@@ -204,26 +204,26 @@ class CloudFlareAPI extends CoreAPI {
         }
     }
 
-    public function api_stats($interval = 20) {
+    public function apiStats($interval = 20) {
         return $this->request(array(
             'a'        => 'stats',
             'interval' => $interval
         ), true, 60);
     }
 
-    public function api_zone_load_multi() {
+    public function apiListZones() {
         return $this->request(array(
             'a' => 'zone_load_multi'
         ), false, 5);
     }
 
-    public function api_rec_load_all() {
+    public function apiLoadRecords() {
         return $this->request(array(
             'a' => 'rec_load_all'
         ), true, 5);
     }
 
-    public function api_zone_check($zones) {
+    public function apiZoneCheck($zones) {
         if (is_array($zones)) {
             $values = $zones;
         } else {
@@ -235,7 +235,7 @@ class CloudFlareAPI extends CoreAPI {
         ), false, 5);
     }
 
-    public function api_zone_ips($hours = 24, $class = 'r', $geo = false) {
+    public function apiZoneIPs($hours = 24, $class = 'r', $geo = false) {
         return $this->request(array(
             'a'     => 'zone_ips',
             'hours' => $hours,
@@ -244,121 +244,121 @@ class CloudFlareAPI extends CoreAPI {
         ), true, 5);
     }
 
-    public function api_ip_lkup($ip) {
+    public function apiIPLookup($ip) {
         return $this->request(array(
             'a'  => 'ip_lkup',
             'ip' => $ip
         ), false, 5);
     }
 
-    public function api_zone_settings() {
+    public function apiZoneSettings() {
         return $this->request(array(
             'a' => 'zone_settings'
         ), true, 5);
     }
 
-    public function api_sec_lvl($v) {
+    public function apiSecurityLevel($v) {
         return $this->request(array(
             'a' => 'sec_lvl',
             'v' => $v
         ));
     }
 
-    public function api_cache_lvl($v) {
+    public function apiCacheLevel($v) {
         return $this->request(array(
             'a' => 'cache_lvl',
             'v' => $v
         ));
     }
 
-    public function api_devmode($v) {
+    public function apiDevMode($v) {
         return $this->request(array(
             'a' => 'devmode',
             'v' => (int)$v
         ));
     }
 
-    public function api_fpurge_ts() {
+    public function apiFullPurge() {
         return $this->request(array(
             'a' => 'fpurge_ts',
             'v' => (int)true
         ));
     }
 
-    public function api_zone_file_purge($url) {
+    public function apiFilePurge($url) {
         return $this->request(array(
             'a'   => 'zone_file_purge',
             'url' => $url
         ));
     }
 
-    public function api_zone_grab($zid) {
+    public function apiZoneGrab($zid) {
         return $this->request(array(
             'a'   => 'zone_grab',
             'zid' => $zid
         ), false);
     }
 
-    public function api_wl($key) {
+    public function apiWhitelist($key) {
         return $this->request(array(
             'a'   => 'wl',
             'key' => $key
         ), false);
     }
 
-    public function api_ban($key) {
+    public function apiBan($key) {
         return $this->request(array(
             'a'   => 'ban',
             'key' => $key
         ), false);
     }
 
-    public function api_nul($key) {
+    public function apiNull($key) {
         return $this->request(array(
             'a'   => 'nul',
             'key' => $key
         ), false);
     }
 
-    public function api_ipv46($v) {
+    public function apiIPv6($v) {
         return $this->request(array(
             'a' => 'ipv46',
             'v' => (int)$v
         ));
     }
 
-    public function api_async($v) {
+    public function apiASync($v) {
         return $this->request(array(
             'a' => 'async',
             'v' => $v
         ));
     }
 
-    public function api_minify($v) {
+    public function apiMinify($v) {
         return $this->request(array(
             'a' => 'minify',
             'v' => $v
         ));
     }
 
-    public function api_mirage2($v) {
+    public function apiMirage($v) {
         return $this->request(array(
             'a' => 'mirage2',
             'v' => (int)$v
         ));
     }
 
-    public function api_rec_new(array $data) {
+    public function apiNewRecord(array $data) {
         $data['a'] = 'rec_new';
         return $this->request($data);
     }
 
-    public function api_rec_edit(array $data) {
+    public function apiEditRecord(array $data) {
         $data['a'] = 'rec_edit';
         return $this->request($data);
     }
 
-    public function api_rec_delete($id) {
+    public function apiDeleteRecord($id) {
         return $this->request(array(
             'a'  => 'rec_delete',
             'id' => $id
