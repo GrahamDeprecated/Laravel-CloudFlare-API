@@ -80,7 +80,7 @@ class CloudFlareAPI extends CoreAPI {
         $this->domain = $this->config['cloudflare-api::domain'];
     }
 
-    protected function request($data, $z = true, $cache = false) {
+    public function request($data, $z = true, $cache = false) {
         $data['tkn']   = $this->token;
         $data['email'] = $this->email;
 
