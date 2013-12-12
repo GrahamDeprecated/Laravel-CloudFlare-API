@@ -9,7 +9,7 @@ CHANGE LOG
 * Added unit tests
 
 
-## V0.2.1 Alpha (Upcoming)
+## V0.2.1 Alpha (12/12/2013)
 #### Minor Release
 
 * Minor tweaks
