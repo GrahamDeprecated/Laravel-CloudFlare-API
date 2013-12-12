@@ -26,10 +26,34 @@ use Illuminate\Config\Repository;
 
 class CloudFlareAPI extends CoreAPI {
 
+    /**
+     * The token.
+     *
+     * @var string
+     */
     protected $token;
+
+    /**
+     * The email.
+     *
+     * @var string
+     */
     protected $email;
+
+    /**
+     * The domain.
+     *
+     * @var string
+     */
     protected $domain;
 
+    /**
+     * Create a new instance.
+     *
+     * @param  \Illuminate\Cache\CacheManager  $cache
+     * @param  \Illuminate\Config\Repository   $config
+     * @return void
+     */
     public function __construct(CacheManager $cache, Repository $config) {
         parent::__construct($cache, $config);
 
@@ -40,51 +64,124 @@ class CloudFlareAPI extends CoreAPI {
         $this->setup($this->config['cloudflare-api::baseurl']);
     }
 
+    /**
+     * Reset the base url.
+     *
+     * @return string
+     */
     public function resetBaseUrl() {
         $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
     }
 
+    /**
+     * Get the token.
+     *
+     * @return string
+     */
     public function getToken() {
         return $this->token;
     }
 
-    public function setToken($value) {
-        $this->token = $value;
+    /**
+     * Set the token.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function setToken($token) {
+        if (!is_string($token)) {
+            $baseurl = '';
+        }
+
+        $this->token = $token;
     }
 
+    /**
+     * Reset the token.
+     *
+     * @return void
+     */
     public function resetToken() {
         $this->token = $this->config['cloudflare-api::token'];
     }
 
+    /**
+     * Get the email.
+     *
+     * @return string
+     */
     public function getEmail() {
         return $this->email;
     }
 
-    public function setEmail($value) {
-        $this->email = $value;
+    /**
+     * Set the email.
+     *
+     * @param  string  $email
+     * @return void
+     */
+    public function setEmail($email) {
+        if (!is_string($email)) {
+            $baseurl = '';
+        }
+
+        $this->email = $email;
     }
 
+    /**
+     * Reset the email.
+     *
+     * @return void
+     */
     public function resetEmail() {
         $this->email = $this->config['cloudflare-api::email'];
     }
 
+    /**
+     * Get the domain.
+     *
+     * @return string
+     */
     public function getDomain() {
         return $this->domain;
     }
 
-    public function setDomain($value) {
-        $this->domain = $value;
+    /**
+     * Set the domain.
+     *
+     * @param  string  $domain
+     * @return void
+     */
+    public function setDomain($domain) {
+        if (!is_string($domain)) {
+            $baseurl = '';
+        }
+
+        $this->domain = $domain;
     }
 
+    /**
+     * Reset the domain.
+     *
+     * @return void
+     */
     public function resetDomain() {
         $this->domain = $this->config['cloudflare-api::domain'];
     }
 
-    public function request($data, $z = true, $cache = false) {
+    /**
+     * Send a request.
+     *
+     * @param  array     $data
+     * @param  bool      $domain
+     * @param  bool|int  $cache
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function request($data, $domain = true, $cache = false) {
         $data['tkn']   = $this->token;
         $data['email'] = $this->email;
 
-        if ($z === true) {
+        if ($domain) {
             $data['z'] = $this->domain;
         }
 
