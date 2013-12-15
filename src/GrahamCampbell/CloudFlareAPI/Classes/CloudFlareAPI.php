@@ -94,7 +94,7 @@ class CloudFlareAPI extends CoreAPI
     public function setToken($token)
     {
         if (!is_string($token)) {
-            $baseurl = '';
+            $token = '';
         }
 
         $this->token = $token;
@@ -129,7 +129,7 @@ class CloudFlareAPI extends CoreAPI
     public function setEmail($email)
     {
         if (!is_string($email)) {
-            $baseurl = '';
+            $email = '';
         }
 
         $this->email = $email;
@@ -164,7 +164,7 @@ class CloudFlareAPI extends CoreAPI
     public function setDomain($domain)
     {
         if (!is_string($domain)) {
-            $baseurl = '';
+            $domain = '';
         }
 
         $this->domain = $domain;
@@ -201,7 +201,9 @@ class CloudFlareAPI extends CoreAPI
 
         try {
             $body = $response->json();
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            // ignore the exception
+        }
 
         if (isset($body) && is_array($body)) {
             if ($body['result'] !== 'success') {

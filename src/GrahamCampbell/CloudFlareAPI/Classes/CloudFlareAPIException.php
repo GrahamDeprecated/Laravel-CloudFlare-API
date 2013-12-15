@@ -22,4 +22,7 @@
 
 use Guzzle\Http\Exception\BadResponseException;
 
-class CloudFlareAPIException extends BadResponseException {}
+class CloudFlareAPIException extends BadResponseException
+{
+    // this is the cloudflare exception class
+}
