@@ -33,7 +33,7 @@ return array(
     |
     */
 
-    'token'  => 'YourToken',
+    'token' => 'YourToken',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return array(
     |
     */
 
-    'email'  => 'YourEmail',
+    'email' => 'YourEmail',
 
     /*
     |--------------------------------------------------------------------------
@@ -72,6 +72,6 @@ return array(
     |
     */
 
-    'baseurl'    => 'https://www.cloudflare.com/api_json.html'
+    'baseurl' => 'https://www.cloudflare.com/api_json.html'
 
 );
