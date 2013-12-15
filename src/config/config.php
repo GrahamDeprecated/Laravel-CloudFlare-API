@@ -22,10 +22,56 @@
 
 return array(
 
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Token
+    |--------------------------------------------------------------------------
+    |
+    | This is the API key made available on your Account page.
+    |
+    | Default: 'YourToken'
+    |
+    */
+
     'token'  => 'YourToken',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Email
+    |--------------------------------------------------------------------------
+    |
+    | This is the e-mail address associated with the API key.
+    |
+    | Default: 'YourEmail'
+    |
+    */
+
     'email'  => 'YourEmail',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Domain
+    |--------------------------------------------------------------------------
+    |
+    | This is the domain to make API calls on.
+    |
+    | Default: 'YourDomain'
+    |
+    */
+
     'domain' => 'YourDomain',
 
-    'baseurl'    => 'https://www.cloudflare.com/api_json.html',
+    /*
+    |--------------------------------------------------------------------------
+    | Base URL
+    |--------------------------------------------------------------------------
+    |
+    | This is the base url for constructing API calls.
+    |
+    | Default: 'https://www.cloudflare.com/api_json.html'
+    |
+    */
+
+    'baseurl'    => 'https://www.cloudflare.com/api_json.html'
 
 );
