@@ -3,10 +3,10 @@ Laravel CloudFlare API
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-CloudFlare-API/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
-[![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
-[![Total Downloads](https://poser.pugx.org/graham-campbell/cloudflare-api/downloads.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
+[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png?branch=develop)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-CloudFlare-API/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/badges/quality-score.png?s=0f3507596babc2503396aed5abceabeb6f703db9)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API)
+[![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
 
@@ -17,16 +17,16 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 * Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel CloudFlare API relies on my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
 * Laravel CloudFlare API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API) to run tests to check if it's working as it should.  
-* Laravel CloudFlare API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API) to run additional tests and checks.  
+* Laravel CloudFlare API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API) to run additional tests and checks.  
 * Laravel CloudFlare API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel CloudFlare API was not designed for user login, but for server use only.  
-* Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/wiki).  
-* Laravel CloudFlare API is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md).  
+* Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/wiki).  
+* Laravel CloudFlare API is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/develop/LICENSE.md).  
 
 
 ## System Requirements
 
-* PHP 5.4.7+ or PHP 5.5+ is required.
+* PHP 5.4.7+ or PHP 5.5+ is required.  
 * You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.  
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel CloudFlare API.  
 
@@ -35,23 +35,31 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 Please check the system requirements before installing Laravel CloudFlare API.  
 
-To get the latest version of Laravel CloudFlare API, simply require it in your `composer.json` file.
+To get the latest version of Laravel CloudFlare API, simply require it in your `composer.json` file.  
 
-`"graham-campbell/cloudflare-api": "dev-master"`
+`"graham-campbell/cloudflare-api": "dev-master"`  
 
-You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.  
 
-You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel CloudFlare API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel CloudFlare API service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
-`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`
+`'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'`  
 
-Once Laravel CloudFlare API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+Once Laravel CloudFlare API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.  
 
-`'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider'`
+`'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider'`  
 
-You can register the CloudFlareAPI facade in the `aliases` key of your `app/config/app.php` file if you like.
+You can register the CloudFlareAPI facade in the `aliases` key of your `app/config/app.php` file if you like.  
 
-`'CloudFlareAPI' => 'GrahamCampbell\CloudFlareAPI\Facades\CloudFlareAPI'`
+`'CloudFlareAPI' => 'GrahamCampbell\CloudFlareAPI\Facades\CloudFlareAPI'`  
+
+
+## Usage
+
+There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-CloudFlare-API
+) for Laravel CloudFlare API.  
+
+You may see an example of implementation in [CMS CloudFlare](https://github.com/GrahamCampbell/CMS-CloudFlare).  
 
 
 ## Updating Your Fork
