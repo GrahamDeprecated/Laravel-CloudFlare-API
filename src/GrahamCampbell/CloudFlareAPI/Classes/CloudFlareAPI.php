@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CloudFlareAPI\Classes;
+<?php
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
@@ -12,18 +12,24 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ */
+
+namespace GrahamCampbell\CloudFlareAPI\Classes;
+
+use Illuminate\Cache\CacheManager;
+use Illuminate\Config\Repository;
+use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use GrahamCampbell\CloudFlareAPI\Exceptions\CloudFlareAPIException;
+
+/**
+ * This is the cloudflare api class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
- * @license    Apache License
  * @copyright  Copyright 2013 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-
-use GrahamCampbell\CoreAPI\Classes\CoreAPI;
-use Illuminate\Cache\CacheManager;
-use Illuminate\Config\Repository;
-
 class CloudFlareAPI extends CoreAPI
 {
     /**
@@ -218,6 +224,12 @@ class CloudFlareAPI extends CoreAPI
         }
     }
 
+    /**
+     * Get the stats.
+     *
+     * @param  int  $interval
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiStats($interval = 20)
     {
         return $this->request(array(
@@ -226,6 +238,11 @@ class CloudFlareAPI extends CoreAPI
         ), true, 60);
     }
 
+    /**
+     * List the zones.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiListZones()
     {
         return $this->request(array(
@@ -233,6 +250,11 @@ class CloudFlareAPI extends CoreAPI
         ), false, 5);
     }
 
+    /**
+     * List the zone records.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiLoadRecords()
     {
         return $this->request(array(
@@ -240,6 +262,12 @@ class CloudFlareAPI extends CoreAPI
         ), true, 5);
     }
 
+    /**
+     * Checks for active zones.
+     *
+     * @param  array  $zones
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiZoneCheck($zones)
     {
         if (is_array($zones)) {
@@ -253,6 +281,14 @@ class CloudFlareAPI extends CoreAPI
         ), false, 5);
     }
 
+    /**
+     * List zone ip addresses.
+     *
+     * @param  int     $hours
+     * @param  string  $class
+     * @param  bool    $geo
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiZoneIPs($hours = 24, $class = 'r', $geo = false)
     {
         return $this->request(array(
@@ -263,6 +299,12 @@ class CloudFlareAPI extends CoreAPI
         ), true, 5);
     }
 
+    /**
+     * Get information about an ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiIPLookup($ip)
     {
         return $this->request(array(
@@ -271,6 +313,11 @@ class CloudFlareAPI extends CoreAPI
         ), false, 5);
     }
 
+    /**
+     * Get zone settings.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiZoneSettings()
     {
         return $this->request(array(
@@ -278,6 +325,12 @@ class CloudFlareAPI extends CoreAPI
         ), true, 5);
     }
 
+    /**
+     * Set the security level.
+     *
+     * @param  string  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiSecurityLevel($v)
     {
         return $this->request(array(
@@ -286,6 +339,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Set the cache level.
+     *
+     * @param  string  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiCacheLevel($v)
     {
         return $this->request(array(
@@ -294,6 +353,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Set the dev mode state.
+     *
+     * @param  bool  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiDevMode($v)
     {
         return $this->request(array(
@@ -302,6 +367,11 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Purge all files from the cache.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiFullPurge()
     {
         return $this->request(array(
@@ -310,6 +380,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Purge a single file from the cache.
+     *
+     * @param  string  $url
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiFilePurge($url)
     {
         return $this->request(array(
@@ -318,6 +394,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Update the snapshot of site.
+     *
+     * @param  int  $zid
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiZoneGrab($zid)
     {
         return $this->request(array(
@@ -326,30 +408,54 @@ class CloudFlareAPI extends CoreAPI
         ), false);
     }
 
-    public function apiWhitelist($key)
+    /**
+     * Whitelist and ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiWhitelist($ip)
     {
         return $this->request(array(
             'a'   => 'wl',
-            'key' => $key
+            'key' => $ip
         ), false);
     }
 
-    public function apiBan($key)
+    /**
+     * Blacklist and ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiBlacklist($ip)
     {
         return $this->request(array(
             'a'   => 'ban',
-            'key' => $key
+            'key' => $ip
         ), false);
     }
 
-    public function apiNull($key)
+    /**
+     * Null and ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiNull($ip)
     {
         return $this->request(array(
             'a'   => 'nul',
-            'key' => $key
+            'key' => $ip
         ), false);
     }
 
+    /**
+     * Set the ipv6 state.
+     *
+     * @param  bool  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiIPv6($v)
     {
         return $this->request(array(
@@ -358,6 +464,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Set the async state.
+     *
+     * @param  string  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiASync($v)
     {
         return $this->request(array(
@@ -366,6 +478,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Set the minification mode.
+     *
+     * @param  int  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiMinify($v)
     {
         return $this->request(array(
@@ -374,6 +492,12 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Set the mirage mode.
+     *
+     * @param  bool  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiMirage($v)
     {
         return $this->request(array(
@@ -382,18 +506,38 @@ class CloudFlareAPI extends CoreAPI
         ));
     }
 
+    /**
+     * Add a new dns record.
+     *
+     * @param  array  $data
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiNewRecord(array $data)
     {
         $data['a'] = 'rec_new';
         return $this->request($data);
     }
 
-    public function apiEditRecord(array $data)
+    /**
+     * Update an existing dns record.
+     *
+     * @param  int  $id
+     * @param  array  $data
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiEditRecord($id, array $data)
     {
         $data['a'] = 'rec_edit';
+        $data['id'] = $id;
         return $this->request($data);
     }
 
+    /**
+     * Delete an existing dns record.
+     *
+     * @param  int  $id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
     public function apiDeleteRecord($id)
     {
         return $this->request(array(

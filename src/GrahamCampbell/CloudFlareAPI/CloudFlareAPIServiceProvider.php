@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CloudFlareAPI;
+<?php
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
@@ -12,16 +12,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
+
+namespace GrahamCampbell\CloudFlareAPI;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * This is the cloudflare api service provider class.
+ *
+ * @package    Laravel-CloudFlare-API
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ */
 class CloudFlareAPIServiceProvider extends ServiceProvider
 {
     /**
