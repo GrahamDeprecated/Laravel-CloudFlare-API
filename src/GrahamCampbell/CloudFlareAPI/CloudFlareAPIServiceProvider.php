@@ -78,6 +78,8 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('cloudflareapi');
+        return array(
+            'cloudflareapi'
+        );
     }
 }
