@@ -40,14 +40,24 @@ abstract class AbstractTestCase extends TestCase
     }
 
     /**
-     * Get the package service providers.
+     * Get the required service providers.
      *
      * @return array
      */
-    protected function getPackageProviders()
+    protected function getRequiredServiceProviders()
     {
         return array(
-            'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider'
+            'GrahamCampbell\CoreAPI\CoreAPIServiceProvider'
         );
+    }
+
+    /**
+     * Get the service provider class.
+     *
+     * @return string
+     */
+    protected function getServiceProviderClass()
+    {
+        return 'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider';
     }
 }
