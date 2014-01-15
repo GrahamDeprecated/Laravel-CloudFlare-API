@@ -74,11 +74,11 @@ class CloudFlareAPI extends CoreAPI
     /**
      * Reset the base url.
      *
-     * @return string
+     * @return $this
      */
     public function resetBaseUrl()
     {
-        $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
+        return $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
     }
 
     /**
@@ -95,7 +95,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the token.
      *
      * @param  string  $token
-     * @return void
+     * @return $this
      */
     public function setToken($token)
     {
@@ -104,16 +104,18 @@ class CloudFlareAPI extends CoreAPI
         }
 
         $this->token = $token;
+
+        return $this;
     }
 
     /**
      * Reset the token.
      *
-     * @return void
+     * @return $this
      */
     public function resetToken()
     {
-        $this->token = $this->config['cloudflare-api::token'];
+        return $this->setToken($this->config['cloudflare-api::token']);
     }
 
     /**
@@ -130,7 +132,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the email.
      *
      * @param  string  $email
-     * @return void
+     * @return $this
      */
     public function setEmail($email)
     {
@@ -139,16 +141,18 @@ class CloudFlareAPI extends CoreAPI
         }
 
         $this->email = $email;
+
+        return $this;
     }
 
     /**
      * Reset the email.
      *
-     * @return void
+     * @return $this
      */
     public function resetEmail()
     {
-        $this->email = $this->config['cloudflare-api::email'];
+        return $this->setEmail($this->config['cloudflare-api::email']);
     }
 
     /**
@@ -165,7 +169,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the domain.
      *
      * @param  string  $domain
-     * @return void
+     * @return $this
      */
     public function setDomain($domain)
     {
@@ -174,16 +178,18 @@ class CloudFlareAPI extends CoreAPI
         }
 
         $this->domain = $domain;
+
+        return $this;
     }
 
     /**
      * Reset the domain.
      *
-     * @return void
+     * @return $this
      */
     public function resetDomain()
     {
-        $this->domain = $this->config['cloudflare-api::domain'];
+        return $this->setDomain($this->config['cloudflare-api::domain']);
     }
 
     /**
