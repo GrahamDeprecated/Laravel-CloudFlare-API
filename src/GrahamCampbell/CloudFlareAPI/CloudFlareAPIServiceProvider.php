@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CloudFlareAPI;
+<?php
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
@@ -12,18 +12,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
+
+namespace GrahamCampbell\CloudFlareAPI;
 
 use Illuminate\Support\ServiceProvider;
 
-class CloudFlareAPIServiceProvider extends ServiceProvider {
-
+/**
+ * This is the cloudflare api service provider class.
+ *
+ * @package    Laravel-CloudFlare-API
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ */
+class CloudFlareAPIServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -36,7 +41,8 @@ class CloudFlareAPIServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         $this->package('graham-campbell/cloudflare-api');
     }
 
@@ -45,9 +51,23 @@ class CloudFlareAPIServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        $this->app['cloudflareapi'] = $this->app->share(function($app) {
-            return new Classes\CloudFlareAPI($app['cache'], $app['config']);
+    public function register()
+    {
+        $this->registerCloudFlareAPI();
+    }
+
+    /**
+     * Register the cloudflare api class.
+     *
+     * @return void
+     */
+    protected function registerCloudFlareAPI()
+    {
+        $this->app->bindShared('cloudflareapi', function ($app) {
+            $cache = $app['cache'];
+            $config = $app['config'];
+
+            return new Classes\CloudFlareAPI($cache, $config);
         });
     }
 
@@ -56,7 +76,10 @@ class CloudFlareAPIServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-    public function provides() {
-        return array('cloudflareapi');
+    public function provides()
+    {
+        return array(
+            'cloudflareapi'
+        );
     }
 }

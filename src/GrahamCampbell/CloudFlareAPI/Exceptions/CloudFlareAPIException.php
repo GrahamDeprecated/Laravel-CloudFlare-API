@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CloudFlareAPI\Classes;
+<?php
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
@@ -12,14 +12,22 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
+
+namespace GrahamCampbell\CloudFlareAPI\Exceptions;
 
 use Guzzle\Http\Exception\BadResponseException;
 
-class CloudFlareAPIException extends BadResponseException {}
+/**
+ * This is the cloudflare api exception class.
+ *
+ * @package    Laravel-CloudFlare-API
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ */
+class CloudFlareAPIException extends BadResponseException
+{
+    // this is the cloudflare exception class
+}

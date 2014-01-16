@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Facades;
+namespace GrahamCampbell\Tests\CloudFlareAPI\Facades;
 
-use Illuminate\Support\Facades\Facade;
+use GrahamCampbell\Tests\CloudFlareAPI\AbstractTestCase;
+use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
 
 /**
- * This is the cloudflare api facade class.
+ * This is the abstract facade test case class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -27,15 +28,7 @@ use Illuminate\Support\Facades\Facade;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareAPI extends Facade
+abstract class AbstractFacadeTestCase extends AbstractTestCase
 {
-    /**
-     * Get the registered name of the component.
-     *
-     * @return string
-     */
-    protected static function getFacadeAccessor()
-    {
-        return 'cloudflareapi';
-    }
+    use FacadeTestCaseTrait;
 }

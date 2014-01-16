@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\CloudFlareAPI\Classes;
+<?php
 
 /**
  * This file is part of Laravel CloudFlare API by Graham Campbell.
@@ -12,25 +12,56 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ */
+
+namespace GrahamCampbell\CloudFlareAPI\Classes;
+
+use Illuminate\Cache\CacheManager;
+use Illuminate\Config\Repository;
+use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use GrahamCampbell\CloudFlareAPI\Exceptions\CloudFlareAPIException;
+
+/**
+ * This is the cloudflare api class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-
-use GrahamCampbell\CoreAPI\Classes\CoreAPI;
-use Illuminate\Cache\CacheManager;
-use Illuminate\Config\Repository;
-
-class CloudFlareAPI extends CoreAPI {
-
+class CloudFlareAPI extends CoreAPI
+{
+    /**
+     * The token.
+     *
+     * @var string
+     */
     protected $token;
+
+    /**
+     * The email.
+     *
+     * @var string
+     */
     protected $email;
+
+    /**
+     * The domain.
+     *
+     * @var string
+     */
     protected $domain;
 
-    public function __construct(CacheManager $cache, Repository $config) {
+    /**
+     * Create a new instance.
+     *
+     * @param  \Illuminate\Cache\CacheManager  $cache
+     * @param  \Illuminate\Config\Repository   $config
+     * @return void
+     */
+    public function __construct(CacheManager $cache, Repository $config)
+    {
         parent::__construct($cache, $config);
 
         $this->token = $this->config['cloudflare-api::token'];
@@ -40,51 +71,141 @@ class CloudFlareAPI extends CoreAPI {
         $this->setup($this->config['cloudflare-api::baseurl']);
     }
 
-    public function resetBaseUrl() {
-        $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
+    /**
+     * Reset the base url.
+     *
+     * @return $this
+     */
+    public function resetBaseUrl()
+    {
+        return $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
     }
 
-    public function getToken() {
+    /**
+     * Get the token.
+     *
+     * @return string
+     */
+    public function getToken()
+    {
         return $this->token;
     }
 
-    public function setToken($value) {
-        $this->token = $value;
+    /**
+     * Set the token.
+     *
+     * @param  string  $token
+     * @return $this
+     */
+    public function setToken($token)
+    {
+        if (!is_string($token)) {
+            $token = '';
+        }
+
+        $this->token = $token;
+
+        return $this;
     }
 
-    public function resetToken() {
-        $this->token = $this->config['cloudflare-api::token'];
+    /**
+     * Reset the token.
+     *
+     * @return $this
+     */
+    public function resetToken()
+    {
+        return $this->setToken($this->config['cloudflare-api::token']);
     }
 
-    public function getEmail() {
+    /**
+     * Get the email.
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function setEmail($value) {
-        $this->email = $value;
+    /**
+     * Set the email.
+     *
+     * @param  string  $email
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        if (!is_string($email)) {
+            $email = '';
+        }
+
+        $this->email = $email;
+
+        return $this;
     }
 
-    public function resetEmail() {
-        $this->email = $this->config['cloudflare-api::email'];
+    /**
+     * Reset the email.
+     *
+     * @return $this
+     */
+    public function resetEmail()
+    {
+        return $this->setEmail($this->config['cloudflare-api::email']);
     }
 
-    public function getDomain() {
+    /**
+     * Get the domain.
+     *
+     * @return string
+     */
+    public function getDomain()
+    {
         return $this->domain;
     }
 
-    public function setDomain($value) {
-        $this->domain = $value;
+    /**
+     * Set the domain.
+     *
+     * @param  string  $domain
+     * @return $this
+     */
+    public function setDomain($domain)
+    {
+        if (!is_string($domain)) {
+            $domain = '';
+        }
+
+        $this->domain = $domain;
+
+        return $this;
     }
 
-    public function resetDomain() {
-        $this->domain = $this->config['cloudflare-api::domain'];
+    /**
+     * Reset the domain.
+     *
+     * @return $this
+     */
+    public function resetDomain()
+    {
+        return $this->setDomain($this->config['cloudflare-api::domain']);
     }
 
-    protected function request($data, $z = true, $cache = false) {
+    /**
+     * Send a request.
+     *
+     * @param  array     $data
+     * @param  bool      $domain
+     * @param  bool|int  $cache
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function request($data, $domain = true, $cache = false)
+    {
         $data['tkn']   = $this->token;
         $data['email'] = $this->email;
 
-        if ($z === true) {
+        if ($domain) {
             $data['z'] = $this->domain;
         }
 
@@ -92,7 +213,9 @@ class CloudFlareAPI extends CoreAPI {
 
         try {
             $body = $response->json();
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            // ignore the exception
+        }
 
         if (isset($body) && is_array($body)) {
             if ($body['result'] !== 'success') {
@@ -107,26 +230,52 @@ class CloudFlareAPI extends CoreAPI {
         }
     }
 
-    public function api_stats($interval = 20) {
+    /**
+     * Get the stats.
+     *
+     * @param  int  $interval
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiStats($interval = 20)
+    {
         return $this->request(array(
             'a'        => 'stats',
             'interval' => $interval
         ), true, 60);
     }
 
-    public function api_zone_load_multi() {
+    /**
+     * List the zones.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiListZones()
+    {
         return $this->request(array(
             'a' => 'zone_load_multi'
         ), false, 5);
     }
 
-    public function api_rec_load_all() {
+    /**
+     * List the zone records.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiLoadRecords()
+    {
         return $this->request(array(
             'a' => 'rec_load_all'
         ), true, 5);
     }
 
-    public function api_zone_check($zones) {
+    /**
+     * Checks for active zones.
+     *
+     * @param  array  $zones
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiZoneCheck($zones)
+    {
         if (is_array($zones)) {
             $values = $zones;
         } else {
@@ -138,7 +287,16 @@ class CloudFlareAPI extends CoreAPI {
         ), false, 5);
     }
 
-    public function api_zone_ips($hours = 24, $class = 'r', $geo = false) {
+    /**
+     * List zone ip addresses.
+     *
+     * @param  int     $hours
+     * @param  string  $class
+     * @param  bool    $geo
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiZoneIPs($hours = 24, $class = 'r', $geo = false)
+    {
         return $this->request(array(
             'a'     => 'zone_ips',
             'hours' => $hours,
@@ -147,121 +305,247 @@ class CloudFlareAPI extends CoreAPI {
         ), true, 5);
     }
 
-    public function api_ip_lkup($ip) {
+    /**
+     * Get information about an ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiIPLookup($ip)
+    {
         return $this->request(array(
             'a'  => 'ip_lkup',
             'ip' => $ip
         ), false, 5);
     }
 
-    public function api_zone_settings() {
+    /**
+     * Get zone settings.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiZoneSettings()
+    {
         return $this->request(array(
             'a' => 'zone_settings'
         ), true, 5);
     }
 
-    public function api_sec_lvl($v) {
+    /**
+     * Set the security level.
+     *
+     * @param  string  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiSecurityLevel($v)
+    {
         return $this->request(array(
             'a' => 'sec_lvl',
             'v' => $v
         ));
     }
 
-    public function api_cache_lvl($v) {
+    /**
+     * Set the cache level.
+     *
+     * @param  string  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiCacheLevel($v)
+    {
         return $this->request(array(
             'a' => 'cache_lvl',
             'v' => $v
         ));
     }
 
-    public function api_devmode($v) {
+    /**
+     * Set the dev mode state.
+     *
+     * @param  bool  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiDevMode($v)
+    {
         return $this->request(array(
             'a' => 'devmode',
             'v' => (int)$v
         ));
     }
 
-    public function api_fpurge_ts() {
+    /**
+     * Purge all files from the cache.
+     *
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiFullPurge()
+    {
         return $this->request(array(
             'a' => 'fpurge_ts',
             'v' => (int)true
         ));
     }
 
-    public function api_zone_file_purge($url) {
+    /**
+     * Purge a single file from the cache.
+     *
+     * @param  string  $url
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiFilePurge($url)
+    {
         return $this->request(array(
             'a'   => 'zone_file_purge',
             'url' => $url
         ));
     }
 
-    public function api_zone_grab($zid) {
+    /**
+     * Update the snapshot of site.
+     *
+     * @param  int  $zid
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiZoneGrab($zid)
+    {
         return $this->request(array(
             'a'   => 'zone_grab',
             'zid' => $zid
         ), false);
     }
 
-    public function api_wl($key) {
+    /**
+     * Whitelist and ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiWhitelist($ip)
+    {
         return $this->request(array(
             'a'   => 'wl',
-            'key' => $key
+            'key' => $ip
         ), false);
     }
 
-    public function api_ban($key) {
+    /**
+     * Blacklist and ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiBlacklist($ip)
+    {
         return $this->request(array(
             'a'   => 'ban',
-            'key' => $key
+            'key' => $ip
         ), false);
     }
 
-    public function api_nul($key) {
+    /**
+     * Null and ip address.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiNull($ip)
+    {
         return $this->request(array(
             'a'   => 'nul',
-            'key' => $key
+            'key' => $ip
         ), false);
     }
 
-    public function api_ipv46($v) {
+    /**
+     * Set the ipv6 state.
+     *
+     * @param  bool  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiIPv6($v)
+    {
         return $this->request(array(
             'a' => 'ipv46',
             'v' => (int)$v
         ));
     }
 
-    public function api_async($v) {
+    /**
+     * Set the async state.
+     *
+     * @param  string  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiASync($v)
+    {
         return $this->request(array(
             'a' => 'async',
             'v' => $v
         ));
     }
 
-    public function api_minify($v) {
+    /**
+     * Set the minification mode.
+     *
+     * @param  int  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiMinify($v)
+    {
         return $this->request(array(
             'a' => 'minify',
             'v' => $v
         ));
     }
 
-    public function api_mirage2($v) {
+    /**
+     * Set the mirage mode.
+     *
+     * @param  bool  $v
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiMirage($v)
+    {
         return $this->request(array(
             'a' => 'mirage2',
             'v' => (int)$v
         ));
     }
 
-    public function api_rec_new(array $data) {
+    /**
+     * Add a new dns record.
+     *
+     * @param  array  $data
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiNewRecord(array $data)
+    {
         $data['a'] = 'rec_new';
         return $this->request($data);
     }
 
-    public function api_rec_edit(array $data) {
+    /**
+     * Update an existing dns record.
+     *
+     * @param  int  $id
+     * @param  array  $data
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiEditRecord($id, array $data)
+    {
         $data['a'] = 'rec_edit';
+        $data['id'] = $id;
         return $this->request($data);
     }
 
-    public function api_rec_delete($id) {
+    /**
+     * Delete an existing dns record.
+     *
+     * @param  int  $id
+     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     */
+    public function apiDeleteRecord($id)
+    {
         return $this->request(array(
             'a'  => 'rec_delete',
             'id' => $id

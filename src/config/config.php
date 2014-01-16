@@ -12,20 +12,60 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 
 return array(
 
-    'token'  => 'YourToken',
-    'email'  => 'YourEmail',
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Token
+    |--------------------------------------------------------------------------
+    |
+    | This is the api key made available on your account page.
+    |
+    | Default: 'YourToken'
+    |
+    */
+
+    'token' => 'YourToken',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Email
+    |--------------------------------------------------------------------------
+    |
+    | This is the e-mail address associated with the api key.
+    |
+    | Default: 'YourEmail'
+    |
+    */
+
+    'email' => 'YourEmail',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Domain
+    |--------------------------------------------------------------------------
+    |
+    | This is the domain to make api calls on.
+    |
+    | Default: 'YourDomain'
+    |
+    */
+
     'domain' => 'YourDomain',
 
-    'baseurl'    => 'https://www.cloudflare.com/api_json.html',
+    /*
+    |--------------------------------------------------------------------------
+    | Base URL
+    |--------------------------------------------------------------------------
+    |
+    | This is the base url for constructing api calls.
+    |
+    | Default: 'https://www.cloudflare.com/api_json.html'
+    |
+    */
+
+    'baseurl' => 'https://www.cloudflare.com/api_json.html'
 
 );

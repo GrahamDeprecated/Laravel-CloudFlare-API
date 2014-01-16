@@ -5,7 +5,11 @@ CHANGE LOG
 ## V0.3 Alpha (Upcoming)
 #### Major Release
 
+* Dropped Laravel 4.0 support
 * Updated doc blocks
+* Some refactoring
+* Travis and Scrutinizer tweaks
+* Coding style fixes
 * Added unit tests
 
 
