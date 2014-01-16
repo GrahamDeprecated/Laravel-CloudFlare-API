@@ -20,7 +20,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 * Laravel CloudFlare API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API) to run additional tests and checks.  
 * Laravel CloudFlare API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel CloudFlare API was not designed for user login, but for server use only.  
-* Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/wiki).  
+* Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/wiki).  
 * Laravel CloudFlare API is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md).  
 
 
@@ -83,7 +83,7 @@ Once it is set up, run `git mergetool`. Once all conflicts are fixed, run `git r
 
 ## Pull Requests
 
-Please submit pull requests against the develop branch.  
+Please review these guidelines before submitting any pull requests.  
 
 * Bug fixes shouldn't be sent to the master branch unless they fix features that exist only in the upcoming release.  
 * Before sending a pull request for a new feature, you should first create an issue with [Proposal] in the title.  
