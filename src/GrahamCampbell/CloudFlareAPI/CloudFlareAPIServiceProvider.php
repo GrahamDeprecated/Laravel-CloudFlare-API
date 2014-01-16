@@ -24,7 +24,7 @@ use Illuminate\Support\ServiceProvider;
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
  * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/develop/LICENSE.md
+ * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
 class CloudFlareAPIServiceProvider extends ServiceProvider
