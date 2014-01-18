@@ -16,8 +16,8 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 * Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel CloudFlare API relies on my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.  
-* Laravel CloudFlare API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API) to run tests to check if it's working as it should.  
-* Laravel CloudFlare API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API) to run additional tests and checks.  
+* Laravel CloudFlare API uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API) with [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API) to check everything is working.  
+* Laravel CloudFlare API uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API) and [SensioLabsInsight](https://insight.sensiolabs.com/projects/4c2cc3f0-6804-46bb-8310-922934a0e675) to run additional checks.  
 * Laravel CloudFlare API uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel CloudFlare API was not designed for user login, but for server use only.  
 * Laravel CloudFlare API provides a [change log](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), and [api docs](http://grahamcampbell.github.io/Laravel-CloudFlare-API).  
