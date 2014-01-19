@@ -7,6 +7,7 @@ Laravel CloudFlare API
 [![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-CloudFlare-API/badge.png)](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/badges/quality-score.png?s=0f3507596babc2503396aed5abceabeb6f703db9)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4c2cc3f0-6804-46bb-8310-922934a0e675/mini.png)](https://insight.sensiolabs.com/projects/4c2cc3f0-6804-46bb-8310-922934a0e675)
+[![Software License](https://poser.pugx.org/graham-campbell/cloudflare-api/license.png)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md)
 [![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
 
 
