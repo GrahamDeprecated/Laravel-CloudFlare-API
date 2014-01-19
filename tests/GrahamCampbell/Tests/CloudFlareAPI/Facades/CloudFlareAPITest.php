@@ -20,7 +20,7 @@ use GrahamCampbell\Tests\CloudFlareAPI\AbstractTestCase;
 use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
 
 /**
- * This is the cloudflare api facade test case class.
+ * This is the cloudflare api facade test class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
