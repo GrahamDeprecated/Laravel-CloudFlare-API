@@ -16,6 +16,9 @@
 
 namespace GrahamCampbell\Tests\CloudFlareAPI\Facades;
 
+use GrahamCampbell\Tests\CloudFlareAPI\AbstractTestCase;
+use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+
 /**
  * This is the cloudflare api facade test case class.
  *
@@ -25,8 +28,10 @@ namespace GrahamCampbell\Tests\CloudFlareAPI\Facades;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareAPITest extends AbstractFacadeTestCase
+class CloudFlareAPITest extends AbstractTestCase
 {
+    use FacadeTestCaseTrait;
+
     /**
      * Get the facade accessor.
      *
