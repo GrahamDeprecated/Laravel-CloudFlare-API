@@ -43,7 +43,7 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('graham-campbell/cloudflare-api');
+        $this->package('graham-campbell/cloudflare-api', 'graham-campbell/cloudflare-api', __DIR__);
     }
 
     /**

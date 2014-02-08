@@ -41,14 +41,9 @@
         "graham-campbell/testbench": "0.2.*"
     },
     "autoload": {
-        "psr-0": {
-            "GrahamCampbell\\CloudFlareAPI": "src/",
-            "GrahamCampbell\\Tests\\CloudFlareAPI": "tests/"
-        }
-    },
-    "autoload": {
-        "psr-0": {
-            "GrahamCampbell\\CloudFlareAPI": "src/"
+        "psr-4": {
+            "GrahamCampbell\\CloudFlareAPI\\": "src/",
+            "GrahamCampbell\\Tests\\CloudFlareAPI\\": "tests/"
         }
     },
     "extra": {
