@@ -64,11 +64,11 @@ class CloudFlareAPI extends CoreAPI
     {
         parent::__construct($cache, $config);
 
-        $this->token = $this->config['cloudflare-api::token'];
-        $this->email = $this->config['cloudflare-api::email'];
-        $this->domain = $this->config['cloudflare-api::domain'];
+        $this->token = $this->config['graham-campbell/cloudflare-api::token'];
+        $this->email = $this->config['graham-campbell/cloudflare-api::email'];
+        $this->domain = $this->config['graham-campbell/cloudflare-api::domain'];
 
-        $this->setup($this->config['cloudflare-api::baseurl']);
+        $this->setup($this->config['graham-campbell/cloudflare-api::baseurl']);
     }
 
     /**
@@ -78,7 +78,7 @@ class CloudFlareAPI extends CoreAPI
      */
     public function resetBaseUrl()
     {
-        return $this->setBaseUrl($this->config['cloudflare-api::baseurl']);
+        return $this->setBaseUrl($this->config['graham-campbell/cloudflare-api::baseurl']);
     }
 
     /**
@@ -115,7 +115,7 @@ class CloudFlareAPI extends CoreAPI
      */
     public function resetToken()
     {
-        return $this->setToken($this->config['cloudflare-api::token']);
+        return $this->setToken($this->config['graham-campbell/cloudflare-api::token']);
     }
 
     /**
@@ -152,7 +152,7 @@ class CloudFlareAPI extends CoreAPI
      */
     public function resetEmail()
     {
-        return $this->setEmail($this->config['cloudflare-api::email']);
+        return $this->setEmail($this->config['graham-campbell/cloudflare-api::email']);
     }
 
     /**
@@ -189,7 +189,7 @@ class CloudFlareAPI extends CoreAPI
      */
     public function resetDomain()
     {
-        return $this->setDomain($this->config['cloudflare-api::domain']);
+        return $this->setDomain($this->config['graham-campbell/cloudflare-api::domain']);
     }
 
     /**
