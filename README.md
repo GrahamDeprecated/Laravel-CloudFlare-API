@@ -55,6 +55,37 @@ You can register the CloudFlareAPI facade in the `aliases` key of your `app/conf
 * `'CloudFlareAPI' => 'GrahamCampbell\CloudFlareAPI\Facades\CloudFlareAPI'`
 
 
+## Configuration
+
+Laravel CloudFlare API requires configuration.
+
+To get started, first publish the package config file:
+
+    php artisan config:publish graham-campbell/cloudflare-api
+
+There are many config options:
+
+**Authentication Token**
+
+This option (`'token'`) defines the api key to be used from your account page. The default value for this setting is `'YourToken'`.
+
+**Authentication Email**
+
+This option (`'email'`) defines the email address associated with the api key to be used. The default value for this setting is `'YourEmail'`.
+
+**Domain**
+
+This option (`'domain'`) defines the domain to make api calls on. The default value for this setting is `'YourDomain'`.
+
+**Base URL**
+
+This option (`'baseurl'`) defines the base url for making api calls against. The default value for this setting is `'https://www.cloudflare.com/api_json.html'`.
+
+**Additional Configuration**
+
+You may want to check out the config for `graham-campbell/core-api` too. You can configure caching there.
+
+
 ## Usage
 
 There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-CloudFlare-API

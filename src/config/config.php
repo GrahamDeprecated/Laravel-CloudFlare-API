@@ -21,7 +21,7 @@ return array(
     | Authentication Token
     |--------------------------------------------------------------------------
     |
-    | This is the api key made available on your account page.
+    | This defines the api key to be used from your account page.
     |
     | Default: 'YourToken'
     |
@@ -34,7 +34,7 @@ return array(
     | Authentication Email
     |--------------------------------------------------------------------------
     |
-    | This is the e-mail address associated with the api key.
+    | This defines the email address associated with the api key to be used.
     |
     | Default: 'YourEmail'
     |
@@ -47,7 +47,7 @@ return array(
     | Domain
     |--------------------------------------------------------------------------
     |
-    | This is the domain to make api calls on.
+    | This defines the domain to make api calls on.
     |
     | Default: 'YourDomain'
     |
@@ -60,7 +60,7 @@ return array(
     | Base URL
     |--------------------------------------------------------------------------
     |
-    | This is the base url for constructing api calls.
+    | This defines the base url for making api calls against.
     |
     | Default: 'https://www.cloudflare.com/api_json.html'
     |
