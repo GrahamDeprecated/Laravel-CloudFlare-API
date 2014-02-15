@@ -4,6 +4,7 @@ CHANGE LOG
 
 ## V0.4 Alpha (Upcoming)
 
+* PHP 5.6 and partial HHVM compatibility
 * Added more unit tests
 
 
