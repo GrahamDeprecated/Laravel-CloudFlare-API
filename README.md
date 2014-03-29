@@ -2,13 +2,12 @@ Laravel CloudFlare API
 ======================
 
 
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API.png)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
-[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-CloudFlare-API/badge.png)](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API)
+[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-CloudFlare-API/master.svg)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
+[![Coverage Status](https://img.shields.io/coveralls/GrahamCampbell/Laravel-CloudFlare-API/master.svg)](https://coveralls.io/r/GrahamCampbell/Laravel-CloudFlare-API)
+[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-CloudFlare-API.svg)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/badges/quality-score.png?s=0f3507596babc2503396aed5abceabeb6f703db9)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4c2cc3f0-6804-46bb-8310-922934a0e675/mini.png)](https://insight.sensiolabs.com/projects/4c2cc3f0-6804-46bb-8310-922934a0e675)
-[![Software License](https://poser.pugx.org/graham-campbell/cloudflare-api/license.png)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md)
-[![Latest Version](https://poser.pugx.org/graham-campbell/cloudflare-api/v/stable.png)](https://packagist.org/packages/graham-campbell/cloudflare-api)
-[![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API.png)](http://stillmaintained.com/GrahamCampbell/Laravel-CloudFlare-API)
 
 
 ## What Is Laravel CloudFlare API?
@@ -27,7 +26,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 ## System Requirements
 
-* PHP 5.4.7+ or HHVM 2.4+ (HHVM support is incomplete mainly due to dependencies).
+* PHP 5.4.7+ or HHVM 3.0+ (HHVM support is incomplete mainly due to dependencies).
 * You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel CloudFlare API.
 

@@ -2,10 +2,15 @@ CHANGE LOG
 ==========
 
 
+# V0.5 Alpha (Upcoming)
+
+* Refactoring
+* Added more unit tests
+
+
 ## V0.4 Alpha (Upcoming)
 
 * PHP 5.6 and partial HHVM compatibility
-* Added more unit tests
 
 
 ## V0.3 Alpha (08/02/2014)
