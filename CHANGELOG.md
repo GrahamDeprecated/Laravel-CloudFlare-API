@@ -11,6 +11,7 @@ CHANGE LOG
 ## V0.4 Alpha (Upcoming)
 
 * PHP 5.6 and partial HHVM compatibility
+* Minor tweaks and updates
 
 
 ## V0.3 Alpha (08/02/2014)

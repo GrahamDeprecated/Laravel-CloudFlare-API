@@ -247,13 +247,22 @@ class CloudFlareAPI extends CoreAPI
     /**
      * List the zones.
      *
+     * @param  int  $offset
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiListZones()
+    public function apiListZones($offset = null)
     {
-        return $this->request(array(
-            'a' => 'zone_load_multi'
-        ), false, 5);
+        if ($offset) {
+            return $this->request(array(
+                'a' => 'zone_load_multi',
+                'o' => $offset
+            ), false, 5);
+        } else {
+            return $this->request(array(
+                'a' => 'zone_load_multi'
+            ), false, 5);
+        }
+
     }
 
     /**
@@ -295,7 +304,7 @@ class CloudFlareAPI extends CoreAPI
      * @param  bool    $geo
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiZoneIPs($hours = 24, $class = 'r', $geo = false)
+    public function apiZoneIps($hours = 24, $class = 'r', $geo = false)
     {
         return $this->request(array(
             'a'     => 'zone_ips',
@@ -311,7 +320,7 @@ class CloudFlareAPI extends CoreAPI
      * @param  string  $ip
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiIPLookup($ip)
+    public function apiIpLookup($ip)
     {
         return $this->request(array(
             'a'  => 'ip_lkup',
@@ -334,42 +343,42 @@ class CloudFlareAPI extends CoreAPI
     /**
      * Set the security level.
      *
-     * @param  string  $v
+     * @param  string  $level
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiSecurityLevel($v)
+    public function apiSecurityLevel($level)
     {
         return $this->request(array(
             'a' => 'sec_lvl',
-            'v' => $v
+            'v' => $level
         ));
     }
 
     /**
      * Set the cache level.
      *
-     * @param  string  $v
+     * @param  string  $level
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiCacheLevel($v)
+    public function apiCacheLevel($level)
     {
         return $this->request(array(
             'a' => 'cache_lvl',
-            'v' => $v
+            'v' => $level
         ));
     }
 
     /**
      * Set the dev mode state.
      *
-     * @param  bool  $v
+     * @param  bool  $mode
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiDevMode($v)
+    public function apiDevMode($mode)
     {
         return $this->request(array(
             'a' => 'devmode',
-            'v' => (int)$v
+            'v' => (int)$mode
         ));
     }
 
@@ -459,56 +468,56 @@ class CloudFlareAPI extends CoreAPI
     /**
      * Set the ipv6 state.
      *
-     * @param  bool  $v
+     * @param  bool  $state
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiIPv6($v)
+    public function apiIPv6($state)
     {
         return $this->request(array(
             'a' => 'ipv46',
-            'v' => (int)$v
+            'v' => (int)$state
         ));
     }
 
     /**
      * Set the async state.
      *
-     * @param  string  $v
+     * @param  string  $mode
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiASync($v)
+    public function apiAsync($mode)
     {
         return $this->request(array(
             'a' => 'async',
-            'v' => $v
+            'v' => $mode
         ));
     }
 
     /**
      * Set the minification mode.
      *
-     * @param  int  $v
+     * @param  int  $mode
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiMinify($v)
+    public function apiMinify($mode)
     {
         return $this->request(array(
             'a' => 'minify',
-            'v' => $v
+            'v' => $mode
         ));
     }
 
     /**
      * Set the mirage mode.
      *
-     * @param  bool  $v
+     * @param  bool  $mode
      * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
      */
-    public function apiMirage($v)
+    public function apiMirage($mode)
     {
         return $this->request(array(
             'a' => 'mirage2',
-            'v' => (int)$v
+            'v' => (int)$mode
         ));
     }
 
