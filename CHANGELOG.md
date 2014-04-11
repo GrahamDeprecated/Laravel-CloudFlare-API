@@ -2,8 +2,9 @@ CHANGE LOG
 ==========
 
 
-# V0.5 Alpha (Upcoming)
+## V0.5 Alpha (Upcoming - July 2014)
 
+* Upgrade to Laravel 4.2
 * Refactoring
 * Added more unit tests
 
