@@ -86,7 +86,7 @@ You may want to check out the config for `graham-campbell/core-api` too. You can
 There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-CloudFlare-API
 ) for Laravel CloudFlare API.
 
-You may see an example of implementation in [CMS CloudFlare](https://github.com/GrahamCampbell/CMS-CloudFlare).
+You may see an example of implementation in [Laravel CloudFlare](https://github.com/GrahamCampbell/Laravel-CloudFlare).
 
 
 ## Updating Your Fork
