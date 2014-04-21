@@ -9,7 +9,7 @@ CHANGE LOG
 * Added more unit tests
 
 
-## V0.4 Alpha (Upcoming)
+## V0.4 Alpha (21/04/2014)
 
 * PHP 5.6 and partial HHVM compatibility
 * Composer tweaks

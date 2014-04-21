@@ -35,7 +35,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 Please check the system requirements before installing Laravel CloudFlare API.
 
-To get the latest version of Laravel CloudFlare API, simply require `"graham-campbell/cloudflare-api": "0.4.*@dev"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel CloudFlare API, simply require `"graham-campbell/cloudflare-api": "0.4.*@alpha"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel CloudFlare API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
