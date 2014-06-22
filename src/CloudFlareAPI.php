@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Classes;
+namespace GrahamCampbell\CloudFlareAPI;
 
 use Illuminate\Cache\CacheManager;
 use Illuminate\Config\Repository;
-use GrahamCampbell\CoreAPI\Classes\CoreAPI;
+use GrahamCampbell\CoreAPI\CoreAPI;
 use GrahamCampbell\CloudFlareAPI\Exceptions\CloudFlareAPIException;
 
 /**
@@ -198,7 +198,7 @@ class CloudFlareAPI extends CoreAPI
      * @param  array     $data
      * @param  bool      $domain
      * @param  bool|int  $cache
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function request($data, $domain = true, $cache = false)
     {
@@ -234,7 +234,7 @@ class CloudFlareAPI extends CoreAPI
      * Get the stats.
      *
      * @param  int  $interval
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiStats($interval = 20)
     {
@@ -248,7 +248,7 @@ class CloudFlareAPI extends CoreAPI
      * List the zones.
      *
      * @param  int  $offset
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiListZones($offset = null)
     {
@@ -268,7 +268,7 @@ class CloudFlareAPI extends CoreAPI
     /**
      * List the zone records.
      *
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiLoadRecords()
     {
@@ -281,7 +281,7 @@ class CloudFlareAPI extends CoreAPI
      * Checks for active zones.
      *
      * @param  array  $zones
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiZoneCheck($zones)
     {
@@ -302,7 +302,7 @@ class CloudFlareAPI extends CoreAPI
      * @param  int     $hours
      * @param  string  $class
      * @param  bool    $geo
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiZoneIps($hours = 24, $class = 'r', $geo = false)
     {
@@ -318,7 +318,7 @@ class CloudFlareAPI extends CoreAPI
      * Get information about an ip address.
      *
      * @param  string  $ip
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiIpLookup($ip)
     {
@@ -331,7 +331,7 @@ class CloudFlareAPI extends CoreAPI
     /**
      * Get zone settings.
      *
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiZoneSettings()
     {
@@ -344,7 +344,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the security level.
      *
      * @param  string  $level
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiSecurityLevel($level)
     {
@@ -358,7 +358,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the cache level.
      *
      * @param  string  $level
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiCacheLevel($level)
     {
@@ -372,7 +372,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the dev mode state.
      *
      * @param  bool  $mode
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiDevMode($mode)
     {
@@ -385,7 +385,7 @@ class CloudFlareAPI extends CoreAPI
     /**
      * Purge all files from the cache.
      *
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiFullPurge()
     {
@@ -399,7 +399,7 @@ class CloudFlareAPI extends CoreAPI
      * Purge a single file from the cache.
      *
      * @param  string  $url
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiFilePurge($url)
     {
@@ -413,7 +413,7 @@ class CloudFlareAPI extends CoreAPI
      * Update the snapshot of site.
      *
      * @param  int  $zid
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiZoneGrab($zid)
     {
@@ -427,7 +427,7 @@ class CloudFlareAPI extends CoreAPI
      * Whitelist and ip address.
      *
      * @param  string  $ip
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiWhitelist($ip)
     {
@@ -441,7 +441,7 @@ class CloudFlareAPI extends CoreAPI
      * Blacklist and ip address.
      *
      * @param  string  $ip
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiBlacklist($ip)
     {
@@ -455,7 +455,7 @@ class CloudFlareAPI extends CoreAPI
      * Null and ip address.
      *
      * @param  string  $ip
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiNull($ip)
     {
@@ -469,7 +469,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the ipv6 state.
      *
      * @param  bool  $state
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiIPv6($state)
     {
@@ -483,7 +483,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the async state.
      *
      * @param  string  $mode
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiAsync($mode)
     {
@@ -497,7 +497,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the minification mode.
      *
      * @param  int  $mode
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiMinify($mode)
     {
@@ -511,7 +511,7 @@ class CloudFlareAPI extends CoreAPI
      * Set the mirage mode.
      *
      * @param  bool  $mode
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiMirage($mode)
     {
@@ -525,7 +525,7 @@ class CloudFlareAPI extends CoreAPI
      * Add a new dns record.
      *
      * @param  array  $data
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiNewRecord(array $data)
     {
@@ -538,7 +538,7 @@ class CloudFlareAPI extends CoreAPI
      *
      * @param  int  $id
      * @param  array  $data
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiEditRecord($id, array $data)
     {
@@ -551,7 +551,7 @@ class CloudFlareAPI extends CoreAPI
      * Delete an existing dns record.
      *
      * @param  int  $id
-     * @return \GrahamCampbell\CoreAPI\Classes\APIResponse
+     * @return \GrahamCampbell\CoreAPI\APIResponse
      */
     public function apiDeleteRecord($id)
     {

@@ -59,6 +59,6 @@ class CloudFlareAPITest extends AbstractTestCase
      */
     protected function getFacadeRoot()
     {
-        return 'GrahamCampbell\CloudFlareAPI\Classes\CloudFlareAPI';
+        return 'GrahamCampbell\CloudFlareAPI\CloudFlareAPI';
     }
 }

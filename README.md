@@ -12,7 +12,7 @@ Laravel CloudFlare API
 
 ## What Is Laravel CloudFlare API?
 
-Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/client-api.html) client for [Laravel 4.1](http://laravel.com).
+Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/client-api.html) client for [Laravel 4.1+](http://laravel.com).
 
 * Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).
 * Laravel CloudFlare API relies on my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) package.
@@ -26,8 +26,8 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 ## System Requirements
 
-* PHP 5.4.7+ or HHVM 3.0+ (Guzzle 3.8 isn't completely HHVM compatible).
-* You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.
+* PHP 5.4.7+ or HHVM 3.1+ is required.
+* You will need [Laravel 4.1+](http://laravel.com) because this package is designed for it.
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel CloudFlare API.
 
 
@@ -35,7 +35,7 @@ Laravel CloudFlare API is a [CloudFlare API](https://www.cloudflare.com/docs/cli
 
 Please check the system requirements before installing Laravel CloudFlare API.
 
-To get the latest version of Laravel CloudFlare API, simply require `"graham-campbell/cloudflare-api": "0.4.*@alpha"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel CloudFlare API, simply require `"graham-campbell/cloudflare-api": "~0.5"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 You will need to register the [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) service provider before you attempt to load the Laravel CloudFlare API service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 

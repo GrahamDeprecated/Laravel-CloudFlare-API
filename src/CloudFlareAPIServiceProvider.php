@@ -67,8 +67,10 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
             $cache = $app['cache'];
             $config = $app['config'];
 
-            return new Classes\CloudFlareAPI($cache, $config);
+            return new CloudFlareAPI($cache, $config);
         });
+
+        $this->app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\CloudFlareAPI');
     }
 
     /**
