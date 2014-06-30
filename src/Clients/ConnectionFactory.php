@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\CloudFlareAPI;
-
-use GrahamCampbell\TestBench\AbstractLaravelTestCase as TestCase;
+namespace GrahamCampbell\CloudFlareAPI\Clients;
 
 /**
- * This is the abstract test case class.
+ * This is the client connection factory class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -27,25 +25,36 @@ use GrahamCampbell\TestBench\AbstractLaravelTestCase as TestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-abstract class AbstractTestCase extends TestCase
+class ConnectionFactory
 {
     /**
-     * Get the application base path.
+     * Establish a connection based on the configuration.
      *
-     * @return string
+     * @param  array  $config
+     * @return \GuzzleHttp\ClientInterface
      */
-    protected function getBasePath()
+    public function make(array $config)
     {
-        return __DIR__.'/../src';
+        return $this->createConnector($config)->connect($config);
     }
 
     /**
-     * Get the service provider class.
+     * Create a connector instance based on the configuration.
      *
-     * @return string
+     * @param  array  $config
+     * @return \GrahamCampbell\Manager\Interfaces\ConnectorInterface
      */
-    protected function getServiceProviderClass()
+    public function createConnector(array $config)
     {
-        return 'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider';
+        if (!isset($config['driver'])) {
+            throw new \InvalidArgumentException("A driver must be specified.");
+        }
+
+        switch ($config['driver']) {
+            case 'cloudflare':
+                return new CloudFlareConnector();
+        }
+
+        throw new \InvalidArgumentException("Unsupported driver [{$config['driver']}]");
     }
 }

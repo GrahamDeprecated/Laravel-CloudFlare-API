@@ -31,8 +31,8 @@ class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTestCaseTrait;
 
-    public function testCloudFlareAPIIsInjectable()
+    public function testCloudFlareAPIManagerIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\CloudFlareAPI\CloudFlareAPI');
+        $this->assertIsInjectable('GrahamCampbell\CloudFlareAPI\Managers\CloudFlareAPIManager');
     }
 }

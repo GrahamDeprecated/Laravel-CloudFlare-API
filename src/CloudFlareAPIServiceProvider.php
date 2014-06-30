@@ -53,24 +53,25 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerCloudFlareAPI();
+        $this->registerCloudFlareAPIManager();
     }
 
     /**
-     * Register the cloudflare api class.
+     * Register the cloudflare api manager class.
      *
      * @return void
      */
-    protected function registerCloudFlareAPI()
+    protected function registerCloudFlareAPIManager()
     {
         $this->app->bindShared('cloudflareapi', function ($app) {
-            $cache = $app['cache'];
             $config = $app['config'];
+            $client = new Clients\ConnectionFactory();
+            $factory = new CloudFlare\ConnectionFactory($client);
 
-            return new CloudFlareAPI($cache, $config);
+            return new Managers\CloudFlareAPIManager($config, $factory);
         });
 
-        $this->app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\CloudFlareAPI');
+        $this->app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\Managers\CloudFlareAPIManager');
     }
 
     /**
