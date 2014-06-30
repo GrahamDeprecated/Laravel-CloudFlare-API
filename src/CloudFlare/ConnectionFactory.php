@@ -45,7 +45,7 @@ class ConnectionFactory
      */
     public function __construct(ClientFactory $client)
     {
-        $this->client = $client
+        $this->client = $client;
     }
 
     /**
