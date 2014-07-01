@@ -47,7 +47,37 @@ class CloudFlareAPI
         $this->client = $client;
     }
 
-    // TODO: write code...
+    /**
+     * Get a zone object.
+     *
+     * @param  string  $domain
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
+     */
+    public function zone($domain)
+    {
+        // TODO
+    }
+
+    /**
+     * Get a collection of zone objects.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function zones()
+    {
+        // TODO
+    }
+
+    /**
+     * Get an ip object.
+     *
+     * @param  string  $domain
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
+     */
+    public function ip()
+    {
+        // TODO
+    }
 
     /**
      * Get the client instance.
