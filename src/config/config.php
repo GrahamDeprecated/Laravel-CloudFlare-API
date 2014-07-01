@@ -35,23 +35,20 @@ return array(
     |--------------------------------------------------------------------------
     |
     | Here are each of the connections setup for your application. Examples of
-    | configuring each supported driver is shown below. You can of course have
-    | multiple connections per driver. This package only ships with one driver
-    | by default, but you may write your own drivers too.
+    | configuration have been included, but you may add as many connection as
+    | you would like.
     |
     */
 
     'connections' => array(
 
         'main' => array(
-            'driver'  => 'cloudflare',
             'token'   => 'your-token',
             'email'   => 'your-email',
             // 'baseurl' => 'https://www.cloudflare.com/api_json.html'
         ),
 
         'alternative' => array(
-            'driver'  => 'cloudflare',
             'token'   => 'your-token',
             'email'   => 'your-email',
             // 'baseurl' => 'https://www.cloudflare.com/api_json.html'

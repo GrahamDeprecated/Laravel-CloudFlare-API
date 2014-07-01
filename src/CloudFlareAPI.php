@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Clients;
+namespace GrahamCampbell\CloudFlareAPI;
+
+use GuzzleHttp\Command\Guzzle\GuzzleClient
 
 /**
- * This is the client connection factory class.
+ * This is the cloudflare api class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -25,36 +27,35 @@ namespace GrahamCampbell\CloudFlareAPI\Clients;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class ConnectionFactory
+class CloudFlareAPI
 {
     /**
-     * Establish a connection based on the configuration.
+     * The guzzle client class.
      *
-     * @param  array  $config
-     * @return \GuzzleHttp\ClientInterface
+     * @var \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
-    public function make(array $config)
-    {
-        return $this->createConnector($config)->connect($config);
-    }
+    protected $client;
 
     /**
-     * Create a connector instance based on the configuration.
+     * Create a new cloudflare api instance.
      *
-     * @param  array  $config
-     * @return \GrahamCampbell\Manager\Interfaces\ConnectorInterface
+     * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
+     * @return void
      */
-    public function createConnector(array $config)
+    public function __construct(GuzzleClient $client)
     {
-        if (!isset($config['driver'])) {
-            throw new \InvalidArgumentException("A driver must be specified.");
-        }
+        $this->client = $client;
+    }
 
-        switch ($config['driver']) {
-            case 'cloudflare':
-                return new CloudFlareConnector();
-        }
+    // TODO: write code...
 
-        throw new \InvalidArgumentException("Unsupported driver [{$config['driver']}]");
+    /**
+     * Get the client instance.
+     *
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
+     */
+    public function getClient()
+    {
+        return $this->client;
     }
 }

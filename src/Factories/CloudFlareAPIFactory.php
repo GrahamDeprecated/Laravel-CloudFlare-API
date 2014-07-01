@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\CloudFlare;
+namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GuzzleHttp\ClientInterface;
-use GrahamCampbell\CloudFlareAPI\Clients\ConnectionFactory as ClientFactory;
+use GrahamCampbell\CloudFlareAPI\CloudFlareAPI;
 
 /**
- * This is the cloudflare connection factory class.
+ * This is the cloudflare api factory class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -28,19 +27,19 @@ use GrahamCampbell\CloudFlareAPI\Clients\ConnectionFactory as ClientFactory;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class ConnectionFactory
+class CloudFlareAPIFactory
 {
     /**
      * The client factory instance.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Clients\ConnectionFactory
+     * @var \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory
      */
     protected $client;
 
     /**
-     * Create a new cloudflare connection factory instance.
+     * Create a new cloudflare api factory instance.
      *
-     * @param  \GrahamCampbell\Flysystem\Adapters\ConnectionFactory  $client
+     * @param  \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory  $client
      * @return void
      */
     public function __construct(ClientFactory $client)
@@ -49,23 +48,23 @@ class ConnectionFactory
     }
 
     /**
-     * Establish a connection based on the configuration.
+     * Make a new cloudflare api instance.
      *
      * @param  array  $config
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClientInterface
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
     public function make(array $config)
     {
         $client = $this->createClient($config);
 
-        return $this->createConnector($config, $client)->connect($config);
+        return new CloudFlareAPI($client);
     }
 
     /**
-     * Establish a client connection.
+     * Get a new guzzle client.
      *
      * @param  array  $config
-     * @return \GuzzleHttp\ClientInterface
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
     public function createClient(array $config)
     {
@@ -73,30 +72,9 @@ class ConnectionFactory
     }
 
     /**
-     * Create a connector instance based on the configuration.
-     *
-     * @param  array  $config
-     * @param  \GuzzleHttp\ClientInterface  $client
-     * @return \GrahamCampbell\Manager\Interfaces\ConnectorInterface
-     */
-    public function createConnector(array $config, ClientInterface $client)
-    {
-        if (!isset($config['driver'])) {
-            throw new \InvalidArgumentException("A driver must be specified.");
-        }
-
-        switch ($config['driver']) {
-            case 'cloudflare':
-                return new CloudFlareConnector($client);
-        }
-
-        throw new \InvalidArgumentException("Unsupported driver [{$config['driver']}]");
-    }
-
-    /**
      * Get the client factory instance.
      *
-     * @return \GrahamCampbell\CloudFlareAPI\Clients\ConnectionFactory
+     * @return \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory
      */
     public function getClient()
     {

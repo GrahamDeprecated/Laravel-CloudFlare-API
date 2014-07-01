@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\CloudFlare;
+namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Command\Guzzle\Description;
-use GuzzleHttp\Command\Guzzle\GuzzleClient;
-use GrahamCampbell\Manager\Interfaces\ConnectorInterface;
+use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
 
 /**
- * This is the cloudflare connector class.
+ * This is the client factory class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -30,37 +27,39 @@ use GrahamCampbell\Manager\Interfaces\ConnectorInterface;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareConnector implements ConnectorInterface
+class ClientFactory extends AbstractClientFactory
 {
     /**
-     * The guzzle client instance.
+     * Get the client constructor parameters.
      *
-     * @var \GuzzleHttp\ClientInterface
+     * @param  array  $config
+     * @return array
      */
-    protected $client;
-
-    /**
-     * Create a new cloudflare connector instance.
-     *
-     * @param  \GuzzleHttp\ClientInterface   $client
-     * @return void
-     */
-    public function __construct(ClientInterface $client)
+    protected function getParameters(array $config)
     {
-        $this->client = $client;
+        $config = $this->getConfig($config);
+
+        return array(
+            'base_url' => array_get($config, 'baseurl', 'https://www.cloudflare.com/api_json.html'),
+            'query' => array(
+                'tkn' => $config['token'],
+                'email' => $config['email']
+        ));
     }
 
     /**
-     * Establish an adapter connection.
+     * Get the configuration.
      *
      * @param  array  $config
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
-     */
-    public function connect(array $config)
+     * @return array
+    */
+    protected function getConfig(array $config)
     {
-        $parameters = $this->getParameters();
+        if (!array_key_exists('token', $config) || !array_key_exists('email', $config)) {
+            throw new \InvalidArgumentException('The cloudflare client requires configuration.');
+        }
 
-        return $this->getGuzzleClient($config);
+        return array_only($config, array('token', 'email'));
     }
 
     /**
@@ -68,7 +67,7 @@ class CloudFlareConnector implements ConnectorInterface
      *
      * @return array
      */
-    protected function getParameters()
+    protected function getDescription()
     {
         return array(
             'operations' => array(
@@ -83,28 +82,5 @@ class CloudFlareConnector implements ConnectorInterface
                 )
             )
         );
-    }
-
-    /**
-     * Get the guzzle client.
-     *
-     * @param  array  $parameters
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
-     */
-    protected function getGuzzleClient($parameters)
-    {
-        $description = new Description($parameters);
-
-        return new GuzzleClient($this->client, $description);
-    }
-
-    /**
-     * Get the guzzle client instance.
-     *
-     * @return \GuzzleHttp\ClientInterface
-     */
-    public function getClient()
-    {
-        return $this->client;
     }
 }

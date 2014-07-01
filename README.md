@@ -41,11 +41,11 @@ There are two config options:
 
 **Default Connection Name**
 
-This option (`'main'`) is where you may specify which of the connections below you wish to use as your default connection for all work. Of course, you may use many connections at once using the manager class. The default value for this setting is `'local'`.
+This option (`'default'`) is where you may specify which of the connections below you wish to use as your default connection for all work. Of course, you may use many connections at once using the manager class. The default value for this setting is `'main'`.
 
 **CloudFlare Connections**
 
-This option (`'connections'`) is where each of the connections are setup for your application. Examples of configuring each supported driver are included in the config file. You can of course have multiple connections per driver. This package only ships with one driver by default, but you may write your own drivers too.
+This option (`'connections'`) is where each of the connections are setup for your application. Examples of configuration have been included, but you may add as many connection as you would like.
 
 
 ## License

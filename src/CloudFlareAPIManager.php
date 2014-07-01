@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Managers;
+namespace GrahamCampbell\CloudFlareAPI;
 
 use Illuminate\Config\Repository;
-use GrahamCampbell\Manager\Managers\AbstractManager;
-use GrahamCampbell\CloudFlareAPI\CloudFlare\ConnectionFactory;
+use GrahamCampbell\Manager\AbstractManager;
+use GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory;
 
 /**
  * This is the cloudflare api manager class.
@@ -32,9 +32,9 @@ use GrahamCampbell\CloudFlareAPI\CloudFlare\ConnectionFactory;
 class CloudFlareAPIManager extends AbstractManager
 {
     /**
-     * The connection factory instance.
+     * The factory instance.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\CloudFlare\ConnectionFactory
+     * @var \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory
      */
     protected $factory;
 
@@ -42,10 +42,10 @@ class CloudFlareAPIManager extends AbstractManager
      * Create a new cloudflare api manager instance.
      *
      * @param  \Illuminate\Config\Repository   $config
-     * @param  \GrahamCampbell\CloudFlareAPI\CloudFlare\ConnectionFactory  $factory
+     * @param  \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory  $factory
      * @return void
      */
-    public function __construct(Repository $config, ConnectionFactory $factory)
+    public function __construct(Repository $config, CloudFlareAPIFactory $factory)
     {
         parent::__construct($config);
         $this->factory = $factory;
@@ -55,7 +55,7 @@ class CloudFlareAPIManager extends AbstractManager
      * Create the connection instance.
      *
      * @param  array  $config
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClientInterface
+     * @return \GrahamCampbell\CloudFlareAPI\CloudFlareAPI
      */
     protected function createConnection(array $config)
     {
@@ -75,7 +75,7 @@ class CloudFlareAPIManager extends AbstractManager
     /**
      * Get the factory instance.
      *
-     * @return \GrahamCampbell\CloudFlareAPI\CloudFlare\ConnectionFactory
+     * @return \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory
      */
     public function getFactory()
     {

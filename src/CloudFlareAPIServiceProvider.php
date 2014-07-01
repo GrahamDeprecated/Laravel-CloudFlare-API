@@ -65,13 +65,13 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('cloudflareapi', function ($app) {
             $config = $app['config'];
-            $client = new Clients\ConnectionFactory();
-            $factory = new CloudFlare\ConnectionFactory($client);
+            $client = new Factories\ClientFactory();
+            $factory = new Factories\CloudFlareAPIFactory($client);
 
-            return new Managers\CloudFlareAPIManager($config, $factory);
+            return new CloudFlareAPIManager($config, $factory);
         });
 
-        $this->app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\Managers\CloudFlareAPIManager');
+        $this->app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\CloudFlareAPIManager');
     }
 
     /**
