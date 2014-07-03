@@ -41,10 +41,8 @@ class ClientFactory extends AbstractClientFactory
 
         return array(
             'base_url' => array_get($config, 'baseurl', 'https://www.cloudflare.com/api_json.html'),
-            'query' => array(
-                'tkn' => $config['token'],
-                'email' => $config['email']
-        ));
+            'defaults' => array('query' => array('tkn' => $config['token'], 'email' => $config['email']))
+        );
     }
 
     /**
