@@ -16,6 +16,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Providers;
 
+use Illuminate\Support\Collection;
+use GrahamCampbell\CloudFlareAPI\Models\Zone;
 use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 
 /**
@@ -29,5 +31,35 @@ use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
  */
 class ZoneProvider extends AbstractProvider
 {
-    // TODO
+    /**
+     * Get a single zone object.
+     *
+     * @param  string  $zone
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
+     */
+    public function get($zone)
+    {
+        return new Zone($this->client, $zone);
+    }
+
+    /**
+     * Get a collection of all the zones.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function all()
+    {
+        $multi = $this->client->zoneLoadMulti();
+
+        $zones = array_get($multi->toArray(), 'response.zones.objs');
+
+        $all = new Collection();
+
+        foreach($zones as $zone) {
+            $name = $zone['zone_name'];
+            $all->put($name, $this->get($name));
+        }
+
+        return $all;
+    }
 }

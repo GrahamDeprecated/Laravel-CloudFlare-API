@@ -79,7 +79,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'interval' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -102,7 +102,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'o' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -128,7 +128,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'hours' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'class' => array(
@@ -136,7 +136,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'geo' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -203,7 +203,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'v' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -240,7 +240,7 @@ class ClientFactory extends AbstractClientFactory
                     'responseModel' => 'jsonResponse',
                     'parameters' => array(
                         'zid' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -288,7 +288,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'v' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -318,7 +318,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'v' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -333,7 +333,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'v' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
@@ -360,11 +360,11 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'ttl' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'prio' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'service' => array(
@@ -380,11 +380,11 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'weight' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'port' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'target' => array(
@@ -407,7 +407,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'id' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'name' => array(
@@ -419,11 +419,11 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'ttl' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'prio' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'service' => array(
@@ -439,11 +439,11 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'weight' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'port' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         ),
                         'target' => array(
@@ -462,7 +462,7 @@ class ClientFactory extends AbstractClientFactory
                             'location' => 'query'
                         ),
                         'id' => array(
-                            'type' => 'int',
+                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
