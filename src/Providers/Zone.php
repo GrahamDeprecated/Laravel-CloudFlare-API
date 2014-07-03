@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI;
+namespace GrahamCampbell\CloudFlareAPI\Providers;
 
-use GrahamCampbell\CoreAPI\AbstractAPI;
+use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 
 /**
- * This is the cloudflare api class.
+ * This is the zone provider class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -27,15 +27,7 @@ use GrahamCampbell\CoreAPI\AbstractAPI;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareAPI extends AbstractAPI
+class ZoneProvider extends AbstractProvider
 {
-    /**
-     * Get the provider namespace.
-     *
-     * @return string
-     */
-    protected function getProviderNamespace()
-    {
-        return '\GrahamCampbell\CloudFlareAPI\Providers';
-    }
+    // TODO
 }
