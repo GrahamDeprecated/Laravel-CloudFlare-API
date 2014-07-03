@@ -69,7 +69,21 @@ class ClientFactory extends AbstractClientFactory
     {
         return array(
             'operations' => array(
-                // TODO
+                'stats' => array(
+                    'httpMethod' => 'GET',
+                    'uri' => '?a=stats',
+                    'responseModel' => 'jsonResponse',
+                    'parameters' => array(
+                        'z' => array(
+                            'type' => 'string',
+                            'location' => 'query'
+                        ),
+                        'interval' => array(
+                            'type' => 'int',
+                            'location' => 'query'
+                        )
+                    )
+                ),
             ),
             'models' => array(
                 'jsonResponse' => array(
