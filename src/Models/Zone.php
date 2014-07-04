@@ -16,6 +16,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Models;
 
+use Illuminate\Support\Collection;
 use GrahamCampbell\CoreAPI\Models\AbstractModel;
 
 /**
@@ -40,14 +41,16 @@ class Zone extends AbstractModel
      * Create a new model instance.
      *
      * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  string  $name
+     * @param  string  $zone
+     * @param  array   $cache
      * @return void
      */
-    public function __construct(GuzzleClient $client, $zone)
+    public function __construct(GuzzleClient $client, $zone, array $cache = array())
     {
         parent::__construct($client);
 
         $this->zone = $zone;
+        $this->cache = $cache;
     }
 
     /**
@@ -89,37 +92,65 @@ class Zone extends AbstractModel
         return array_get($stats, 'response.result.objs.0.requestsServed');
     }
 
-    /**
-     * Make a get request.
-     *
-     * @param  string  $method
-     * @param  array   $data
-     * @return array
-     */
-    protected function get($method, array $data = array())
+    public function security()
     {
-        $data = array_merge(array('z' => $this->zone), $data);
+        $zoneSettings = $this->get('zoneSettings');
 
-        if (!$this->cache[$method]) {
-            $this->cache[$method] = $this->client->$method($data)->toArray();
-        }
+        return array_get($zoneSettings, 'response.result.objs.0.userSecuritySetting');
+    }
 
-        return $this->cache[$method];
+    public function devMode()
+    {
+        $zoneSettings = $this->get('zoneSettings');
+
+        return array_get($zoneSettings, 'response.result.objs.0.dev_mode');
+    }
+
+    public function ipVersion()
+    {
+        $zoneSettings = $this->get('zoneSettings');
+
+        return array_get($zoneSettings, 'response.result.objs.0.ipv46');
+    }
+
+    public function alwaysOnline()
+    {
+        $zoneSettings = $this->get('zoneSettings');
+
+        return array_get($zoneSettings, 'response.result.objs.0.ob');
     }
 
     /**
-     * Make a post request.
+     * Get the ips information.
      *
-     * @param  string  $method
-     * @param  array   $data
+     * @param  int  $time
      * @return array
      */
-    protected function post($method, array $data = array(), $flush = null)
+    public function ips($hours = 24, $class = null)
     {
-        $data = array_merge(array('z' => $this->zone), $data);
+        $zoneIps = $this->get('zoneIps', $this->data(compact('hours', 'class')));
 
-        $this->clearCache($flush);
+        $ips = array_get($zoneIps, 'response.ips');
 
-        return $this->client->$method($data)->toArray();
+        $all = new Collection();
+
+        foreach($ips as $ip) {
+            $name = $ip['ip'];
+            $zoneIp = new ZoneIP($this->client, $name, $this, array('zoneIp' => $ip));
+            $all->put($name, $zoneIp);
+        }
+
+        return $all;
+    }
+
+    /**
+     * Get the data to make a request.
+     *
+     * @param  array  $data
+     * @return array
+     */
+    protected function data(array $data = array())
+    {
+        return array_merge(array('z' => $this->zone), $data);
     }
 }

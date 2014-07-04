@@ -16,6 +16,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Providers;
 
+use GrahamCampbell\CloudFlareAPI\Models\Ip;
 use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 
 /**
@@ -29,5 +30,24 @@ use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
  */
 class IpProvider extends AbstractProvider
 {
-    // TODO
+    /**
+     * Get a single ip object.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
+     */
+    public function get($ip)
+    {
+        return new Ip($this->client, $ip);
+    }
+
+    /**
+     * Get a collection of all the ips.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function all()
+    {
+        throw new \Exception('It\'s not possible to list every ip in existence!');
+    }
 }

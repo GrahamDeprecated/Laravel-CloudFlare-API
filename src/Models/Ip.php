@@ -29,5 +29,58 @@ use GrahamCampbell\CoreAPI\Models\AbstractModel;
  */
 class Ip extends AbstractModel
 {
-    // TODO
+    /**
+     * The ip address.
+     *
+     * @var string
+     */
+    protected $ip;
+
+    /**
+     * Create a new model instance.
+     *
+     * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
+     * @param  string  $ip
+     * @param  array   $cache
+     * @return void
+     */
+    public function __construct(GuzzleClient $client, $ip, array $cache = array())
+    {
+        parent::__construct($client, $cache);
+
+        $this->ip = $ip;
+    }
+
+    public function ip()
+    {
+        return $this->ip;
+    }
+
+    public function score()
+    {
+        $ipLkup = $this->get('ipLkup', array('ip' => $this->ip));
+
+        return $ipLkup['response'][$this->ip];
+    }
+
+    public function whitelist()
+    {
+        $this->post('wl', array('key' => $this->ip), false);
+
+        return $this;
+    }
+
+    public function ban()
+    {
+        $this->post('ban', array('key' => $this->ip), false);
+
+        return $this;
+    }
+
+    public function unlist()
+    {
+        $this->post('nul', array('key' => $this->ip), false);
+
+        return $this;
+    }
 }

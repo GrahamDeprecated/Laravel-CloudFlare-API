@@ -120,7 +120,7 @@ class ClientFactory extends AbstractClientFactory
                 ),
                 'zoneIps' => array(
                     'httpMethod' => 'GET',
-                    'uri' => '?a=zone_ips',
+                    'uri' => '?a=zone_ips&geo=1',
                     'responseModel' => 'jsonResponse',
                     'parameters' => array(
                         'z' => array(
@@ -133,10 +133,6 @@ class ClientFactory extends AbstractClientFactory
                         ),
                         'class' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        ),
-                        'geo' => array(
-                            'type' => 'integer',
                             'location' => 'query'
                         )
                     )
