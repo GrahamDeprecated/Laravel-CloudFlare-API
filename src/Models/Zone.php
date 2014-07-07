@@ -92,32 +92,109 @@ class Zone extends AbstractModel
         return array_get($stats, 'response.result.objs.0.requestsServed');
     }
 
-    public function security()
+    public function userSecurity()
     {
-        $zoneSettings = $this->get('zoneSettings');
-
-        return array_get($zoneSettings, 'response.result.objs.0.userSecuritySetting');
+        return $this->setting('userSecuritySetting');
     }
 
     public function devMode()
     {
-        $zoneSettings = $this->get('zoneSettings');
-
-        return array_get($zoneSettings, 'response.result.objs.0.dev_mode');
+        return $this->setting('dev_mode');
     }
 
     public function ipVersion()
     {
-        $zoneSettings = $this->get('zoneSettings');
-
-        return array_get($zoneSettings, 'response.result.objs.0.ipv46');
+        return $this->setting('ipv46');
     }
 
     public function alwaysOnline()
     {
-        $zoneSettings = $this->get('zoneSettings');
+        return $this->setting('ob');
+    }
 
-        return array_get($zoneSettings, 'response.result.objs.0.ob');
+    public function cacheLevel()
+    {
+        return $this->setting('cache_lvl');
+    }
+
+    public function outboundLinks()
+    {
+        return $this->setting('outboundLinks');
+    }
+
+    public function async()
+    {
+        return $this->setting('async');
+    }
+
+    public function browserChecking()
+    {
+        return $this->setting('bic');
+    }
+
+    public function challengeTtl()
+    {
+        return $this->setting('chl_ttl');
+    }
+
+    public function expireTtl()
+    {
+        return $this->setting('exp_ttl');
+    }
+
+    public function hotlinking()
+    {
+        return $this->setting('hotlink');
+    }
+
+    public function autoResizing()
+    {
+        return $this->setting('img');
+    }
+
+    public function lazyLoading()
+    {
+        return $this->setting('lazy');
+    }
+
+    public function minification()
+    {
+        return $this->setting('minify');
+    }
+
+    public function outlinking()
+    {
+        return $this->setting('outlink');
+    }
+
+    public function preloading()
+    {
+        return $this->setting('preload');
+    }
+
+    public function smartErrors()
+    {
+        return $this->setting('s404');
+    }
+
+    public function securityLevel()
+    {
+        return $this->setting('sec_lvl');
+    }
+
+    public function spdy()
+    {
+        return $this->setting('spdy');
+    }
+
+    public function ssl()
+    {
+        return $this->setting('ssl');
+    }
+
+    public function wafProfile()
+    {
+        return $this->setting('waf_profile');
     }
 
     /**
@@ -152,5 +229,12 @@ class Zone extends AbstractModel
     protected function data(array $data = array())
     {
         return array_merge(array('z' => $this->zone), $data);
+    }
+
+    protected function setting($name)
+    {
+        $zoneSettings = $this->get('zoneSettings');
+
+        return array_get($zoneSettings, 'response.result.objs.0.'.$name);
     }
 }
