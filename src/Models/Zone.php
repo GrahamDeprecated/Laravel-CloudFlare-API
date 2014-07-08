@@ -524,9 +524,9 @@ class Zone extends AbstractModel
         $all = new Collection();
 
         foreach($records as $record) {
-            $name = $record['name'];
-            $model = new Record($this->client, $name, $this, array('recLoad' => $record));
-            $all->put($name, $model);
+            $id = (int) $record['rec_id'];
+            $model = new Record($this->client, $id, $this, array('recLoad' => $record));
+            $all->put($id, $model);
         }
 
         return $all;
@@ -535,18 +535,18 @@ class Zone extends AbstractModel
     /**
      * Get a dns record as a model.
      *
-     * @param  string  $name
+     * @param  int  $id
      * @return \GrahamCampbell\CloudFlareAPI\Models\Record
      */
-    public function record($name)
+    public function record($id)
     {
         $recs = $this->get('recLoadAll');
 
         $records = array_get($recs, 'response.recs.objs');
 
         foreach($records as $record) {
-            if ($record['name'] == $name) {
-                return new Record($this->client, $name, $this, array('recLoad' => $record));
+            if ((int) $record['rec_id'] === (int) $id) {
+                return new Record($this->client, $id, $this, array('recLoad' => $record));
             }
         }
     }

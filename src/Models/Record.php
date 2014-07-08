@@ -30,11 +30,11 @@ use GrahamCampbell\CoreAPI\Models\AbstractModel;
 class Record extends AbstractModel
 {
     /**
-     * The name.
+     * The id.
      *
-     * @var string
+     * @var int
      */
-    protected $name;
+    protected $id;
 
     /**
      * The zone object.
@@ -47,37 +47,164 @@ class Record extends AbstractModel
      * Create a new model instance.
      *
      * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  string  $name
+     * @param  int  $id
      * @param  \GrahamCampbell\CloudFlareAPI\Models\Zone  $zone
      * @param  array  $cache
      * @return void
      */
-    public function __construct(GuzzleClient $client, $name, Zone $zone, array $cache = array())
+    public function __construct(GuzzleClient $client, $id, Zone $zone, array $cache = array())
     {
         parent::__construct($client, $cache);
 
-        $this->name = $name;
+        $this->id = $id;
         $this->zone = $zone;
     }
 
     /**
-     * Get the name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return (string) $this->name;
-    }
-
-    /**
-     * Get the id.
+     * Get the id
      *
      * @return int
      */
     public function getId()
     {
-        return (int) $this->lookup('rec_id');
+        return (int) $this->id;
+    }
+
+    /**
+     * Get the name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return (string) $this->lookup('name');
+    }
+
+    /**
+     * Get the type.
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return (string) $this->lookup('type');
+    }
+
+    /**
+     * Get the priority.
+     *
+     * @return int
+     */
+    public function getPriority()
+    {
+        return (int) $this->lookup('prio');
+    }
+
+    /**
+     * Get the content.
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return (string) $this->lookup('content');
+    }
+
+    /**
+     * Get the time to live.
+     *
+     * @return int
+     */
+    public function getTtl()
+    {
+        return (int) $this->lookup('ttl_ceil');
+    }
+
+    /**
+     * Is the time to live automatic?
+     *
+     * @return bool
+     */
+    public function isTtlAutomatic()
+    {
+        return (bool) $this->lookup('auto_ttl');
+    }
+
+    /**
+     * Get the ssl id.
+     *
+     * @return int
+     */
+    public function getSslId()
+    {
+        return (int) $this->lookup('ssl_id');
+    }
+
+    // TODO: ssl methods are incomplete
+
+    /**
+     * Are we in service?
+     *
+     * @return bool
+     */
+    public function isInService()
+    {
+        return (bool) $this->lookup('service_mode');
+    }
+
+    /**
+     * Are we proxiable?
+     *
+     * @return bool
+     */
+    public function isProxiable()
+    {
+        return (bool) $this->lookup('props')['proxiable'];
+    }
+
+    /**
+     * Is the cloud on?
+     *
+     * @return bool
+     */
+    public function isTheCloudOn()
+    {
+        return (bool) $this->lookup('props')['cloud_on'];
+    }
+
+    /**
+     * Are we open?
+     *
+     * @return bool
+     */
+    public function isOpen()
+    {
+        return (bool) $this->lookup('props')['cf_open'];
+    }
+
+    /**
+     * Are we vanity locked?
+     *
+     * @return bool
+     */
+    public function isVanityLocked()
+    {
+        return (bool) $this->lookup('props')['vanity_lock'];
+    }
+
+    /**
+     * Dump all data.
+     *
+     * @param  array  $data
+     * @return self
+     */
+    public function modify(array $data)
+    {
+        $data['id'] = $this->getId();
+
+        $this->post('recEdit', $data, 'recLoad');
+
+        return $this;
     }
 
     /**
@@ -94,7 +221,7 @@ class Record extends AbstractModel
         if (!$this->cache['recLoad']) {
             $records = $this->client->recLoadAll($data)->toArray()['response']['recs']['objs'];
             foreach($records as $record) {
-                if ($record['name'] == $this->name) {
+                if ((int) $record['rec_id'] === $this->id) {
                     $this->cache['recLoad'] = $record;
                     break;
                 }
@@ -121,7 +248,7 @@ class Record extends AbstractModel
                 $this->cache[$method] = array();
                 // we may need to clear out the record cache in the zone model
                 // to avoid unintuitive behaviour
-                if ($method == 'recLoad') {
+                if (($method == 'recLoad' || !$method) && $method !== false) {
                     $this->zone->clearRecordCache();
                 }
             }
