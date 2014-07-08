@@ -48,7 +48,7 @@ class Ip extends AbstractModel
     {
         parent::__construct($client, $cache);
 
-        $this->ip = $ip;
+        $this->ip = (string) $ip;
     }
 
     /**

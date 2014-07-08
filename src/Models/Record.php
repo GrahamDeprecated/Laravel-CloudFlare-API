@@ -56,7 +56,7 @@ class Record extends AbstractModel
     {
         parent::__construct($client, $cache);
 
-        $this->id = $id;
+        $this->id = (int) $id;
         $this->zone = $zone;
     }
 

@@ -47,10 +47,9 @@ class Zone extends AbstractModel
      */
     public function __construct(GuzzleClient $client, $zone, array $cache = array())
     {
-        parent::__construct($client);
+        parent::__construct($client, $cache);
 
-        $this->zone = $zone;
-        $this->cache = $cache;
+        $this->zone = (string) $zone;
     }
 
     /**
@@ -546,7 +545,7 @@ class Zone extends AbstractModel
 
         foreach($records as $record) {
             if ((int) $record['rec_id'] === (int) $id) {
-                return new Record($this->client, $id, $this, array('recLoad' => $record));
+                return new Record($this->client, (int) $id, $this, array('recLoad' => $record));
             }
         }
     }
