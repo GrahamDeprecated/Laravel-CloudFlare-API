@@ -215,7 +215,6 @@ class Record extends AbstractModel
      */
     protected function lookup($key)
     {
-        $data = array('z' => $this->zone->getZone());
         $data = $this->data($data);
 
         if (!$this->cache['recLoad']) {
@@ -229,6 +228,17 @@ class Record extends AbstractModel
         }
 
         return $this->cache['recLoad'][$key];
+    }
+
+    /**
+     * Get the data to make a request.
+     *
+     * @param  array  $data
+     * @return array
+     */
+    protected function data(array $data = array())
+    {
+        return array_merge(array('z' => $this->zone->getZone()), $data);
     }
 
     /**
