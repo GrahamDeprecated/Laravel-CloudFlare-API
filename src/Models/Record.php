@@ -16,8 +16,10 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Models;
 
+use GrahamCampbell\CoreAPI\Models\AbstractModel;
+
 /**
- * This is the zone ip model class.
+ * This is the zone model class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -25,8 +27,15 @@ namespace GrahamCampbell\CloudFlareAPI\Models;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class ZoneIp extends Ip
+class Record extends AbstractModel
 {
+    /**
+     * The name.
+     *
+     * @var string
+     */
+    protected $name;
+
     /**
      * The zone object.
      *
@@ -38,56 +47,37 @@ class ZoneIp extends Ip
      * Create a new model instance.
      *
      * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  string  $ip
+     * @param  string  $name
      * @param  \GrahamCampbell\CloudFlareAPI\Models\Zone  $zone
      * @param  array  $cache
      * @return void
      */
-    public function __construct(GuzzleClient $client, $ip, Zone $zone, array $cache = array())
+    public function __construct(GuzzleClient $client, $name, Zone $zone, array $cache = array())
     {
-        parent::__construct($client, $ip, $cache);
+        parent::__construct($client, $cache);
 
+        $this->name = $name;
         $this->zone = $zone;
     }
 
     /**
-     * Get the threat classification.
+     * Get the name.
      *
      * @return string
      */
-    public function getClassification()
+    public function getName()
     {
-        return (string) $this->lookup('classification');
+        return (string) $this->name;
     }
 
     /**
-     * Get the number of hits.
+     * Get the id.
      *
      * @return int
      */
-    public function getHits()
+    public function getId()
     {
-        return (int) $this->lookup('hits');
-    }
-
-    /**
-     * Get the latitude.
-     *
-     * @return int
-     */
-    public function getLatitude()
-    {
-        return (int) $this->lookup('latitude');
-    }
-
-    /**
-     * Get the longitude.
-     *
-     * @return int
-     */
-    public function getLongitude()
-    {
-        return (int) $this->lookup('longitude');
+        return (int) $this->lookup('rec_id');
     }
 
     /**
@@ -101,17 +91,43 @@ class ZoneIp extends Ip
         $data = array('z' => $this->zone->getZone());
         $data = $this->data($data);
 
-        if (!$this->cache['zoneIp']) {
-            $ips = $this->client->zoneIps($data)->toArray()['response']['ips'];
-            foreach($ips as $ip) {
-                if ($ip['name'] == $this->name) {
-                    $this->cache['zoneIp'] = $ip;
+        if (!$this->cache['recLoad']) {
+            $records = $this->client->recLoadAll($data)->toArray()['response']['recs']['objs'];
+            foreach($records as $record) {
+                if ($record['name'] == $this->name) {
+                    $this->cache['recLoad'] = $record;
                     break;
                 }
             }
         }
 
-        return $this->cache['zoneIp'][$key];
+        return $this->cache['recLoad'][$key];
+    }
+
+    /**
+     * Clear the request cache.
+     *
+     * This method overrides the method in the parent class.
+     *
+     * @param  array|string  $methods
+     * @return self
+     */
+    public function clearCache($methods = null)
+    {
+        if ($methods === null || $methods === 'all') {
+            $this->cache = array();
+        } else {
+            foreach ((array) $methods as $method) {
+                $this->cache[$method] = array();
+                // we may need to clear out the record cache in the zone model
+                // to avoid unintuitive behaviour
+                if ($method == 'recLoad') {
+                    $this->zone->clearRecordCache();
+                }
+            }
+        }
+
+        return $this;
     }
 
     /**

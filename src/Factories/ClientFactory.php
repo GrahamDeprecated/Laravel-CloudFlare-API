@@ -189,7 +189,7 @@ class ClientFactory extends AbstractClientFactory
                         )
                     )
                 ),
-                'devmode' => array(
+                'devMode' => array(
                     'httpMethod' => 'POST',
                     'uri' => '?a=devmode',
                     'responseModel' => 'jsonResponse',
@@ -319,7 +319,7 @@ class ClientFactory extends AbstractClientFactory
                         )
                     )
                 ),
-                'mirage2' => array(
+                'mirage' => array(
                     'httpMethod' => 'POST',
                     'uri' => '?a=mirage2',
                     'responseModel' => 'jsonResponse',

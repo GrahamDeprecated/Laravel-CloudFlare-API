@@ -40,14 +40,4 @@ class IpProvider extends AbstractProvider
     {
         return new Ip($this->client, $ip);
     }
-
-    /**
-     * Get a collection of all the ips.
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    public function all()
-    {
-        throw new \Exception('It\'s not possible to list every ip in existence!');
-    }
 }

@@ -51,18 +51,39 @@ class Ip extends AbstractModel
         $this->ip = $ip;
     }
 
-    public function ip()
+    /**
+     * Get the ip address.
+     *
+     * @return string
+     */
+    public function getIp()
     {
-        return $this->ip;
+        return (string) $this->ip;
     }
 
-    public function score()
+    /**
+     * Get the threat score.
+     *
+     * @return string
+     */
+    public function getScore()
     {
         $ipLkup = $this->get('ipLkup', array('ip' => $this->ip));
 
-        return $ipLkup['response'][$this->ip];
+        $score = $ipLkup['response'][$this->ip];
+
+        if ($score) {
+            return (string) $score;
+        } else {
+            return 'unknown';
+        }
     }
 
+    /**
+     * Whitelist this ip.
+     *
+     * @return self
+     */
     public function whitelist()
     {
         $this->post('wl', array('key' => $this->ip), false);
@@ -70,6 +91,11 @@ class Ip extends AbstractModel
         return $this;
     }
 
+    /**
+     * Ban this ip.
+     *
+     * @return self
+     */
     public function ban()
     {
         $this->post('ban', array('key' => $this->ip), false);
@@ -77,6 +103,11 @@ class Ip extends AbstractModel
         return $this;
     }
 
+    /**
+     * Unlist this ip.
+     *
+     * @return self
+     */
     public function unlist()
     {
         $this->post('nul', array('key' => $this->ip), false);
