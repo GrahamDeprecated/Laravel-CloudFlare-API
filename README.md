@@ -48,6 +48,12 @@ This option (`'default'`) is where you may specify which of the connections belo
 This option (`'connections'`) is where each of the connections are setup for your application. Examples of configuration have been included, but you may add as many connection as you would like.
 
 
+## Usage
+
+There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-CloudFlare-API
+) for Laravel CloudFlare API.
+
+
 ## License
 
 Apache License
