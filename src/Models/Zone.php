@@ -473,7 +473,7 @@ class Zone extends AbstractModel
      */
     public function ips($hours = 24, $class = null)
     {
-        $zoneIps = $this->get('zoneIps', $this->data(compact('hours', 'class')));
+        $zoneIps = $this->get('zoneIps', $this->data(compact('hours', 'class')), (string) $hours . (string) $class);
 
         $ips = array_get($zoneIps, 'response.ips');
 
@@ -498,7 +498,7 @@ class Zone extends AbstractModel
      */
     public function ip($address, $hours = 24, $class = null)
     {
-        $zoneIps = $this->get('zoneIps', $this->data(compact('hours', 'class')));
+        $zoneIps = $this->get('zoneIps', $this->data(compact('hours', 'class')), (string) $hours . (string) $class);
 
         $ips = array_get($zoneIps, 'response.ips');
 
@@ -586,7 +586,7 @@ class Zone extends AbstractModel
      */
     protected function stat($time, $name)
     {
-        $stats = $this->get('stats', array('interval' => $time));
+        $stats = $this->get('stats', array('interval' => $time), (string) $time);
 
         return array_get($stats, 'response.result.objs.0.'.$name);
     }
