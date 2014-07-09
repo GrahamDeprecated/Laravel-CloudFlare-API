@@ -16,9 +16,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use Illuminate\Config\Repository;
-use GrahamCampbell\Manager\AbstractManager;
-use GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory;
+use GrahamCampbell\CoreAPI\AbstractAPIManager;
 
 /**
  * This is the cloudflare api manager class.
@@ -29,39 +27,8 @@ use GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareAPIManager extends AbstractManager
+class CloudFlareAPIManager extends AbstractAPIManager
 {
-    /**
-     * The factory instance.
-     *
-     * @var \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory
-     */
-    protected $factory;
-
-    /**
-     * Create a new cloudflare api manager instance.
-     *
-     * @param  \Illuminate\Config\Repository   $config
-     * @param  \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory  $factory
-     * @return void
-     */
-    public function __construct(Repository $config, CloudFlareAPIFactory $factory)
-    {
-        parent::__construct($config);
-        $this->factory = $factory;
-    }
-
-    /**
-     * Create the connection instance.
-     *
-     * @param  array  $config
-     * @return \GrahamCampbell\CloudFlareAPI\CloudFlareAPI
-     */
-    protected function createConnection(array $config)
-    {
-        return $this->factory->make($config);
-    }
-
     /**
      * Get the configuration name.
      *
@@ -70,15 +37,5 @@ class CloudFlareAPIManager extends AbstractManager
     protected function getConfigName()
     {
         return 'graham-campbell/cloudflare-api';
-    }
-
-    /**
-     * Get the factory instance.
-     *
-     * @return \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory
-     */
-    public function getFactory()
-    {
-        return $this->factory;
     }
 }

@@ -12,9 +12,7 @@
     "require": {
         "php": ">=5.4.7",
         "illuminate/support": "~4.1",
-        "graham-campbell/manager": "~1.0",
-        "graham-campbell/core-api": "0.6.*",
-        "guzzlehttp/guzzle-services": "0.3.*"
+        "graham-campbell/core-api": "0.6.*"
     },
     "require-dev": {
         "graham-campbell/testbench": "~1.0"

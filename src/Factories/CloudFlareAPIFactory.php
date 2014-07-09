@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GrahamCampbell\CloudFlareAPI\CloudFlareAPI;
+use GrahamCampbell\CoreAPI\Factories\AbstractAPIFactory;
 
 /**
  * This is the cloudflare api factory class.
@@ -27,57 +27,15 @@ use GrahamCampbell\CloudFlareAPI\CloudFlareAPI;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareAPIFactory
+class CloudFlareAPIFactory extends AbstractAPIFactory
 {
     /**
-     * The client factory instance.
+     * Get the api class name.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory
+     * @return string
      */
-    protected $client;
-
-    /**
-     * Create a new cloudflare api factory instance.
-     *
-     * @param  \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory  $client
-     * @return void
-     */
-    public function __construct(ClientFactory $client)
+    protected function getClassName()
     {
-        $this->client = $client;
-    }
-
-    /**
-     * Make a new cloudflare api instance.
-     *
-     * @param  array  $config
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
-     */
-    public function make(array $config)
-    {
-        $client = $this->createClient($config);
-
-        return new CloudFlareAPI($client);
-    }
-
-    /**
-     * Get a new guzzle client.
-     *
-     * @param  array  $config
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
-     */
-    public function createClient(array $config)
-    {
-        return $this->client->make($config);
-    }
-
-    /**
-     * Get the client factory instance.
-     *
-     * @return \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory
-     */
-    public function getClient()
-    {
-        return $this->client;
+        return '\GrahamCampbell\CloudFlareAPI\CloudFlareAPI';
     }
 }
