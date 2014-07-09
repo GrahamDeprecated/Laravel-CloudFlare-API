@@ -17,6 +17,7 @@
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
 use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
+use GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber;
 
 /**
  * This is the client factory class.
@@ -29,6 +30,26 @@ use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
  */
 class ClientFactory extends AbstractClientFactory
 {
+    /**
+     * Get all subscriber names.
+     *
+     * @return array
+     */
+    protected function getSubscriberNames()
+    {
+        return array_merge(parent::getSubscriberNames(), array('CloudFlareAPIError'));
+    }
+
+    /**
+     * Get the cloudflare api error subscriber.
+     *
+     * @return \GuzzleHttp\Subscriber\Retry\RetrySubscriber
+     */
+    protected function getCloudFlareAPIErrorSubscriber()
+    {
+        return new CloudFlareAPIErrorSubscriber();
+    }
+
     /**
      * Get the client constructor parameters.
      *
