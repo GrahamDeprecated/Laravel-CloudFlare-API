@@ -86,7 +86,7 @@ class Ip extends AbstractModel
      */
     public function whitelist()
     {
-        $this->post('wl', array('key' => $this->ip), false);
+        $this->action('wl', array('key' => $this->ip), false);
 
         return $this;
     }
@@ -98,7 +98,7 @@ class Ip extends AbstractModel
      */
     public function ban()
     {
-        $this->post('ban', array('key' => $this->ip), false);
+        $this->action('ban', array('key' => $this->ip), false);
 
         return $this;
     }
@@ -110,7 +110,7 @@ class Ip extends AbstractModel
      */
     public function unlist()
     {
-        $this->post('nul', array('key' => $this->ip), false);
+        $this->action('nul', array('key' => $this->ip), false);
 
         return $this;
     }

@@ -303,7 +303,7 @@ class Zone extends AbstractModel
      */
     public function setSecurityLevel($level)
     {
-        $this->post('secLvl', array('v' => $level), 'zoneSettings');
+        $this->action('secLvl', array('v' => $level), 'zoneSettings');
 
         return $this;
     }
@@ -316,7 +316,7 @@ class Zone extends AbstractModel
      */
     public function setCacheLevel($level)
     {
-        $this->post('cacheLvl', array('v' => $level), 'zoneSettings');
+        $this->action('cacheLvl', array('v' => $level), 'zoneSettings');
 
         return $this;
     }
@@ -328,7 +328,7 @@ class Zone extends AbstractModel
      */
     public function enableDevMode()
     {
-        $this->post('devMode', array('v' => 1), 'zoneSettings');
+        $this->action('devMode', array('v' => 1), 'zoneSettings');
 
         return $this;
     }
@@ -340,7 +340,7 @@ class Zone extends AbstractModel
      */
     public function disableDevMode()
     {
-        $this->post('devMode', array('v' => 0), 'zoneSettings');
+        $this->action('devMode', array('v' => 0), 'zoneSettings');
 
         return $this;
     }
@@ -352,7 +352,7 @@ class Zone extends AbstractModel
      */
     public function purgeAll()
     {
-        $this->post('fpurgeTs', array('v' => 1), false);
+        $this->action('fpurgeTs', array('v' => 1), false);
 
         return $this;
     }
@@ -365,7 +365,7 @@ class Zone extends AbstractModel
      */
     public function purgeUrl($url)
     {
-        $this->post('zoneFilePurge', array('url' => $url), false);
+        $this->action('zoneFilePurge', array('url' => $url), false);
 
         return $this;
     }
@@ -396,7 +396,7 @@ class Zone extends AbstractModel
 
         $zid = (int) array_get($zoneSettings, 'response.zones')[$this->zone];
 
-        $this->post('zoneGrab', array('zid' => $zid), false);
+        $this->action('zoneGrab', array('zid' => $zid), false);
 
         return $this;
     }
@@ -409,7 +409,7 @@ class Zone extends AbstractModel
      */
     public function setIpVersions($versions)
     {
-        $this->post('ipv46', array('v' => $versions), 'zoneSettings');
+        $this->action('ipv46', array('v' => $versions), 'zoneSettings');
 
         return $this;
     }
@@ -422,7 +422,7 @@ class Zone extends AbstractModel
      */
     public function setRocketLoader($level)
     {
-        $this->post('async', array('v' => $level), 'zoneSettings');
+        $this->action('async', array('v' => $level), 'zoneSettings');
 
         return $this;
     }
@@ -435,7 +435,7 @@ class Zone extends AbstractModel
      */
     public function setMinification($level)
     {
-        $this->post('minify', array('v' => $level), 'zoneSettings');
+        $this->action('minify', array('v' => $level), 'zoneSettings');
 
         return $this;
     }
@@ -447,7 +447,7 @@ class Zone extends AbstractModel
      */
     public function enableMirage()
     {
-        $this->post('mirage', array('v' => 1), 'zoneSettings');
+        $this->action('mirage', array('v' => 1), 'zoneSettings');
 
         return $this;
     }
@@ -459,7 +459,7 @@ class Zone extends AbstractModel
      */
     public function disableMirage()
     {
-        $this->post('mirage', array('v' => 0), 'zoneSettings');
+        $this->action('mirage', array('v' => 0), 'zoneSettings');
 
         return $this;
     }
@@ -558,7 +558,7 @@ class Zone extends AbstractModel
      */
     public function createRecord(array $data)
     {
-        $this->post('recNew', $data, 'recLoadAll');
+        $this->action('recNew', $data, 'recLoadAll');
 
         return $this;
     }

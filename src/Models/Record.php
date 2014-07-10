@@ -202,7 +202,7 @@ class Record extends AbstractModel
     {
         $data['id'] = $this->getId();
 
-        $this->post('recEdit', $data, 'recLoad');
+        $this->action('recEdit', $data, 'recLoad');
 
         return $this;
     }
