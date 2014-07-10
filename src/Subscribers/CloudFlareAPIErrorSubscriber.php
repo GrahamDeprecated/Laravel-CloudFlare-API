@@ -32,7 +32,6 @@ use GuzzleHttp\Exception\RequestException;
  */
 class CloudFlareAPIErrorSubscriber implements SubscriberInterface
 {
-
     /**
      * Get the subscriber events.
      *
