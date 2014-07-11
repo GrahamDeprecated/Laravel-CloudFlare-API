@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Exceptions;
+namespace GrahamCampbell\CloudFlareAPI\Providers;
 
-use Guzzle\Http\Exception\BadResponseException;
+use GrahamCampbell\CloudFlareAPI\Models\Ip;
+use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 
 /**
- * This is the cloudflare api exception class.
+ * This is the ip provider class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -27,7 +28,16 @@ use Guzzle\Http\Exception\BadResponseException;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class CloudFlareAPIException extends BadResponseException
+class IpProvider extends AbstractProvider
 {
-    // this is the cloudflare exception class
+    /**
+     * Get a single ip object.
+     *
+     * @param  string  $ip
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
+     */
+    public function get($ip)
+    {
+        return new Ip($this->client, $ip);
+    }
 }

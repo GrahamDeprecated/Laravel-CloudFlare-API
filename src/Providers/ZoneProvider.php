@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\CloudFlareAPI;
+namespace GrahamCampbell\CloudFlareAPI\Providers;
 
-use GrahamCampbell\TestBench\AbstractLaravelTestCase as TestCase;
+use Illuminate\Support\Collection;
+use GrahamCampbell\CloudFlareAPI\Models\Zone;
+use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 
 /**
- * This is the abstract test case class.
+ * This is the zone provider class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -27,25 +29,37 @@ use GrahamCampbell\TestBench\AbstractLaravelTestCase as TestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-abstract class AbstractTestCase extends TestCase
+class ZoneProvider extends AbstractProvider
 {
     /**
-     * Get the application base path.
+     * Get a single zone object.
      *
-     * @return string
+     * @param  string  $zone
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
-    protected function getBasePath()
+    public function get($zone)
     {
-        return __DIR__.'/../src';
+        return new Zone($this->client, $zone);
     }
 
     /**
-     * Get the service provider class.
+     * Get a collection of all the zones.
      *
-     * @return string
+     * @return \Illuminate\Support\Collection
      */
-    protected function getServiceProviderClass()
+    public function all()
     {
-        return 'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider';
+        $multi = $this->client->zoneLoadMulti();
+
+        $zones = array_get($multi->toArray(), 'response.zones.objs');
+
+        $all = new Collection();
+
+        foreach($zones as $zone) {
+            $name = $zone['zone_name'];
+            $all->put($name, $this->get($name));
+        }
+
+        return $all;
     }
 }

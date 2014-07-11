@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\CloudFlareAPI;
+namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
+use GrahamCampbell\CoreAPI\Factories\AbstractAPIFactory;
 
 /**
- * This is the service provider test class.
+ * This is the cloudflare api factory class.
  *
  * @package    Laravel-CloudFlare-API
  * @author     Graham Campbell
@@ -27,12 +27,15 @@ use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
  * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
  */
-class ServiceProviderTest extends AbstractTestCase
+class CloudFlareAPIFactory extends AbstractAPIFactory
 {
-    use ServiceProviderTestCaseTrait;
-
-    public function testCloudFlareAPIManagerIsInjectable()
+    /**
+     * Get the api class name.
+     *
+     * @return string
+     */
+    protected function getClassName()
     {
-        $this->assertIsInjectable('GrahamCampbell\CloudFlareAPI\CloudFlareAPIManager');
+        return '\GrahamCampbell\CloudFlareAPI\CloudFlareAPI';
     }
 }
