@@ -16,6 +16,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Models;
 
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
+
 /**
  * This is the zone ip model class.
  *
