@@ -52,7 +52,7 @@ class CloudFlareAPIErrorSubscriber implements SubscriberInterface
     {
         $json = $event->getResponse()->json();
 
-        if (array_get($json, 'result') !== 'success' || array_key_exists($json, 'response') === false) {
+        if (array_get($json, 'result') !== 'success' || array_key_exists('response', $json) === false) {
             throw RequestException::create($event->getRequest(), $event->getResponse());
         }
     }
