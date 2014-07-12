@@ -50,8 +50,7 @@ This option (`'connections'`) is where each of the connections are setup for you
 
 ## Usage
 
-There is currently no usage documentation besides the [API Documentation](http://grahamcampbell.github.io/Laravel-CloudFlare-API
-) for Laravel CloudFlare API.
+There is currently no usage documentation besides the [API Documentation](http://docs.grahamjcampbell.co.uk) for Laravel CloudFlare API.
 
 
 ## License
