@@ -39,11 +39,11 @@ To get started, first publish the package config file:
 
 There are two config options:
 
-**Default Connection Name**
+##### Default Connection Name
 
 This option (`'default'`) is where you may specify which of the connections below you wish to use as your default connection for all work. Of course, you may use many connections at once using the manager class. The default value for this setting is `'main'`.
 
-**CloudFlare Connections**
+##### CloudFlare Connections
 
 This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like.
 
