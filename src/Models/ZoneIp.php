@@ -100,11 +100,9 @@ class ZoneIp extends Ip
      */
     protected function lookup($key)
     {
-        $data = array('z' => $this->zone->getZone());
-        $data = $this->data($data);
-
         if (!$this->cache['zoneIp']) {
-            $ips = $this->client->zoneIps($data)->toArray()['response']['ips'];
+            $data = array('z' => $this->zone->getZone());
+            $ips = $this->client->zoneIps($this->data($data))->toArray()['response']['ips'];
             foreach($ips as $ip) {
                 if ($ip['ip'] == $this->ip) {
                     $this->cache['zoneIp'] = $ip;
