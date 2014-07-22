@@ -216,10 +216,8 @@ class Record extends AbstractModel
      */
     protected function lookup($key)
     {
-        $data = $this->data($data);
-
         if (!$this->cache['recLoad']) {
-            $records = $this->client->recLoadAll($data)->toArray()['response']['recs']['objs'];
+            $records = $this->client->recLoadAll($this->data($data))->toArray()['response']['recs']['objs'];
             foreach($records as $record) {
                 if ((int) $record['rec_id'] === $this->id) {
                     $this->cache['recLoad'] = $record;
