@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Models;
 
-use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use GrahamCampbell\CoreAPI\Models\AbstractModel;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
 
 /**
  * This is the ip model class.

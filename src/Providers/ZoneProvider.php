@@ -16,9 +16,9 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Providers;
 
-use Illuminate\Support\Collection;
 use GrahamCampbell\CloudFlareAPI\Models\Zone;
 use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
+use Illuminate\Support\Collection;
 
 /**
  * This is the zone provider class.

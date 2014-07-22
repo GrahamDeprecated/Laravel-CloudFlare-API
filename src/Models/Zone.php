@@ -16,9 +16,9 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Models;
 
-use Illuminate\Support\Collection;
-use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use GrahamCampbell\CoreAPI\Models\AbstractModel;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use Illuminate\Support\Collection;
 
 /**
  * This is the zone model class.
@@ -495,7 +495,7 @@ class Zone extends AbstractModel
      * @param  string  $address
      * @param  int     $hours
      * @param  string  $class
-     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
+     * @return \GrahamCampbell\CloudFlareAPI\Models\ZoneIp
      */
     public function ip($address, $hours = 24, $class = null)
     {
@@ -570,7 +570,6 @@ class Zone extends AbstractModel
      * This function will be automatically called by the record model whenever
      * it is updated. This method is not intended for public use.
      *
-     * @param  array  $data
      * @return self
      */
     public function clearRecordCache()
