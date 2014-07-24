@@ -45,8 +45,10 @@ class CloudFlareAPIErrorSubscriber implements SubscriberInterface
     /**
      * Throw a RequestException if the response is not marked as successful.
      *
-     * @param \GuzzleHttp\Event\CompleteEvent  $event#
+     * @param \GuzzleHttp\Event\CompleteEvent  $event
      * @return void
+     *
+     * @throws \GuzzleHttp\Exception\RequestException
      */
     public function onComplete(CompleteEvent $event)
     {

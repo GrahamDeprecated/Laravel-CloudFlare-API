@@ -71,7 +71,9 @@ class ClientFactory extends AbstractClientFactory
      *
      * @param  array  $config
      * @return array
-    */
+     *
+     * @throws \InvalidArgumentException
+     */
     protected function getConfig(array $config)
     {
         if (!array_key_exists('token', $config) || !array_key_exists('email', $config)) {
