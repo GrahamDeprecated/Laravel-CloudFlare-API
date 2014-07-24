@@ -61,7 +61,7 @@ class ClientFactory extends AbstractClientFactory
         $config = $this->getConfig($config);
 
         return array(
-            'base_url' => array_get($config, 'baseurl', 'https://www.cloudflare.com/api_json.html'),
+            'base_url' => 'https://www.cloudflare.com/api_json.html',
             'defaults' => array('query' => array('tkn' => $config['token'], 'email' => $config['email']))
         );
     }

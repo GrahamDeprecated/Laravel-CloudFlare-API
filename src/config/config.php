@@ -44,14 +44,12 @@ return array(
 
         'main' => array(
             'token'   => 'your-token',
-            'email'   => 'your-email',
-            // 'baseurl' => 'https://www.cloudflare.com/api_json.html'
+            'email'   => 'your-email'
         ),
 
         'alternative' => array(
             'token'   => 'your-token',
-            'email'   => 'your-email',
-            // 'baseurl' => 'https://www.cloudflare.com/api_json.html'
+            'email'   => 'your-email'
         )
 
     )
