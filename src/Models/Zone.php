@@ -23,27 +23,26 @@ use Illuminate\Support\Collection;
 /**
  * This is the zone model class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class Zone extends AbstractModel
 {
     /**
      * The zone name.
      *
-     * @var string
+     * @type string
      */
     protected $zone;
 
     /**
      * Create a new model instance.
      *
-     * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  string  $zone
-     * @param  array   $cache
+     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient $client
+     * @param string                                  $zone
+     * @param array                                   $cache
+     *
      * @return void
      */
     public function __construct(GuzzleClient $client, $zone, array $cache = array())
@@ -66,7 +65,8 @@ class Zone extends AbstractModel
     /**
      * Get the traffic information.
      *
-     * @param  int  $time
+     * @param int $time
+     *
      * @return array
      */
     public function getTraffic($time = 20)
@@ -77,7 +77,8 @@ class Zone extends AbstractModel
     /**
      * Get the bandwidth information.
      *
-     * @param  int  $time
+     * @param int $time
+     *
      * @return array
      */
     public function getBandwidth($time = 20)
@@ -88,7 +89,8 @@ class Zone extends AbstractModel
     /**
      * Get the requests information.
      *
-     * @param  int  $time
+     * @param int $time
+     *
      * @return array
      */
     public function getRequests($time = 20)
@@ -299,7 +301,8 @@ class Zone extends AbstractModel
     /**
      * Set the security level.
      *
-     * @param  string  $level
+     * @param string $level
+     *
      * @return self
      */
     public function setSecurityLevel($level)
@@ -312,7 +315,8 @@ class Zone extends AbstractModel
     /**
      * Set the cache level.
      *
-     * @param  string  $level
+     * @param string $level
+     *
      * @return self
      */
     public function setCacheLevel($level)
@@ -361,7 +365,8 @@ class Zone extends AbstractModel
     /**
      * Purge a single url from the cloudflare cache.
      *
-     * @param  string  $url
+     * @param string $url
+     *
      * @return self
      */
     public function purgeUrl($url)
@@ -374,12 +379,13 @@ class Zone extends AbstractModel
     /**
      * Purge multiple urls from the cloudflare cache.
      *
-     * @param  array  $urls
+     * @param array $urls
+     *
      * @return self
      */
     public function purgeUrls(array $urls)
     {
-        foreach($urls as $url) {
+        foreach ($urls as $url) {
             $this->purgeUrl($url);
         }
 
@@ -405,7 +411,8 @@ class Zone extends AbstractModel
     /**
      * Set the supported the ip versions.
      *
-     * @param  int  $versions
+     * @param int $versions
+     *
      * @return self
      */
     public function setIpVersions($versions)
@@ -418,7 +425,8 @@ class Zone extends AbstractModel
     /**
      * Set the rocket loader level.
      *
-     * @param  string  $level
+     * @param string $level
+     *
      * @return self
      */
     public function setRocketLoader($level)
@@ -431,7 +439,8 @@ class Zone extends AbstractModel
     /**
      * Set the minification level.
      *
-     * @param  int  $level
+     * @param int $level
+     *
      * @return self
      */
     public function setMinification($level)
@@ -468,8 +477,9 @@ class Zone extends AbstractModel
     /**
      * Get all ips as a collection of models.
      *
-     * @param  int     $hours
-     * @param  string  $class
+     * @param int    $hours
+     * @param string $class
+     *
      * @return \Illuminate\Support\Collection
      */
     public function ips($hours = 24, $class = null)
@@ -480,7 +490,7 @@ class Zone extends AbstractModel
 
         $all = new Collection();
 
-        foreach($ips as $ip) {
+        foreach ($ips as $ip) {
             $name = $ip['ip'];
             $zoneIp = new ZoneIP($this->client, $name, $this, array('zoneIp' => $ip));
             $all->put($name, $zoneIp);
@@ -492,9 +502,10 @@ class Zone extends AbstractModel
     /**
      * Get an ip as a model.
      *
-     * @param  string  $address
-     * @param  int     $hours
-     * @param  string  $class
+     * @param string $address
+     * @param int    $hours
+     * @param string $class
+     *
      * @return \GrahamCampbell\CloudFlareAPI\Models\ZoneIp
      */
     public function ip($address, $hours = 24, $class = null)
@@ -503,7 +514,7 @@ class Zone extends AbstractModel
 
         $ips = array_get($zoneIps, 'response.ips');
 
-        foreach($ips as $ip) {
+        foreach ($ips as $ip) {
             if ($ip['ip'] == $address) {
                 return new ZoneIP($this->client, $address, $this, array('zoneIp' => $ip));
             }
@@ -523,7 +534,7 @@ class Zone extends AbstractModel
 
         $all = new Collection();
 
-        foreach($records as $record) {
+        foreach ($records as $record) {
             $id = (int) $record['rec_id'];
             $model = new Record($this->client, $id, $this, array('recLoad' => $record));
             $all->put($id, $model);
@@ -535,7 +546,8 @@ class Zone extends AbstractModel
     /**
      * Get a dns record as a model.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \GrahamCampbell\CloudFlareAPI\Models\Record
      */
     public function record($id)
@@ -544,7 +556,7 @@ class Zone extends AbstractModel
 
         $records = array_get($recs, 'response.recs.objs');
 
-        foreach($records as $record) {
+        foreach ($records as $record) {
             if ((int) $record['rec_id'] === (int) $id) {
                 return new Record($this->client, (int) $id, $this, array('recLoad' => $record));
             }
@@ -554,7 +566,8 @@ class Zone extends AbstractModel
     /**
      * Create a new record.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return self
      */
     public function createRecord(array $data)
@@ -580,8 +593,9 @@ class Zone extends AbstractModel
     /**
      * Lookup a statistic.
      *
-     * @param  int     $time
-     * @param  string  $name
+     * @param int    $time
+     * @param string $name
+     *
      * @return array
      */
     protected function stat($time, $name)
@@ -594,7 +608,8 @@ class Zone extends AbstractModel
     /**
      * Lookup a setting.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return mixed
      */
     protected function setting($name)
@@ -607,7 +622,8 @@ class Zone extends AbstractModel
     /**
      * Get the data to make a request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return array
      */
     protected function data(array $data = array())

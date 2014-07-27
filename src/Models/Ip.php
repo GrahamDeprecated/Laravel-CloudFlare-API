@@ -22,27 +22,26 @@ use GuzzleHttp\Command\Guzzle\GuzzleClient;
 /**
  * This is the ip model class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class Ip extends AbstractModel
 {
     /**
      * The ip address.
      *
-     * @var string
+     * @type string
      */
     protected $ip;
 
     /**
      * Create a new model instance.
      *
-     * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  string  $ip
-     * @param  array   $cache
+     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient $client
+     * @param string                                  $ip
+     * @param array                                   $cache
+     *
      * @return void
      */
     public function __construct(GuzzleClient $client, $ip, array $cache = array())

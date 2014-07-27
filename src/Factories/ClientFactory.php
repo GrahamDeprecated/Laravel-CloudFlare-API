@@ -22,11 +22,9 @@ use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
 /**
  * This is the client factory class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class ClientFactory extends AbstractClientFactory
 {
@@ -53,7 +51,8 @@ class ClientFactory extends AbstractClientFactory
     /**
      * Get the client constructor parameters.
      *
-     * @param  array  $config
+     * @param array $config
+     *
      * @return array
      */
     protected function getParameters(array $config)
@@ -69,10 +68,11 @@ class ClientFactory extends AbstractClientFactory
     /**
      * Get the configuration.
      *
-     * @param  array  $config
-     * @return array
+     * @param array $config
      *
      * @throws \InvalidArgumentException
+     *
+     * @return string[]
      */
     protected function getConfig(array $config)
     {

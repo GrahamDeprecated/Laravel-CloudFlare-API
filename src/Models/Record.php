@@ -22,35 +22,34 @@ use GuzzleHttp\Command\Guzzle\GuzzleClient;
 /**
  * This is the zone model class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class Record extends AbstractModel
 {
     /**
      * The id.
      *
-     * @var int
+     * @type int
      */
     protected $id;
 
     /**
      * The zone object.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Models\Zone
+     * @type \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
     protected $zone;
 
     /**
      * Create a new model instance.
      *
-     * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  int  $id
-     * @param  \GrahamCampbell\CloudFlareAPI\Models\Zone  $zone
-     * @param  array  $cache
+     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient   $client
+     * @param int                                       $id
+     * @param \GrahamCampbell\CloudFlareAPI\Models\Zone $zone
+     * @param array                                     $cache
+     *
      * @return void
      */
     public function __construct(GuzzleClient $client, $id, Zone $zone, array $cache = array())
@@ -196,7 +195,8 @@ class Record extends AbstractModel
     /**
      * Dump all data.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return self
      */
     public function modify(array $data)
@@ -211,14 +211,15 @@ class Record extends AbstractModel
     /**
      * Lookup information.
      *
-     * @param  string  $key
+     * @param string $key
+     *
      * @return mixed
      */
     protected function lookup($key)
     {
         if (!$this->cache['recLoad']) {
             $records = $this->client->recLoadAll($this->data())->toArray()['response']['recs']['objs'];
-            foreach($records as $record) {
+            foreach ($records as $record) {
                 if ((int) $record['rec_id'] === $this->id) {
                     $this->cache['recLoad'] = $record;
                     break;
@@ -232,7 +233,8 @@ class Record extends AbstractModel
     /**
      * Get the data to make a request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return array
      */
     protected function data(array $data = array())
@@ -245,7 +247,8 @@ class Record extends AbstractModel
      *
      * This method overrides the method in the parent class.
      *
-     * @param  array|string  $methods
+     * @param string|string[] $methods
+     *
      * @return self
      */
     public function clearCache($methods = null)

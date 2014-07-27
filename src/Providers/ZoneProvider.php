@@ -23,18 +23,17 @@ use Illuminate\Support\Collection;
 /**
  * This is the zone provider class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class ZoneProvider extends AbstractProvider
 {
     /**
      * Get a single zone object.
      *
-     * @param  string  $zone
+     * @param string $zone
+     *
      * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
     public function get($zone)
@@ -55,7 +54,7 @@ class ZoneProvider extends AbstractProvider
 
         $all = new Collection();
 
-        foreach($zones as $zone) {
+        foreach ($zones as $zone) {
             $name = $zone['zone_name'];
             $all->put($name, $this->get($name));
         }

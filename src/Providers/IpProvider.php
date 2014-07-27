@@ -22,18 +22,17 @@ use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 /**
  * This is the ip provider class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class IpProvider extends AbstractProvider
 {
     /**
      * Get a single ip object.
      *
-     * @param  string  $ip
+     * @param string $ip
+     *
      * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
      */
     public function get($ip)

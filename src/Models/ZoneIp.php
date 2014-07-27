@@ -21,28 +21,27 @@ use GuzzleHttp\Command\Guzzle\GuzzleClient;
 /**
  * This is the zone ip model class.
  *
- * @package    Laravel-CloudFlare-API
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-CloudFlare-API
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
 class ZoneIp extends Ip
 {
     /**
      * The zone object.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Models\Zone
+     * @type \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
     protected $zone;
 
     /**
      * Create a new model instance.
      *
-     * @param  \GuzzleHttp\Command\Guzzle\GuzzleClient  $client
-     * @param  string  $ip
-     * @param  \GrahamCampbell\CloudFlareAPI\Models\Zone  $zone
-     * @param  array  $cache
+     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient   $client
+     * @param string                                    $ip
+     * @param \GrahamCampbell\CloudFlareAPI\Models\Zone $zone
+     * @param array                                     $cache
+     *
      * @return void
      */
     public function __construct(GuzzleClient $client, $ip, Zone $zone, array $cache = array())
@@ -95,7 +94,8 @@ class ZoneIp extends Ip
     /**
      * Lookup information.
      *
-     * @param  string  $key
+     * @param string $key
+     *
      * @return mixed
      */
     protected function lookup($key)
@@ -103,7 +103,7 @@ class ZoneIp extends Ip
         if (!$this->cache['zoneIp']) {
             $data = array('z' => $this->zone->getZone());
             $ips = $this->client->zoneIps($this->data($data))->toArray()['response']['ips'];
-            foreach($ips as $ip) {
+            foreach ($ips as $ip) {
                 if ($ip['ip'] == $this->ip) {
                     $this->cache['zoneIp'] = $ip;
                     break;
