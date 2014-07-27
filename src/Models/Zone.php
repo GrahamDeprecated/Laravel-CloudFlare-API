@@ -303,7 +303,7 @@ class Zone extends AbstractModel
      *
      * @param string $level
      *
-     * @return self
+     * @return $this
      */
     public function setSecurityLevel($level)
     {
@@ -317,7 +317,7 @@ class Zone extends AbstractModel
      *
      * @param string $level
      *
-     * @return self
+     * @return $this
      */
     public function setCacheLevel($level)
     {
@@ -329,7 +329,7 @@ class Zone extends AbstractModel
     /**
      * Enable dev mode.
      *
-     * @return self
+     * @return $this
      */
     public function enableDevMode()
     {
@@ -341,7 +341,7 @@ class Zone extends AbstractModel
     /**
      * Disable dev mode.
      *
-     * @return self
+     * @return $this
      */
     public function disableDevMode()
     {
@@ -353,7 +353,7 @@ class Zone extends AbstractModel
     /**
      * Purge all entries from the cloudflare cache.
      *
-     * @return self
+     * @return $this
      */
     public function purgeAll()
     {
@@ -367,7 +367,7 @@ class Zone extends AbstractModel
      *
      * @param string $url
      *
-     * @return self
+     * @return $this
      */
     public function purgeUrl($url)
     {
@@ -379,9 +379,9 @@ class Zone extends AbstractModel
     /**
      * Purge multiple urls from the cloudflare cache.
      *
-     * @param array $urls
+     * @param string[] $urls
      *
-     * @return self
+     * @return $this
      */
     public function purgeUrls(array $urls)
     {
@@ -395,7 +395,7 @@ class Zone extends AbstractModel
     /**
      * Updated the site snapshot on the challenge page.
      *
-     * @return self
+     * @return $this
      */
     public function updateSnapshot()
     {
@@ -413,7 +413,7 @@ class Zone extends AbstractModel
      *
      * @param int $versions
      *
-     * @return self
+     * @return $this
      */
     public function setIpVersions($versions)
     {
@@ -427,7 +427,7 @@ class Zone extends AbstractModel
      *
      * @param string $level
      *
-     * @return self
+     * @return $this
      */
     public function setRocketLoader($level)
     {
@@ -441,7 +441,7 @@ class Zone extends AbstractModel
      *
      * @param int $level
      *
-     * @return self
+     * @return $this
      */
     public function setMinification($level)
     {
@@ -453,7 +453,7 @@ class Zone extends AbstractModel
     /**
      * Enable mirage2.
      *
-     * @return self
+     * @return $this
      */
     public function enableMirage()
     {
@@ -465,7 +465,7 @@ class Zone extends AbstractModel
     /**
      * Disable mirage2.
      *
-     * @return self
+     * @return $this
      */
     public function disableMirage()
     {
@@ -568,7 +568,7 @@ class Zone extends AbstractModel
      *
      * @param array $data
      *
-     * @return self
+     * @return $this
      */
     public function createRecord(array $data)
     {
@@ -583,7 +583,7 @@ class Zone extends AbstractModel
      * This function will be automatically called by the record model whenever
      * it is updated. This method is not intended for public use.
      *
-     * @return self
+     * @return $this
      */
     public function clearRecordCache()
     {

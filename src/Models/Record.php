@@ -197,7 +197,7 @@ class Record extends AbstractModel
      *
      * @param array $data
      *
-     * @return self
+     * @return $this
      */
     public function modify(array $data)
     {
@@ -249,7 +249,7 @@ class Record extends AbstractModel
      *
      * @param string|string[] $methods
      *
-     * @return self
+     * @return $this
      */
     public function clearCache($methods = null)
     {

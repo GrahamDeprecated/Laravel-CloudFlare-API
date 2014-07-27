@@ -51,7 +51,7 @@ class ClientFactory extends AbstractClientFactory
     /**
      * Get the client constructor parameters.
      *
-     * @param array $config
+     * @param string[] $config
      *
      * @return array
      */
@@ -68,7 +68,7 @@ class ClientFactory extends AbstractClientFactory
     /**
      * Get the configuration.
      *
-     * @param array $config
+     * @param string[] $config
      *
      * @throws \InvalidArgumentException
      *

@@ -82,7 +82,7 @@ class Ip extends AbstractModel
     /**
      * Whitelist this ip.
      *
-     * @return self
+     * @return $this
      */
     public function whitelist()
     {
@@ -94,7 +94,7 @@ class Ip extends AbstractModel
     /**
      * Ban this ip.
      *
-     * @return self
+     * @return $this
      */
     public function ban()
     {
@@ -106,7 +106,7 @@ class Ip extends AbstractModel
     /**
      * Unlist this ip.
      *
-     * @return self
+     * @return $this
      */
     public function unlist()
     {
