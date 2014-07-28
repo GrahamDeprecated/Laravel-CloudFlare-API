@@ -35,7 +35,9 @@ Laravel CloudFlare API requires configuration.
 
 To get started, first publish the package config file:
 
-    php artisan config:publish graham-campbell/cloudflare-api
+```bash
+$ php artisan config:publish graham-campbell/cloudflare-api
+```
 
 There are two config options:
 
