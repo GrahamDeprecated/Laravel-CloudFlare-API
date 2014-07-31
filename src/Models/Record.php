@@ -31,14 +31,14 @@ class Record extends AbstractModel
     /**
      * The id.
      *
-     * @type int
+     * @var int
      */
     protected $id;
 
     /**
      * The zone object.
      *
-     * @type \GrahamCampbell\CloudFlareAPI\Models\Zone
+     * @var \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
     protected $zone;
 

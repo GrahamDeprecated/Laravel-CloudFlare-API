@@ -32,7 +32,7 @@ class Zone extends AbstractModel
     /**
      * The zone name.
      *
-     * @type string
+     * @var string
      */
     protected $zone;
 

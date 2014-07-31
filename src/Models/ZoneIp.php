@@ -30,7 +30,7 @@ class ZoneIp extends Ip
     /**
      * The zone object.
      *
-     * @type \GrahamCampbell\CloudFlareAPI\Models\Zone
+     * @var \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
     protected $zone;
 

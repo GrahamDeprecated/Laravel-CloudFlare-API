@@ -31,7 +31,7 @@ class Ip extends AbstractModel
     /**
      * The ip address.
      *
-     * @type string
+     * @var string
      */
     protected $ip;
 
