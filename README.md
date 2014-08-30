@@ -2,11 +2,11 @@ Laravel CloudFlare API
 ======================
 
 
-[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-CloudFlare-API/master.svg?style=flat)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API)
-[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat)](LICENSE.md)
-[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases)
+[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-CloudFlare-API/master.svg?style=flat-square)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API)
+[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases)
 
 
 ## Introduction
