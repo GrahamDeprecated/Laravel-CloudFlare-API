@@ -1,6 +1,6 @@
 {
     "name": "graham-campbell/cloudflare-api",
-    "description": "CloudFlare API Is A CloudFlare API Client For Laravel 4.1+",
+    "description": "CloudFlare API Is A CloudFlare API Client For Laravel 4.1/4.2",
     "keywords": ["laravel", "framework", "cloudflare api", "cloudflare", "api", "CloudFlare API", "CloudFlare-API", "Laravel CloudFlare API", "Laravel-CloudFlare-API", "Graham Campbell", "GrahamCampbell"],
     "license": "Apache-2.0",
     "authors": [

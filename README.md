@@ -11,7 +11,7 @@ Laravel CloudFlare API
 
 ## Introduction
 
-Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and provides some core API client functions for [Laravel 4.1+](http://laravel.com). It utilises [Guzzle 4](https://github.com/guzzle/guzzle), and my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) and [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) packages. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and provides some core API client functions for [Laravel 4.1/4.2](http://laravel.com). It utilises [Guzzle 4](https://github.com/guzzle/guzzle), and my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) and [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) packages. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
 
 
 ## Installation

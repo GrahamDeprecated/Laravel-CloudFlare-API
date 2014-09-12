@@ -4,7 +4,7 @@ CHANGE LOG
 
 ## V0.5 Alpha (12/08/2014)
 
-* Upgrade to Laravel 4.1+
+* Upgrade to Laravel 4.1/4.2
 * Updated to Guzzle 4.0+
 * Complete re-write
 * Added di aliases
