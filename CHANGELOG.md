@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V0.5.1 Alpha (Upcoming)
+## V0.5.1 Alpha (19/10/2014)
 
 * Added cs fixers to the test suite
 * Improved the docs
