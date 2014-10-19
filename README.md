@@ -1,17 +1,17 @@
 Laravel CloudFlare API
 ======================
 
-
-[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-CloudFlare-API/master.svg?style=flat-square)](https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API)
-[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square)](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases)
-
-
-## Introduction
-
 Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and provides some core API client functions for [Laravel 4.1/4.2](http://laravel.com). It utilises [Guzzle 4](https://github.com/guzzle/guzzle), and my [Laravel Core API](https://github.com/GrahamCampbell/Laravel-Core-API) and [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) packages. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+
+![Laravel CloudFlare API](https://cloud.githubusercontent.com/assets/2829600/4432317/c173f24c-468c-11e4-9ff5-4a6327442d43.PNG)
+
+<p align="center">
+<a href="https://travis-ci.org/GrahamCampbell/Laravel-CloudFlare-API"><img src="https://img.shields.io/travis/GrahamCampbell/Laravel-CloudFlare-API/master.svg?style=flat-square" alt="Build Status"></img></a>
+<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square" alt="Coverage Status"></img></a>
+<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-CloudFlare-API"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square" alt="Quality Score"></img></a>
+<a href="LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
+<a href="https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-CloudFlare-API.svg?style=flat-square" alt="Latest Version"></img></a>
+</p>
 
 
 ## Installation
