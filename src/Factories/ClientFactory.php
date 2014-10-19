@@ -61,7 +61,7 @@ class ClientFactory extends AbstractClientFactory
 
         return array(
             'base_url' => 'https://www.cloudflare.com/api_json.html',
-            'defaults' => array('query' => array('tkn' => $config['token'], 'email' => $config['email']))
+            'defaults' => array('query' => array('tkn' => $config['token'], 'email' => $config['email'])),
         );
     }
 
@@ -99,13 +99,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'interval' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'zoneLoadMulti' => array(
                     'httpMethod' => 'GET',
@@ -113,7 +113,7 @@ class ClientFactory extends AbstractClientFactory
                     'responseModel' => 'jsonResponse',
                     'parameters' => array(
                         // none
-                    )
+                    ),
                 ),
                 'recLoadAll' => array(
                     'httpMethod' => 'GET',
@@ -122,13 +122,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'o' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'zoneCheck' => array(
                     'httpMethod' => 'GET',
@@ -137,9 +137,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'zones' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'zoneIps' => array(
                     'httpMethod' => 'GET',
@@ -148,17 +148,17 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'hours' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'class' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'ipLkup' => array(
                     'httpMethod' => 'GET',
@@ -167,9 +167,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'ip' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'zoneSettings' => array(
                     'httpMethod' => 'GET',
@@ -178,9 +178,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'secLvl' => array(
                     'httpMethod' => 'POST',
@@ -189,13 +189,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'cacheLvl' => array(
                     'httpMethod' => 'POST',
@@ -204,13 +204,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'devMode' => array(
                     'httpMethod' => 'POST',
@@ -219,13 +219,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'fpurgeTs' => array(
                     'httpMethod' => 'POST',
@@ -234,9 +234,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'zoneFilePurge' => array(
                     'httpMethod' => 'POST',
@@ -245,13 +245,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'url' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'zoneGrab' => array(
                     'httpMethod' => 'POST',
@@ -260,9 +260,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'zid' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'wl' => array(
                     'httpMethod' => 'POST',
@@ -271,9 +271,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'key' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'ban' => array(
                     'httpMethod' => 'POST',
@@ -282,9 +282,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'key' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'nul' => array(
                     'httpMethod' => 'POST',
@@ -293,9 +293,9 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'key' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'ipv46' => array(
                     'httpMethod' => 'POST',
@@ -304,13 +304,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'async' => array(
                     'httpMethod' => 'POST',
@@ -319,13 +319,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'minify' => array(
                     'httpMethod' => 'POST',
@@ -334,13 +334,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'mirage' => array(
                     'httpMethod' => 'POST',
@@ -349,13 +349,13 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'v' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'recNew' => array(
                     'httpMethod' => 'POST',
@@ -364,53 +364,53 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'type' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'name' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'content' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'ttl' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'prio' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'service' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'srvname' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'protocol' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'weight' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'port' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'target' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'recEdit' => array(
                     'httpMethod' => 'POST',
@@ -419,57 +419,57 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'type' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'id' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'name' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'content' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'ttl' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'prio' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'service' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'srvname' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'protocol' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'weight' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'port' => array(
                             'type' => 'integer',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'target' => array(
                             'type' => 'string',
-                            'location' => 'query'
-                        )
-                    )
+                            'location' => 'query',
+                        ),
+                    ),
                 ),
                 'recDelete' => array(
                     'httpMethod' => 'POST',
@@ -478,23 +478,23 @@ class ClientFactory extends AbstractClientFactory
                     'parameters' => array(
                         'z' => array(
                             'type' => 'string',
-                            'location' => 'query'
+                            'location' => 'query',
                         ),
                         'id' => array(
                             'type' => 'integer',
-                            'location' => 'query'
-                        )
-                    )
-                )
+                            'location' => 'query',
+                        ),
+                    ),
+                ),
             ),
             'models' => array(
                 'jsonResponse' => array(
                     'type' => 'object',
                     'additionalProperties' => array(
-                        'location' => 'json'
-                    )
-                )
-            )
+                        'location' => 'json',
+                    ),
+                ),
+            ),
         );
     }
 }

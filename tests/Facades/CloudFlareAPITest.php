@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\Tests\CloudFlareAPI\Facades;
 
-use GrahamCampbell\Tests\CloudFlareAPI\AbstractTestCase;
 use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+use GrahamCampbell\Tests\CloudFlareAPI\AbstractTestCase;
 
 /**
  * This is the cloudflare api facade test class.
