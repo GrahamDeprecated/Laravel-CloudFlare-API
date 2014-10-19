@@ -17,7 +17,6 @@
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
 use GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber;
-use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
 
 /**
  * This is the client factory class.

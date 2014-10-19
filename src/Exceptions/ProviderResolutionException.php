@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Factories;
+namespace GrahamCampbell\CloudFlareAPI\Exceptions;
+
+use Exception;
 
 /**
- * This is the cloudflare api factory class.
+ * This is the provider not found exception class.
  *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class CloudFlareAPIFactory extends AbstractAPIFactory
+class ProviderResolutionException extends Exception
 {
-    /**
-     * Get the api class name.
-     *
-     * @return string
-     */
-    protected function getClassName()
-    {
-        return '\GrahamCampbell\CloudFlareAPI\CloudFlareAPI';
-    }
+    //
 }

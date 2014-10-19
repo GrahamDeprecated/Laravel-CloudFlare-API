@@ -17,7 +17,6 @@
 namespace GrahamCampbell\CloudFlareAPI\Providers;
 
 use GrahamCampbell\CloudFlareAPI\Models\Ip;
-use GrahamCampbell\CoreAPI\Providers\AbstractProvider;
 
 /**
  * This is the ip provider class.

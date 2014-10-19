@@ -12,7 +12,10 @@
     "require": {
         "php": ">=5.4.7",
         "illuminate/support": "~4.1",
-        "graham-campbell/core-api": "0.6.*"
+        "graham-campbell/manager": "~1.0",
+        "guzzlehttp/guzzle": "~5.0",
+        "guzzlehttp/guzzle-services": "0.4.*",
+        "guzzlehttp/retry-subscriber": "~2.0"
     },
     "require-dev": {
         "graham-campbell/testbench": "~1.0"
@@ -29,7 +32,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-experimental": "0.6-dev"
         }
     },
     "minimum-stability": "dev",

@@ -16,8 +16,6 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use GrahamCampbell\CoreAPI\AbstractAPI;
-
 /**
  * This is the cloudflare api class.
  *

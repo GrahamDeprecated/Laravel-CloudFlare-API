@@ -16,8 +16,6 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use GrahamCampbell\CoreAPI\AbstractAPIManager;
-
 /**
  * This is the cloudflare api manager class.
  *

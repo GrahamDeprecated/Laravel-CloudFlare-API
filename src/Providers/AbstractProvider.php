@@ -16,48 +16,43 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Providers;
 
-use GrahamCampbell\CloudFlareAPI\Models\Zone;
-use Illuminate\Support\Collection;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
 
 /**
- * This is the zone provider class.
+ * This is the abstract provider class.
  *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class ZoneProvider extends AbstractProvider
+abstract class AbstractProvider
 {
     /**
-     * Get a single zone object.
+     * The guzzle client class.
      *
-     * @param string $zone
-     *
-     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
+     * @var \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
-    public function get($zone)
+    protected $client;
+
+    /**
+     * Create a new provider instance.
+     *
+     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient $client
+     *
+     * @return void
+     */
+    public function __construct(GuzzleClient $client)
     {
-        return new Zone($this->client, $zone);
+        $this->client = $client;
     }
 
     /**
-     * Get a collection of all the zones.
+     * Get the guzzle client instance.
      *
-     * @return \Illuminate\Support\Collection
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
-    public function all()
+    public function getClient()
     {
-        $multi = $this->client->zoneLoadMulti();
-
-        $zones = array_get($multi->toArray(), 'response.zones.objs');
-
-        $all = new Collection();
-
-        foreach ($zones as $zone) {
-            $name = $zone['zone_name'];
-            $all->put($name, $this->get($name));
-        }
-
-        return $all;
+        return $this->client;
     }
 }
