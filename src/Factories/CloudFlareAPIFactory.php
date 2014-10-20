@@ -35,7 +35,7 @@ class CloudFlareAPIFactory
     protected $client;
 
     /**
-     * Create a new api factory instance.
+     * Create a new cloudflare api factory instance.
      *
      * @param \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory $client
      *
@@ -51,7 +51,7 @@ class CloudFlareAPIFactory
      *
      * @param string[] $config
      *
-     * @return \GrahamCampbell\CloudFlareAPI\AbstractAPI
+     * @return \GrahamCampbell\CloudFlareAPI\CloudFlareAPI
      */
     public function make(array $config)
     {

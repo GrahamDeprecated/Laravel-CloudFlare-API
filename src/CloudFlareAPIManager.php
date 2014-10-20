@@ -37,7 +37,7 @@ class CloudFlareAPIManager extends AbstractManager
     protected $factory;
 
     /**
-     * Create a new api manager instance.
+     * Create a new cloudflare api manager instance.
      *
      * @param \Illuminate\Config\Repository                                $config
      * @param \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory $factory
