@@ -26,7 +26,7 @@ use GuzzleHttp\Command\Guzzle\GuzzleClient;
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class CloudFlareAPI extends AbstractAPI
+class CloudFlareAPI
 {
     /**
      * The provider cache.
