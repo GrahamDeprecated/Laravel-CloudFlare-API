@@ -108,7 +108,7 @@ abstract class AbstractAPI
             return $class;
         }
 
-        throw new ProviderResolutionException("Class '$class' not found for the '$name' provider.");
+        throw new ProviderResolutionException($class, $name);
     }
 
     /**

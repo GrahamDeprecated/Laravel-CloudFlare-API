@@ -19,7 +19,7 @@ namespace GrahamCampbell\CloudFlareAPI\Exceptions;
 use Exception;
 
 /**
- * This is the provider not found exception class.
+ * This is the provider resolution exception class.
  *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2013-2014 Graham Campbell
@@ -27,5 +27,53 @@ use Exception;
  */
 class ProviderResolutionException extends Exception
 {
-    //
+	/**
+	 * The class name.
+	 *
+	 * @var string
+	 */
+	protected $class;
+
+	/**
+	 * The provider name.
+	 *
+	 * @var string
+	 */
+	protected $name;
+
+    /**
+     * Create a new provider resolution exception instance.
+     *
+     * @param string $class
+     * @param string $name
+     *
+     * @return void
+     */
+    public function __construct($class, $name)
+    {
+        $this->class = $class;
+        $this->name = $name;
+
+        parent::__construct("Class '$class' not found for the '$name' provider.");
+    }
+
+    /**
+     * Get the class name.
+     *
+     * @return string
+     */
+    public function getClassName()
+    {
+        return $this->class;
+    }
+
+    /**
+     * Get the provider name.
+     *
+     * @return string
+     */
+    public function getProviderName()
+    {
+        return $this->name;
+    }
 }
