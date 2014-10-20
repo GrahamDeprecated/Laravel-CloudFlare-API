@@ -6,6 +6,8 @@ CHANGE LOG
 
 * Upgraded to guzzle 5
 * Removed dependency on core-api
+* Improved the provider resolution exception
+* Internal refactoring
 
 
 ## V0.5.1 Alpha (19/10/2014)
