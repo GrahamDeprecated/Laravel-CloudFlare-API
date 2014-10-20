@@ -27,19 +27,19 @@ use Exception;
  */
 class ProviderResolutionException extends Exception
 {
-	/**
-	 * The class name.
-	 *
-	 * @var string
-	 */
-	protected $class;
+    /**
+     * The class name.
+     *
+     * @var string
+     */
+    protected $class;
 
-	/**
-	 * The provider name.
-	 *
-	 * @var string
-	 */
-	protected $name;
+    /**
+     * The provider name.
+     *
+     * @var string
+     */
+    protected $name;
 
     /**
      * Create a new provider resolution exception instance.
