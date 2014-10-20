@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use GrahamCampbell\CloudFlareAPI\Factories\AbstractAPIFactory;
+use GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory;
 use GrahamCampbell\Manager\AbstractManager;
 use Illuminate\Config\Repository;
 
@@ -32,19 +32,19 @@ abstract class AbstractAPIManager extends AbstractManager
     /**
      * The factory instance.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Factories\AbstractAPIFactory
+     * @var \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory
      */
     protected $factory;
 
     /**
      * Create a new api manager instance.
      *
-     * @param \Illuminate\Config\Repository                              $config
-     * @param \GrahamCampbell\CloudFlareAPI\Factories\AbstractAPIFactory $factory
+     * @param \Illuminate\Config\Repository                                $config
+     * @param \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory $factory
      *
      * @return void
      */
-    public function __construct(Repository $config, AbstractAPIFactory $factory)
+    public function __construct(Repository $config, CloudFlareAPIFactory $factory)
     {
         parent::__construct($config);
         $this->factory = $factory;
@@ -65,7 +65,7 @@ abstract class AbstractAPIManager extends AbstractManager
     /**
      * Get the factory instance.
      *
-     * @return \GrahamCampbell\CloudFlareAPI\Factories\AbstractAPIFactory
+     * @return \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory
      */
     public function getFactory()
     {
