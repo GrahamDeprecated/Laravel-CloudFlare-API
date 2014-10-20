@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber;
+use GrahamCampbell\CloudFlareAPI\Subscribers\ErrorSubscriber;
 use GuzzleHttp\Client;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
@@ -160,11 +160,11 @@ class ClientFactory
     /**
      * Get the cloudflare api error subscriber.
      *
-     * @return \GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber
+     * @return \GrahamCampbell\CloudFlareAPI\Subscribers\ErrorSubscriber
      */
-    protected function getCloudFlareAPIErrorSubscriber()
+    protected function getErrorSubscriber()
     {
-        return new CloudFlareAPIErrorSubscriber();
+        return new ErrorSubscriber();
     }
 
     /**
