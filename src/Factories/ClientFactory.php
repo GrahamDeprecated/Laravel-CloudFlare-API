@@ -17,6 +17,10 @@
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
 use GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber;
+use GuzzleHttp\Client;
+use GuzzleHttp\Command\Guzzle\Description;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use GuzzleHttp\Subscriber\Retry\RetrySubscriber;
 
 /**
  * This is the client factory class.
