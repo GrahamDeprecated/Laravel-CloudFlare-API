@@ -107,41 +107,10 @@ class ClientFactory
      */
     protected function attachSubscribers(Client $client)
     {
-        $subscribers = $this->getSubscribers();
-
-        foreach ($subscribers as $subscriber) {
-            $client->getEmitter()->attach($subscriber);
-        }
+        $client->getEmitter()->attach($this->getRetrySubscriber());
+        $client->getEmitter()->attach($this->getErrorSubscriber());
 
         return $client;
-    }
-
-    /**
-     * Get all subscribers.
-     *
-     * @return \GuzzleHttp\Event\SubscriberInterface[]
-     */
-    protected function getSubscribers()
-    {
-        $subsribers = array();
-
-        $names = $this->getSubscriberNames();
-
-        foreach ($names as $name) {
-            $subsribers[] = $this->{"get{$name}Subscriber"}();
-        }
-
-        return $subsribers;
-    }
-
-    /**
-     * Get all subscriber names.
-     *
-     * @return string[]
-     */
-    protected function getSubscriberNames()
-    {
-        return array('Retry', 'CloudFlareAPIError');
     }
 
     /**
