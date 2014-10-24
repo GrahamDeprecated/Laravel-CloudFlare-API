@@ -98,9 +98,9 @@ abstract class AbstractModel
     /**
      * Make a request.
      *
-     * @param string          $method
-     * @param array           $data
-     * @param string|string[] $flush
+     * @param string                    $method
+     * @param array                     $data
+     * @param string|string[]|bool|null $flush
      *
      * @return array
      */

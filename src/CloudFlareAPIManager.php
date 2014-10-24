@@ -55,7 +55,7 @@ class CloudFlareAPIManager extends AbstractManager
      *
      * @param array $config
      *
-     * @return \GrahamCampbell\CloudFlareAPI\AbstractAPI
+     * @return \GrahamCampbell\CloudFlareAPI\CloudFlareAPI
      */
     protected function createConnection(array $config)
     {
