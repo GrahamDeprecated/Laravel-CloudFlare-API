@@ -16,7 +16,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use GrahamCampbell\CoreAPI\AbstractAPI;
+use GrahamCampbell\CloudFlareAPI\Providers\IpProvider;
+use GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider;
 
 /**
  * This is the cloudflare api class.
@@ -25,15 +26,67 @@ use GrahamCampbell\CoreAPI\AbstractAPI;
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class CloudFlareAPI extends AbstractAPI
+class CloudFlareAPI
 {
     /**
-     * Get the provider namespace.
+     * The zone provider instance.
      *
-     * @return string
+     * @var \GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider
      */
-    protected function getProviderNamespace()
+    protected $zone;
+
+    /**
+     * The ip provider instance.
+     *
+     * @var \GrahamCampbell\CloudFlareAPI\Providers\IpProvider
+     */
+    protected $ip;
+
+    /**
+     * Create a new cloudflare api instance.
+     *
+     * @param \GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider $zone
+     * @param \GrahamCampbell\CloudFlareAPI\Providers\IpProvider   $ip
+     *
+     * @return void
+     */
+    public function __construct(ZoneProvider $zone, IpProvider $ip)
     {
-        return '\GrahamCampbell\CloudFlareAPI\Providers';
+        $this->zone = $zone;
+        $this->ip = $ip;
+    }
+
+    /**
+     * Get a collection of all the zones.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function zones()
+    {
+        return $this->zone->all();
+    }
+
+    /**
+     * Get a single zone object.
+     *
+     * @param string $zone
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
+     */
+    public function zone($zone)
+    {
+        return $this->zone->get($zone);
+    }
+
+    /**
+     * Get a single ip object.
+     *
+     * @param string $ip
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
+     */
+    public function ip($ip)
+    {
+        return $this->ip->get($ip);
     }
 }

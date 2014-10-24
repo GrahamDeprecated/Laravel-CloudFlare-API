@@ -22,13 +22,13 @@ use GuzzleHttp\Event\SubscriberInterface;
 use GuzzleHttp\Exception\RequestException;
 
 /**
- * This is the cloudflare api error subscriber class.
+ * This is the error subscriber class.
  *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class CloudFlareAPIErrorSubscriber implements SubscriberInterface
+class ErrorSubscriber implements SubscriberInterface
 {
     /**
      * Get the subscriber events.

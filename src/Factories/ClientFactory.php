@@ -16,8 +16,11 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber;
-use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
+use GrahamCampbell\CloudFlareAPI\Subscribers\ErrorSubscriber;
+use GuzzleHttp\Client;
+use GuzzleHttp\Command\Guzzle\Description;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use GuzzleHttp\Subscriber\Retry\RetrySubscriber;
 
 /**
  * This is the client factory class.
@@ -26,26 +29,38 @@ use GrahamCampbell\CoreAPI\Factories\AbstractClientFactory;
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class ClientFactory extends AbstractClientFactory
+class ClientFactory
 {
     /**
-     * Get all subscriber names.
+     * Make a new guzzle services client.
      *
-     * @return string[]
+     * @param string[] $config
+     *
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
      */
-    protected function getSubscriberNames()
+    public function make(array $config)
     {
-        return array_merge(parent::getSubscriberNames(), array('CloudFlareAPIError'));
+        $client = $this->makeBaseClient($config);
+
+        return $this->makeServicesClient($client);
     }
 
     /**
-     * Get the cloudflare api error subscriber.
+     * Make a guzzle client.
      *
-     * @return \GrahamCampbell\CloudFlareAPI\Subscribers\CloudFlareAPIErrorSubscriber
+     * @param string[] $config
+     *
+     * @return \GuzzleHttp\Client
      */
-    protected function getCloudFlareAPIErrorSubscriber()
+    protected function makeBaseClient($config)
     {
-        return new CloudFlareAPIErrorSubscriber();
+        $parameters = $this->getParameters($config);
+
+        $client = new Client($parameters);
+
+        $this->attachSubscribers($client);
+
+        return $client;
     }
 
     /**
@@ -84,417 +99,68 @@ class ClientFactory extends AbstractClientFactory
     }
 
     /**
+     * Attach all subscribers to the guzzle client.
+     *
+     * @param \GuzzleHttp\Client $client
+     *
+     * @return \GuzzleHttp\Client
+     */
+    protected function attachSubscribers(Client $client)
+    {
+        $client->getEmitter()->attach($this->getRetrySubscriber());
+        $client->getEmitter()->attach($this->getErrorSubscriber());
+
+        return $client;
+    }
+
+    /**
+     * Get the retry subscriber.
+     *
+     * @return \GuzzleHttp\Subscriber\Retry\RetrySubscriber
+     */
+    protected function getRetrySubscriber()
+    {
+        $filter = RetrySubscriber::createChainFilter(array(
+            RetrySubscriber::createIdempotentFilter(),
+            RetrySubscriber::createStatusFilter(),
+        ));
+
+        return new RetrySubscriber(array('filter' => $filter));
+    }
+
+    /**
+     * Get the cloudflare api error subscriber.
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\Subscribers\ErrorSubscriber
+     */
+    protected function getErrorSubscriber()
+    {
+        return new ErrorSubscriber();
+    }
+
+    /**
+     * Make a new guzzle services client.
+     *
+     * @param \GuzzleHttp\Client $client
+     *
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
+     */
+    protected function makeServicesClient(Client $client)
+    {
+        $parameters = $this->getDescription();
+
+        $description = new Description($parameters);
+
+        return new GuzzleClient($client, $description);
+    }
+
+    /**
      * Get the description constructor parameters.
      *
      * @return array
      */
     protected function getDescription()
     {
-        return array(
-            'operations' => array(
-                'stats' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=stats',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'interval' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'zoneLoadMulti' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=zone_load_multi',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        // none
-                    ),
-                ),
-                'recLoadAll' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=rec_load_all',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'o' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'zoneCheck' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=zone_check',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'zones' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'zoneIps' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=zone_ips&geo=1',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'hours' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'class' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'ipLkup' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=ip_lkup',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'ip' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'zoneSettings' => array(
-                    'httpMethod' => 'GET',
-                    'uri' => '?a=zone_settings',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'secLvl' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=sec_lvl',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'cacheLvl' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=cache_lvl',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'devMode' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=devmode',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'fpurgeTs' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=fpurge_ts&v=1',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'zoneFilePurge' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=zone_file_purge',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'url' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'zoneGrab' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=zone_grab',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'zid' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'wl' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=wl',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'key' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'ban' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=ban',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'key' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'nul' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=nul',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'key' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'ipv46' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=ipv46',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'async' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=async',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'minify' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=minify',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'mirage' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=mirage2',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'v' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'recNew' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=rec_new',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'type' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'name' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'content' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'ttl' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'prio' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'service' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'srvname' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'protocol' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'weight' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'port' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'target' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'recEdit' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=rec_edit',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'type' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'id' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'name' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'content' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'ttl' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'prio' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'service' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'srvname' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'protocol' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'weight' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'port' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                        'target' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-                'recDelete' => array(
-                    'httpMethod' => 'POST',
-                    'uri' => '?a=rec_delete',
-                    'responseModel' => 'jsonResponse',
-                    'parameters' => array(
-                        'z' => array(
-                            'type' => 'string',
-                            'location' => 'query',
-                        ),
-                        'id' => array(
-                            'type' => 'integer',
-                            'location' => 'query',
-                        ),
-                    ),
-                ),
-            ),
-            'models' => array(
-                'jsonResponse' => array(
-                    'type' => 'object',
-                    'additionalProperties' => array(
-                        'location' => 'json',
-                    ),
-                ),
-            ),
-        );
+        return require 'description.php';
     }
 }

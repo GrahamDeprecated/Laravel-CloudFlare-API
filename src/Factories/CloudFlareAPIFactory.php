@@ -16,7 +16,9 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
-use GrahamCampbell\CoreAPI\Factories\AbstractAPIFactory;
+use GrahamCampbell\CloudFlareAPI\CloudFlareAPI;
+use GrahamCampbell\CloudFlareAPI\Providers\IpProvider;
+use GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider;
 
 /**
  * This is the cloudflare api factory class.
@@ -25,15 +27,62 @@ use GrahamCampbell\CoreAPI\Factories\AbstractAPIFactory;
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class CloudFlareAPIFactory extends AbstractAPIFactory
+class CloudFlareAPIFactory
 {
     /**
-     * Get the api class name.
+     * The client factory instance.
      *
-     * @return string
+     * @var \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory
      */
-    protected function getClassName()
+    protected $client;
+
+    /**
+     * Create a new cloudflare api factory instance.
+     *
+     * @param \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory $client
+     *
+     * @return void
+     */
+    public function __construct(ClientFactory $client)
     {
-        return '\GrahamCampbell\CloudFlareAPI\CloudFlareAPI';
+        $this->client = $client;
+    }
+
+    /**
+     * Make a new api instance.
+     *
+     * @param string[] $config
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\CloudFlareAPI
+     */
+    public function make(array $config)
+    {
+        $client = $this->createClient($config);
+        $zone = new ZoneProvider($client);
+        $ip = new IpProvider($client);
+
+        return new CloudFlareAPI($zone, $ip);
+    }
+
+    /**
+     * Get a new guzzle client.
+     *
+     * @param string[] $config
+     *
+     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
+     */
+    public function createClient(array $config)
+    {
+        return $this->client->make($config);
+    }
+
+    /**
+     * Get the client factory instance.
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\Factories\ClientFactory
+     */
+    public function getClient()
+    {
+        return $this->client;
     }
 }

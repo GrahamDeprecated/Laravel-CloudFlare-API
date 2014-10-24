@@ -16,7 +16,6 @@
 
 namespace GrahamCampbell\CloudFlareAPI\Models;
 
-use GrahamCampbell\CoreAPI\Models\AbstractModel;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 
 /**

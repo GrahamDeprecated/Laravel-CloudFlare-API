@@ -2,6 +2,14 @@ CHANGE LOG
 ==========
 
 
+## V0.6 Alpha (Upcoming)
+
+* Upgraded to guzzle 5
+* Removed dependency on core-api
+* Improved the provider resolution exception
+* Internal refactoring
+
+
 ## V0.5.1 Alpha (19/10/2014)
 
 * Added cs fixers to the test suite
