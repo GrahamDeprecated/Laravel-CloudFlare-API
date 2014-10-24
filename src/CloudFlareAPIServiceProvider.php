@@ -62,7 +62,7 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     protected function registerFactory()
     {
-        $this->app->bindShared('cloudflareapi.factory', function ($app) {
+        $this->app->bindShared('cloudflareapi.factory', function () {
             $client = new Factories\ClientFactory();
 
             return new Factories\CloudFlareAPIFactory($client);
