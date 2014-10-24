@@ -161,6 +161,6 @@ class ClientFactory
      */
     protected function getDescription()
     {
-        return require 'decription.php';
+        return require 'description.php';
     }
 }
