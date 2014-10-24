@@ -58,7 +58,9 @@ class ClientFactory
 
         $client = new Client($parameters);
 
-        return $this->attachSubscribers($client);
+        $this->attachSubscribers($client);
+
+        return $client;
     }
 
     /**

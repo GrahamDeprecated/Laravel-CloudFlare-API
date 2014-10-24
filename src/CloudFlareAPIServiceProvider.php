@@ -51,20 +51,36 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerCloudFlareAPIManager();
+        $this->registerFactory();
+        $this->registerManager();
     }
 
     /**
-     * Register the cloudflare api manager class.
+     * Register the factory class.
      *
      * @return void
      */
-    protected function registerCloudFlareAPIManager()
+    protected function registerFactory()
+    {
+        $this->app->bindShared('cloudflareapi.factory', function ($app) {
+            $client = new Factories\ClientFactory();
+
+            return new Factories\CloudFlareAPIFactory($client);
+        });
+
+        $this->app->alias('cloudflareapi.factory', 'GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory');
+    }
+
+    /**
+     * Register the manager class.
+     *
+     * @return void
+     */
+    protected function registerManager()
     {
         $this->app->bindShared('cloudflareapi', function ($app) {
             $config = $app['config'];
-            $client = new Factories\ClientFactory();
-            $factory = new Factories\CloudFlareAPIFactory($client);
+            $factory = $app['cloudflareapi.factory'];
 
             return new CloudFlareAPIManager($config, $factory);
         });
@@ -81,6 +97,7 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
     {
         return array(
             'cloudflareapi',
+            'cloudflareapi.factory',
         );
     }
 }

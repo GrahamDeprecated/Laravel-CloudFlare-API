@@ -17,6 +17,8 @@
 namespace GrahamCampbell\CloudFlareAPI\Factories;
 
 use GrahamCampbell\CloudFlareAPI\CloudFlareAPI;
+use GrahamCampbell\CloudFlareAPI\Providers\IpProvider;
+use GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider;
 
 /**
  * This is the cloudflare api factory class.
@@ -56,8 +58,10 @@ class CloudFlareAPIFactory
     public function make(array $config)
     {
         $client = $this->createClient($config);
+        $zone = new ZoneProvider($client);
+        $ip = new IpProvider($client);
 
-        return new CloudFlareAPI($client);
+        return new CloudFlareAPI($zone, $ip);
     }
 
     /**

@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use GrahamCampbell\CloudFlareAPI\Exceptions\ProviderResolutionException;
-use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use GrahamCampbell\CloudFlareAPI\Providers\IpProvider;
+use GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider;
 
 /**
  * This is the cloudflare api class.
@@ -29,179 +29,64 @@ use GuzzleHttp\Command\Guzzle\GuzzleClient;
 class CloudFlareAPI
 {
     /**
-     * The provider cache.
+     * The zone provider instance.
      *
-     * @var array
+     * @var \GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider
      */
-    protected $providers = array();
+    protected $zone;
 
     /**
-     * The guzzle client class.
+     * The ip provider instance.
      *
-     * @var \GuzzleHttp\Command\Guzzle\GuzzleClient
+     * @var \GrahamCampbell\CloudFlareAPI\Providers\IpProvider
      */
-    protected $client;
+    protected $ip;
 
     /**
      * Create a new cloudflare api instance.
      *
-     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient $client
+     * @param \GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider $zone
+     * @param \GrahamCampbell\CloudFlareAPI\Providers\IpProvider   $ip
      *
      * @return void
      */
-    public function __construct(GuzzleClient $client)
+    public function __construct(ZoneProvider $zone, IpProvider $ip)
     {
-        $this->client = $client;
+        $this->zone = $zone;
+        $this->ip = $ip;
     }
 
     /**
-     * Get a provider object.
+     * Get a collection of all the zones.
      *
-     * @param string $name
-     *
-     * @return \GrahamCampbell\CloudFlareAPI\Providers\AbstractProvider
+     * @return \Illuminate\Support\Collection
      */
-    protected function getProvider($name)
+    public function zones()
     {
-        if (!array_key_exists($name, $this->providers)) {
-            $this->providers[$name] = $this->getNewProvider($name);
-        }
-
-        return $this->providers[$name];
+        return $this->zone->all();
     }
 
     /**
-     * Get a new provider object.
+     * Get a single zone object.
      *
-     * @param string $name
+     * @param string $zone
      *
-     * @return \GrahamCampbell\CloudFlareAPI\Providers\AbstractProvider
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
      */
-    protected function getNewProvider($name)
+    public function zone($zone)
     {
-        $class = $this->getProviderClass($name);
-
-        return new $class($this->client);
+        return $this->zone->get($zone);
     }
 
     /**
-     * Get a provider class name.
+     * Get a single ip object.
      *
-     * @param string $name
+     * @param string $ip
      *
-     * @throws \GrahamCampbell\CloudFlareAPI\Exceptions\ProviderResolutionException
-     *
-     * @return string
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
      */
-    protected function getProviderClass($name)
+    public function ip($ip)
     {
-        $class = '\\GrahamCampbell\\CloudFlareAPI\\Providers\\'.ucfirst($name).'Provider';
-
-        if (class_exists($class)) {
-            return $class;
-        }
-
-        throw new ProviderResolutionException($class, $name);
-    }
-
-    /**
-     * Get the provider method name.
-     *
-     * Here we calculate the correct method to call on the provider. Note that
-     * this won't work if the singular form is the same as the plural. For this
-     * reason, provider classes should be named in away that avoids using such
-     * words, otherwise we have no way for the user to specify whether they
-     * want a single model, or a collection unless we were to change the syntax
-     * of the whole process which is undesirable.
-     *
-     * @param bool $singular
-     * @param bool $where
-     * @param bool $create
-     *
-     * @throws \GrahamCampbell\CloudFlareAPI\Exceptions\ProviderResolutionException
-     *
-     * @return string
-     */
-    protected function getProviderMethod($singular, $where, $create)
-    {
-        if ($singular && !$where && !$create) {
-            return 'get';
-        }
-
-        if (!$singular && !$where && !$create) {
-            return 'all';
-        }
-
-        if (!$singular && $where && !$create) {
-            return 'where';
-        }
-
-        if ($singular && !$where && $create) {
-            return 'create';
-        }
-
-        throw new ProviderResolutionException("The provider method could not be resolved.");
-    }
-
-    /**
-     * Get the normalised method data.
-     *
-     * See the node about naming on the getProviderMethod method.
-     *
-     * @param string $method
-     *
-     * @return array
-     */
-    protected function normaliseMethod($method)
-    {
-        // strip the where from the end
-        if ($where = (strpos($method, 'Where') !== false)) {
-            $method = substr($method, 0, -5);
-        }
-
-        // strip the create from the start
-        if ($create = (strpos($method, 'create') !== false)) {
-            $method = lcfirst(substr($method, 6));
-        }
-
-        // calculate singular information
-        $isSingular = (($singular = str_singular($method)) == $method);
-
-        return compact('where', 'create', 'singular', 'isSingular');
-    }
-
-    /**
-     * Get the client instance.
-     *
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
-     * Dynamically pass information between the providers.
-     *
-     * @param string $method
-     * @param array  $parameters
-     *
-     * @throws \GrahamCampbell\CloudFlareAPI\Exceptions\ProviderResolutionException
-     *
-     * @return mixed
-     */
-    public function __call($method, $parameters)
-    {
-        $data = $this->normaliseMethod($method);
-
-        $function = $this->getProviderMethod($data['isSingular'], $data['where'], $data['create']);
-
-        $provider = $this->getProvider($data['singular']);
-
-        if (!method_exists($provider, $function)) {
-            throw new ProviderResolutionException("The provider does not support '$function' functionality.");
-        }
-
-        return call_user_func_array(array($provider, $function), $parameters);
+        return $this->ip->get($ip);
     }
 }

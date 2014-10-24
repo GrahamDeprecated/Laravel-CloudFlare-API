@@ -29,18 +29,6 @@ use Illuminate\Support\Collection;
 class ZoneProvider extends AbstractProvider
 {
     /**
-     * Get a single zone object.
-     *
-     * @param string $zone
-     *
-     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
-     */
-    public function get($zone)
-    {
-        return new Zone($this->client, $zone);
-    }
-
-    /**
      * Get a collection of all the zones.
      *
      * @return \Illuminate\Support\Collection
@@ -59,5 +47,17 @@ class ZoneProvider extends AbstractProvider
         }
 
         return $all;
+    }
+
+    /**
+     * Get a single zone object.
+     *
+     * @param string $zone
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Zone
+     */
+    public function get($zone)
+    {
+        return new Zone($this->client, $zone);
     }
 }
