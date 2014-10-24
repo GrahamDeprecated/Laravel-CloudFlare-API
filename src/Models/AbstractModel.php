@@ -89,7 +89,7 @@ abstract class AbstractModel
         $data = $this->data($data);
 
         if (!isset($this->cache[$method][$key])) {
-            $this->cache[$method][$key] = $this->client->$method($data)->toArray();
+            $this->cache[$method][$key] = $this->client->$method($data);
         }
 
         return $this->cache[$method][$key];
@@ -110,7 +110,7 @@ abstract class AbstractModel
 
         $this->clearCache($flush);
 
-        return $this->client->$method($data)->toArray();
+        return $this->client->$method($data);
     }
 
     /**

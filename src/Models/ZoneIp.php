@@ -102,7 +102,7 @@ class ZoneIp extends Ip
     {
         if (!$this->cache['zoneIp']) {
             $data = array('z' => $this->zone->getZone());
-            $ips = $this->client->zoneIps($this->data($data))->toArray()['response']['ips'];
+            $ips = $this->client->zoneIps($this->data($data))['response']['ips'];
             foreach ($ips as $ip) {
                 if ($ip['ip'] == $this->ip) {
                     $this->cache['zoneIp'] = $ip;

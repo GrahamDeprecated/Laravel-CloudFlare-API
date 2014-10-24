@@ -37,7 +37,7 @@ class ZoneProvider extends AbstractProvider
     {
         $multi = $this->client->zoneLoadMulti();
 
-        $zones = array_get($multi->toArray(), 'response.zones.objs');
+        $zones = array_get($multi, 'response.zones.objs');
 
         $all = new Collection();
 
