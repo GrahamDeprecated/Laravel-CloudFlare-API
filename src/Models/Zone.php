@@ -476,8 +476,8 @@ class Zone extends AbstractModel
     /**
      * Get all ips as a collection of models.
      *
-     * @param int    $hours
-     * @param string $class
+     * @param int         $hours
+     * @param string|null $class
      *
      * @return \Illuminate\Support\Collection
      */
@@ -501,9 +501,9 @@ class Zone extends AbstractModel
     /**
      * Get an ip as a model.
      *
-     * @param string $address
-     * @param int    $hours
-     * @param string $class
+     * @param string      $address
+     * @param int         $hours
+     * @param string|null $class
      *
      * @return \GrahamCampbell\CloudFlareAPI\Models\ZoneIp
      */
