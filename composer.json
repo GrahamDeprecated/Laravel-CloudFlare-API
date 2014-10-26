@@ -9,18 +9,12 @@
             "email": "graham@mineuk.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/GrahamCampbell/guzzle-services"
-        }
-    ],
     "require": {
         "php": ">=5.4.7",
         "illuminate/support": "~4.1",
         "graham-campbell/manager": "~1.0",
         "guzzlehttp/guzzle": "~5.0",
-        "guzzlehttp/guzzle-services": "dev-patch-1 as 0.4.x-dev",
+        "guzzlehttp/guzzle-services": "0.4.*",
         "guzzlehttp/retry-subscriber": "~2.0"
     },
     "require-dev": {
