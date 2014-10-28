@@ -37,7 +37,7 @@ class ErrorSubscriber implements SubscriberInterface
      */
     public function getEvents()
     {
-        return array('complete' => array('onComplete', RequestEvents::VERIFY_RESPONSE - 50));
+        return ['complete' => ['onComplete', RequestEvents::VERIFY_RESPONSE - 50]];
     }
 
     /**

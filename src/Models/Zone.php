@@ -44,7 +44,7 @@ class Zone extends AbstractModel
      *
      * @return void
      */
-    public function __construct(GuzzleClient $client, $zone, array $cache = array())
+    public function __construct(GuzzleClient $client, $zone, array $cache = [])
     {
         parent::__construct($client, $cache);
 
@@ -306,7 +306,7 @@ class Zone extends AbstractModel
      */
     public function setSecurityLevel($level)
     {
-        $this->action('secLvl', array('v' => $level), 'zoneSettings');
+        $this->action('secLvl', ['v' => $level], 'zoneSettings');
 
         return $this;
     }
@@ -320,7 +320,7 @@ class Zone extends AbstractModel
      */
     public function setCacheLevel($level)
     {
-        $this->action('cacheLvl', array('v' => $level), 'zoneSettings');
+        $this->action('cacheLvl', ['v' => $level], 'zoneSettings');
 
         return $this;
     }
@@ -332,7 +332,7 @@ class Zone extends AbstractModel
      */
     public function enableDevMode()
     {
-        $this->action('devMode', array('v' => 1), 'zoneSettings');
+        $this->action('devMode', ['v' => 1], 'zoneSettings');
 
         return $this;
     }
@@ -344,7 +344,7 @@ class Zone extends AbstractModel
      */
     public function disableDevMode()
     {
-        $this->action('devMode', array('v' => 0), 'zoneSettings');
+        $this->action('devMode', ['v' => 0], 'zoneSettings');
 
         return $this;
     }
@@ -356,7 +356,7 @@ class Zone extends AbstractModel
      */
     public function purgeAll()
     {
-        $this->action('fpurgeTs', array('v' => 1), false);
+        $this->action('fpurgeTs', ['v' => 1], false);
 
         return $this;
     }
@@ -370,7 +370,7 @@ class Zone extends AbstractModel
      */
     public function purgeUrl($url)
     {
-        $this->action('zoneFilePurge', array('url' => $url), false);
+        $this->action('zoneFilePurge', ['url' => $url], false);
 
         return $this;
     }
@@ -398,11 +398,11 @@ class Zone extends AbstractModel
      */
     public function updateSnapshot()
     {
-        $zoneSettings = $this->get('zoneCheck', array('zones' => $this->zone));
+        $zoneSettings = $this->get('zoneCheck', ['zones' => $this->zone]);
 
         $zid = (int) array_get($zoneSettings, 'response.zones')[$this->zone];
 
-        $this->action('zoneGrab', array('zid' => $zid), false);
+        $this->action('zoneGrab', ['zid' => $zid], false);
 
         return $this;
     }
@@ -416,7 +416,7 @@ class Zone extends AbstractModel
      */
     public function setIpVersions($versions)
     {
-        $this->action('ipv46', array('v' => $versions), 'zoneSettings');
+        $this->action('ipv46', ['v' => $versions], 'zoneSettings');
 
         return $this;
     }
@@ -430,7 +430,7 @@ class Zone extends AbstractModel
      */
     public function setRocketLoader($level)
     {
-        $this->action('async', array('v' => $level), 'zoneSettings');
+        $this->action('async', ['v' => $level], 'zoneSettings');
 
         return $this;
     }
@@ -444,7 +444,7 @@ class Zone extends AbstractModel
      */
     public function setMinification($level)
     {
-        $this->action('minify', array('v' => $level), 'zoneSettings');
+        $this->action('minify', ['v' => $level], 'zoneSettings');
 
         return $this;
     }
@@ -456,7 +456,7 @@ class Zone extends AbstractModel
      */
     public function enableMirage()
     {
-        $this->action('mirage', array('v' => 1), 'zoneSettings');
+        $this->action('mirage', ['v' => 1], 'zoneSettings');
 
         return $this;
     }
@@ -468,7 +468,7 @@ class Zone extends AbstractModel
      */
     public function disableMirage()
     {
-        $this->action('mirage', array('v' => 0), 'zoneSettings');
+        $this->action('mirage', ['v' => 0], 'zoneSettings');
 
         return $this;
     }
@@ -491,7 +491,7 @@ class Zone extends AbstractModel
 
         foreach ($ips as $ip) {
             $name = $ip['ip'];
-            $zoneIp = new ZoneIP($this->client, $name, $this, array('zoneIp' => $ip));
+            $zoneIp = new ZoneIP($this->client, $name, $this, ['zoneIp' => $ip]);
             $all->put($name, $zoneIp);
         }
 
@@ -515,7 +515,7 @@ class Zone extends AbstractModel
 
         foreach ($ips as $ip) {
             if ($ip['ip'] == $address) {
-                return new ZoneIP($this->client, $address, $this, array('zoneIp' => $ip));
+                return new ZoneIP($this->client, $address, $this, ['zoneIp' => $ip]);
             }
         }
     }
@@ -535,7 +535,7 @@ class Zone extends AbstractModel
 
         foreach ($records as $record) {
             $id = (int) $record['rec_id'];
-            $model = new Record($this->client, $id, $this, array('recLoad' => $record));
+            $model = new Record($this->client, $id, $this, ['recLoad' => $record]);
             $all->put($id, $model);
         }
 
@@ -557,7 +557,7 @@ class Zone extends AbstractModel
 
         foreach ($records as $record) {
             if ((int) $record['rec_id'] === (int) $id) {
-                return new Record($this->client, (int) $id, $this, array('recLoad' => $record));
+                return new Record($this->client, (int) $id, $this, ['recLoad' => $record]);
             }
         }
     }
@@ -599,7 +599,7 @@ class Zone extends AbstractModel
      */
     protected function stat($time, $name)
     {
-        $stats = $this->get('stats', array('interval' => $time), (string) $time);
+        $stats = $this->get('stats', ['interval' => $time], (string) $time);
 
         return array_get($stats, 'response.result.objs.0.'.$name);
     }
@@ -625,8 +625,8 @@ class Zone extends AbstractModel
      *
      * @return array
      */
-    protected function data(array $data = array())
+    protected function data(array $data = [])
     {
-        return array_merge(array('z' => $this->zone), $data);
+        return array_merge(['z' => $this->zone], $data);
     }
 }

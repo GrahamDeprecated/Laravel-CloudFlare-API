@@ -44,7 +44,7 @@ class ZoneIp extends Ip
      *
      * @return void
      */
-    public function __construct(GuzzleClient $client, $ip, Zone $zone, array $cache = array())
+    public function __construct(GuzzleClient $client, $ip, Zone $zone, array $cache = [])
     {
         parent::__construct($client, $ip, $cache);
 
@@ -101,7 +101,7 @@ class ZoneIp extends Ip
     protected function lookup($key)
     {
         if (!$this->cache['zoneIp']) {
-            $data = array('z' => $this->zone->getZone());
+            $data = ['z' => $this->zone->getZone()];
             $ips = $this->client->zoneIps($this->data($data))['response']['ips'];
             foreach ($ips as $ip) {
                 if ($ip['ip'] == $this->ip) {

@@ -74,10 +74,10 @@ class ClientFactory
     {
         $config = $this->getConfig($config);
 
-        return array(
+        return [
             'base_url' => 'https://www.cloudflare.com/api_json.html',
-            'defaults' => array('query' => array('tkn' => $config['token'], 'email' => $config['email'])),
-        );
+            'defaults' => ['query' => ['tkn' => $config['token'], 'email' => $config['email']]],
+        ];
     }
 
     /**
@@ -95,7 +95,7 @@ class ClientFactory
             throw new \InvalidArgumentException('The cloudflare client requires configuration.');
         }
 
-        return array_only($config, array('token', 'email'));
+        return array_only($config, ['token', 'email']);
     }
 
     /**
@@ -120,12 +120,12 @@ class ClientFactory
      */
     protected function getRetrySubscriber()
     {
-        $filter = RetrySubscriber::createChainFilter(array(
+        $filter = RetrySubscriber::createChainFilter([
             RetrySubscriber::createIdempotentFilter(),
             RetrySubscriber::createStatusFilter(),
-        ));
+        ]);
 
-        return new RetrySubscriber(array('filter' => $filter));
+        return new RetrySubscriber(['filter' => $filter]);
     }
 
     /**
