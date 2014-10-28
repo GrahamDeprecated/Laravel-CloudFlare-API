@@ -34,9 +34,9 @@ You can register the CloudFlareAPI facade in the `aliases` key of your `config/a
 
 * `'CloudFlareAPI' => 'GrahamCampbell\CloudFlareAPI\Facades\CloudFlareAPI'`
 
-#### Looking for a laravel 5 compatable version?
+#### Looking for a laravel 4 compatable version?
 
-Checkout the [master branch](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/tree/master), installable by requiring `"graham-campbell/cloudflare-api": "0.7.*"`.
+Checkout the [0.6 branch](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/tree/0.6), installable by requiring `"graham-campbell/cloudflare-api": "0.6.*"`.
 
 
 ## Configuration
