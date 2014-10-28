@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V0.7 Alpha (Upcoming)
+
+* Upgraded to laravel 5
+
+
 ## V0.6 Alpha (Upcoming)
 
 * Upgraded to guzzle 5

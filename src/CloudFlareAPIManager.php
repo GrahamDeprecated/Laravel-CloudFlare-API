@@ -18,7 +18,7 @@ namespace GrahamCampbell\CloudFlareAPI;
 
 use GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory;
 use GrahamCampbell\Manager\AbstractManager;
-use Illuminate\Config\Repository;
+use Illuminate\Contracts\Config\Repository;
 
 /**
  * This is the cloudflare api manager class.
@@ -39,7 +39,7 @@ class CloudFlareAPIManager extends AbstractManager
     /**
      * Create a new cloudflare api manager instance.
      *
-     * @param \Illuminate\Config\Repository                                $config
+     * @param \Illuminate\Contracts\Config\Repository                      $config
      * @param \GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory $factory
      *
      * @return void

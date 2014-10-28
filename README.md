@@ -1,7 +1,7 @@
 Laravel CloudFlare API
 ======================
 
-Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a CloudFlare API client for [Laravel 4.1/4.2](http://laravel.com). It utilises [Guzzle 5](https://github.com/guzzle/guzzle), and my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a CloudFlare API client for [Laravel 5](http://laravel.com). It utilises [Guzzle 5](https://github.com/guzzle/guzzle), and my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-CloudFlare-API/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
 
 ![Laravel CloudFlare API](https://cloud.githubusercontent.com/assets/2829600/4432317/c173f24c-468c-11e4-9ff5-4a6327442d43.PNG)
 
@@ -21,16 +21,16 @@ Laravel CloudFlare API was created by, and is maintained by [Graham Campbell](ht
 To get the latest version of Laravel CloudFlare API, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"graham-campbell/cloudflare-api": "0.6.*"
+"graham-campbell/cloudflare-api": "0.7.*"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-Once Laravel CloudFlare API is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+Once Laravel CloudFlare API is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
 * `'GrahamCampbell\CloudFlareAPI\CloudFlareAPIServiceProvider'`
 
-You can register the CloudFlareAPI facade in the `aliases` key of your `app/config/app.php` file if you like.
+You can register the CloudFlareAPI facade in the `aliases` key of your `config/app.php` file if you like.
 
 * `'CloudFlareAPI' => 'GrahamCampbell\CloudFlareAPI\Facades\CloudFlareAPI'`
 
@@ -42,7 +42,7 @@ Laravel CloudFlare API requires configuration.
 To get started, first publish the package config file:
 
 ```bash
-$ php artisan config:publish graham-campbell/cloudflare-api
+$ php artisan publish:config graham-campbell/cloudflare-api
 ```
 
 There are two config options:

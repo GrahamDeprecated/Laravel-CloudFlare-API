@@ -62,7 +62,7 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     protected function registerFactory()
     {
-        $this->app->bindShared('cloudflareapi.factory', function () {
+        $this->app->singleton('cloudflareapi.factory', function () {
             $client = new Factories\ClientFactory();
 
             return new Factories\CloudFlareAPIFactory($client);
@@ -78,7 +78,7 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     protected function registerManager()
     {
-        $this->app->bindShared('cloudflareapi', function ($app) {
+        $this->app->singleton('cloudflareapi', function ($app) {
             $config = $app['config'];
             $factory = $app['cloudflareapi.factory'];
 
