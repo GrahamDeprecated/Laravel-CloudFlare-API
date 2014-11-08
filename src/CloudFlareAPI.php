@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use GrahamCampbell\CloudFlareAPI\Providers\IpProvider;
-use GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider;
+use GrahamCampbell\CloudFlareAPI\Repositories\IpRepository;
+use GrahamCampbell\CloudFlareAPI\Repositories\ZoneRepository;
 
 /**
  * This is the cloudflare api class.
@@ -29,28 +29,28 @@ use GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider;
 class CloudFlareAPI
 {
     /**
-     * The zone provider instance.
+     * The zone repository instance.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider
+     * @var \GrahamCampbell\CloudFlareAPI\Repositories\ZoneRepository
      */
     protected $zone;
 
     /**
-     * The ip provider instance.
+     * The ip repository instance.
      *
-     * @var \GrahamCampbell\CloudFlareAPI\Providers\IpProvider
+     * @var \GrahamCampbell\CloudFlareAPI\Repositories\IpRepository
      */
     protected $ip;
 
     /**
      * Create a new cloudflare api instance.
      *
-     * @param \GrahamCampbell\CloudFlareAPI\Providers\ZoneProvider $zone
-     * @param \GrahamCampbell\CloudFlareAPI\Providers\IpProvider   $ip
+     * @param \GrahamCampbell\CloudFlareAPI\Repositories\ZoneRepository $zone
+     * @param \GrahamCampbell\CloudFlareAPI\Repositories\IpRepository   $ip
      *
      * @return void
      */
-    public function __construct(ZoneProvider $zone, IpProvider $ip)
+    public function __construct(ZoneRepository $zone, IpRepository $ip)
     {
         $this->zone = $zone;
         $this->ip = $ip;

@@ -14,45 +14,28 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Providers;
+namespace GrahamCampbell\CloudFlareAPI\Repositories;
 
-use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use GrahamCampbell\CloudFlareAPI\Models\Ip;
 
 /**
- * This is the abstract provider class.
+ * This is the ip repository class.
  *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-abstract class AbstractProvider
+class IpRepository extends AbstractRepository
 {
     /**
-     * The guzzle client class.
+     * Get a single ip object.
      *
-     * @var \GuzzleHttp\Command\Guzzle\GuzzleClient
+     * @param string $ip
+     *
+     * @return \GrahamCampbell\CloudFlareAPI\Models\Ip
      */
-    protected $client;
-
-    /**
-     * Create a new provider instance.
-     *
-     * @param \GuzzleHttp\Command\Guzzle\GuzzleClient $client
-     *
-     * @return void
-     */
-    public function __construct(GuzzleClient $client)
+    public function get($ip)
     {
-        $this->client = $client;
-    }
-
-    /**
-     * Get the guzzle client instance.
-     *
-     * @return \GuzzleHttp\Command\Guzzle\GuzzleClient
-     */
-    public function getClient()
-    {
-        return $this->client;
+        return new Ip($this->client, $ip);
     }
 }

@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\CloudFlareAPI\Providers;
+namespace GrahamCampbell\CloudFlareAPI\Repositories;
 
 use GrahamCampbell\CloudFlareAPI\Models\Zone;
 use Illuminate\Support\Collection;
 
 /**
- * This is the zone provider class.
+ * This is the zone repository class.
  *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-CloudFlare-API/blob/master/LICENSE.md> Apache 2.0
  */
-class ZoneProvider extends AbstractProvider
+class ZoneRepository extends AbstractRepository
 {
     /**
      * Get a collection of all the zones.
