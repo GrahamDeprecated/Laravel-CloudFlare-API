@@ -8,7 +8,7 @@ CHANGE LOG
 * Renamed providers to repositories
 
 
-## V0.6 Alpha (Upcoming)
+## V0.6 Alpha (08/11/2014)
 
 * Upgraded to guzzle 5
 * Removed dependency on core-api
