@@ -17,395 +17,395 @@
 return [
     'operations' => [
         'stats' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=stats',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=stats',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'interval' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'zoneLoadMulti' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=zone_load_multi',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=zone_load_multi',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 // none
             ],
         ],
         'recLoadAll' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=rec_load_all',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=rec_load_all',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'o' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'zoneCheck' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=zone_check',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=zone_check',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'zones' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'zoneIps' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=zone_ips&geo=1',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=zone_ips&geo=1',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'hours' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'class' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'ipLkup' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=ip_lkup',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=ip_lkup',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'ip' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'zoneSettings' => [
-            'httpMethod' => 'GET',
-            'uri' => '?a=zone_settings',
+            'httpMethod'    => 'GET',
+            'uri'           => '?a=zone_settings',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'secLvl' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=sec_lvl',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=sec_lvl',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'cacheLvl' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=cache_lvl',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=cache_lvl',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'devMode' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=devmode',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=devmode',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'fpurgeTs' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=fpurge_ts&v=1',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=fpurge_ts&v=1',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'zoneFilePurge' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=zone_file_purge',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=zone_file_purge',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'url' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'zoneGrab' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=zone_grab',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=zone_grab',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'zid' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'wl' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=wl',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=wl',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'key' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'ban' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=ban',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=ban',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'key' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'nul' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=nul',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=nul',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'key' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'ipv46' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=ipv46',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=ipv46',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'async' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=async',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=async',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'minify' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=minify',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=minify',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'mirage' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=mirage2',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=mirage2',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'v' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
         ],
         'recNew' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=rec_new',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=rec_new',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'type' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'name' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'content' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'ttl' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'prio' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'service' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'srvname' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'protocol' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'weight' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'port' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'target' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'recEdit' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=rec_edit',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=rec_edit',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'type' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'id' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'name' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'content' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'ttl' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'prio' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'service' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'srvname' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'protocol' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'weight' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'port' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
                 'target' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
             ],
         ],
         'recDelete' => [
-            'httpMethod' => 'POST',
-            'uri' => '?a=rec_delete',
+            'httpMethod'    => 'POST',
+            'uri'           => '?a=rec_delete',
             'responseModel' => 'jsonResponse',
-            'parameters' => [
+            'parameters'    => [
                 'z' => [
-                    'type' => 'string',
+                    'type'     => 'string',
                     'location' => 'query',
                 ],
                 'id' => [
-                    'type' => 'integer',
+                    'type'     => 'integer',
                     'location' => 'query',
                 ],
             ],
@@ -413,7 +413,7 @@ return [
     ],
     'models' => [
         'jsonResponse' => [
-            'type' => 'object',
+            'type'                 => 'object',
             'additionalProperties' => [
                 'location' => 'json',
             ],
