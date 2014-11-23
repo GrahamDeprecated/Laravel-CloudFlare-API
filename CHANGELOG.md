@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V0.6.1 Alpha (Upcoming)
+
+* Removed the cs fixers
+
+
 ## V0.6 Alpha (08/11/2014)
 
 * Upgraded to guzzle 5
