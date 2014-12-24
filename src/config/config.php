@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -40,18 +40,18 @@ return array(
     |
     */
 
-    'connections' => array(
+    'connections' => [
 
-        'main' => array(
+        'main' => [
             'token'   => 'your-token',
             'email'   => 'your-email',
-        ),
+        ],
 
-        'alternative' => array(
+        'alternative' => [
             'token'   => 'your-token',
             'email'   => 'your-email',
-        ),
+        ],
 
-    ),
+    ],
 
-);
+];

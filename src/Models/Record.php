@@ -51,7 +51,7 @@ class Record extends AbstractModel
      *
      * @return void
      */
-    public function __construct(GuzzleClient $client, $id, Zone $zone, array $cache = array())
+    public function __construct(GuzzleClient $client, $id, Zone $zone, array $cache = [])
     {
         parent::__construct($client, $cache);
 
@@ -236,9 +236,9 @@ class Record extends AbstractModel
      *
      * @return array
      */
-    protected function data(array $data = array())
+    protected function data(array $data = [])
     {
-        return array_merge(array('z' => $this->zone->getZone()), $data);
+        return array_merge(['z' => $this->zone->getZone()], $data);
     }
 
     /**
@@ -253,10 +253,10 @@ class Record extends AbstractModel
     public function clearCache($methods = null)
     {
         if ($methods === null || $methods === 'all') {
-            $this->cache = array();
+            $this->cache = [];
         } else {
             foreach ((array) $methods as $method) {
-                $this->cache[$method] = array();
+                $this->cache[$method] = [];
                 // we may need to clear out the record cache in the zone model
                 // to avoid unintuitive behaviour
                 if (($method == 'recLoad' || !$method) && $method !== false) {

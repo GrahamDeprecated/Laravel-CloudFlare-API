@@ -43,7 +43,7 @@ class Ip extends AbstractModel
      *
      * @return void
      */
-    public function __construct(GuzzleClient $client, $ip, array $cache = array())
+    public function __construct(GuzzleClient $client, $ip, array $cache = [])
     {
         parent::__construct($client, $cache);
 
@@ -67,7 +67,7 @@ class Ip extends AbstractModel
      */
     public function getScore()
     {
-        $ipLkup = $this->get('ipLkup', array('ip' => $this->ip));
+        $ipLkup = $this->get('ipLkup', ['ip' => $this->ip]);
 
         $score = $ipLkup['response'][$this->ip];
 
@@ -85,7 +85,7 @@ class Ip extends AbstractModel
      */
     public function whitelist()
     {
-        $this->action('wl', array('key' => $this->ip), false);
+        $this->action('wl', ['key' => $this->ip], false);
 
         return $this;
     }
@@ -97,7 +97,7 @@ class Ip extends AbstractModel
      */
     public function ban()
     {
-        $this->action('ban', array('key' => $this->ip), false);
+        $this->action('ban', ['key' => $this->ip], false);
 
         return $this;
     }
@@ -109,7 +109,7 @@ class Ip extends AbstractModel
      */
     public function unlist()
     {
-        $this->action('nul', array('key' => $this->ip), false);
+        $this->action('nul', ['key' => $this->ip], false);
 
         return $this;
     }

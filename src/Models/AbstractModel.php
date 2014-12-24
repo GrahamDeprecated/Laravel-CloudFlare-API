@@ -49,7 +49,7 @@ abstract class AbstractModel
      *
      * @return void
      */
-    public function __construct(GuzzleClient $client, array $cache = array())
+    public function __construct(GuzzleClient $client, array $cache = [])
     {
         $this->client = $client;
         $this->cache = $cache;
@@ -65,10 +65,10 @@ abstract class AbstractModel
     public function clearCache($methods = null)
     {
         if ($methods === null || $methods === 'all') {
-            $this->cache = array();
+            $this->cache = [];
         } else {
             foreach ((array) $methods as $method) {
-                $this->cache[$method] = array();
+                $this->cache[$method] = [];
             }
         }
 
@@ -84,7 +84,7 @@ abstract class AbstractModel
      *
      * @return array
      */
-    protected function get($method, array $data = array(), $key = 'key')
+    protected function get($method, array $data = [], $key = 'key')
     {
         $data = $this->data($data);
 
@@ -104,7 +104,7 @@ abstract class AbstractModel
      *
      * @return array
      */
-    protected function action($method, array $data = array(), $flush = null)
+    protected function action($method, array $data = [], $flush = null)
     {
         $data = $this->data($data);
 
@@ -120,7 +120,7 @@ abstract class AbstractModel
      *
      * @return array
      */
-    protected function data(array $data = array())
+    protected function data(array $data = [])
     {
         return $data;
     }
