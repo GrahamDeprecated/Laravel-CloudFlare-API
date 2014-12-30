@@ -60,7 +60,7 @@ class Record extends AbstractModel
     }
 
     /**
-     * Get the id
+     * Get the id.
      *
      * @return int
      */
@@ -70,7 +70,7 @@ class Record extends AbstractModel
     }
 
     /**
-     * Get the name
+     * Get the name.
      *
      * @return string
      */
