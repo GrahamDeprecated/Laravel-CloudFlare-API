@@ -5,6 +5,8 @@ CHANGE LOG
 ## V0.6.1 Alpha (Upcoming)
 
 * Removed the cs fixers
+* CS fixes
+* Moved to the MIT license
 
 
 ## V0.6 Alpha (08/11/2014)
