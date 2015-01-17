@@ -11,7 +11,7 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use Illuminate\Support\ServiceProvider;
+use Orchestra\Support\Providers\ServiceProvider;
 
 /**
  * This is the cloudflare api service provider class.
@@ -21,20 +21,13 @@ use Illuminate\Support\ServiceProvider;
 class CloudFlareAPIServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Bootstrap the application events.
+     * Boot the service provider.
      *
      * @return void
      */
     public function boot()
     {
-        $this->package('graham-campbell/cloudflare-api', 'graham-campbell/cloudflare-api', __DIR__);
+        $this->addConfigComponent('graham-campbell/cloudflare-api', 'graham-campbell/cloudflare-api', realpath(__DIR__.'/../config'));
     }
 
     /**
