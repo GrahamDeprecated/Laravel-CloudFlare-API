@@ -38,13 +38,13 @@ return [
     'connections' => [
 
         'main' => [
-            'token'   => 'your-token',
-            'email'   => 'your-email',
+            'token' => 'your-token',
+            'email' => 'your-email',
         ],
 
         'alternative' => [
-            'token'   => 'your-token',
-            'email'   => 'your-email',
+            'token' => 'your-token',
+            'email' => 'your-email',
         ],
 
     ],

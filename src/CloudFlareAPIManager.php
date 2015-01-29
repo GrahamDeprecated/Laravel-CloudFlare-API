@@ -62,7 +62,7 @@ class CloudFlareAPIManager extends AbstractManager
      */
     protected function getConfigName()
     {
-        return 'graham-campbell/cloudflare-api';
+        return 'cloudflareapi';
     }
 
     /**

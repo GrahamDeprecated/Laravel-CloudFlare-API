@@ -11,7 +11,8 @@
 
 namespace GrahamCampbell\CloudFlareAPI;
 
-use Orchestra\Support\Providers\ServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * This is the cloudflare api service provider class.
@@ -27,7 +28,21 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->addConfigComponent('graham-campbell/cloudflare-api', 'graham-campbell/cloudflare-api', realpath(__DIR__.'/../config'));
+        $this->setupConfig();
+    }
+
+    /**
+     * Setup the config.
+     *
+     * @return void
+     */
+    protected function setupConfig()
+    {
+        $source = realpath(__DIR__.'/../config/cloudflareapi.php');
+
+        $this->publishes([$source => config_path('cloudflareapi.php')]);
+
+        $this->mergeConfigFrom($source, 'cloudflareapi');
     }
 
     /**
@@ -37,41 +52,45 @@ class CloudFlareAPIServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerFactory();
-        $this->registerManager();
+        $this->registerFactory($this->app);
+        $this->registerManager($this->app);
     }
 
     /**
      * Register the factory class.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
-    protected function registerFactory()
+    protected function registerFactory(Application $app)
     {
-        $this->app->singleton('cloudflareapi.factory', function () {
+        $app->singleton('cloudflareapi.factory', function () {
             $client = new Factories\ClientFactory();
 
             return new Factories\CloudFlareAPIFactory($client);
         });
 
-        $this->app->alias('cloudflareapi.factory', 'GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory');
+        $app->alias('cloudflareapi.factory', 'GrahamCampbell\CloudFlareAPI\Factories\CloudFlareAPIFactory');
     }
 
     /**
      * Register the manager class.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
-    protected function registerManager()
+    protected function registerManager(Application $app)
     {
-        $this->app->singleton('cloudflareapi', function ($app) {
+        $app->singleton('cloudflareapi', function ($app) {
             $config = $app['config'];
             $factory = $app['cloudflareapi.factory'];
 
             return new CloudFlareAPIManager($config, $factory);
         });
 
-        $this->app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\CloudFlareAPIManager');
+        $app->alias('cloudflareapi', 'GrahamCampbell\CloudFlareAPI\CloudFlareAPIManager');
     }
 
     /**
