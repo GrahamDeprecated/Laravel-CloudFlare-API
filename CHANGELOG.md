@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V0.7 Alpha (Upcoming)
+## V0.7 Alpha (05/02/2015)
 
 * Upgraded to laravel 5.0
 * Renamed providers to repositories
